@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B1B1B">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <com.tencent.rtmp.ui.TXCloudVideoView
+            android:id="@+id/tx_cloud_view_push"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_weight="1" />
+        <FrameLayout
+            android:id="@+id/ll_link"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@android:color/darker_gray">
+
+            <Button
+                android:id="@+id/btn_stop_pk"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/livepk_stop_link"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_accept_pk"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@drawable/livepk_start_link" />
+
+            <com.tencent.rtmp.ui.TXCloudVideoView
+                android:id="@+id/tx_cloud_view_play"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@mipmap/common_ic_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+</RelativeLayout>
