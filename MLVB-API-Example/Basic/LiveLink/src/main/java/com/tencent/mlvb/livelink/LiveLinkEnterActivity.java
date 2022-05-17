@@ -8,9 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import com.tencent.mlvb.common.MLVBBaseActivity;
 
 /**
@@ -62,13 +60,15 @@ public class LiveLinkEnterActivity extends MLVBBaseActivity {
         mEditStreamId = findViewById(R.id.et_stream_id);
         initSelectRoleLayout();
         initNextButton();
-
     }
 
     private void initSelectRoleLayout() {
         mLayoutSelectRole = findViewById(R.id.ll_role);
         mButtonRoleAnchor = findViewById(R.id.bt_anchor);
         mButtonRoleAudience = findViewById(R.id.bt_audience);
+
+        mRoleSelected = ROLE_ANCHOR;
+        mButtonRoleAnchor.setSelected(true);
 
         mButtonRoleAnchor.setOnClickListener(new View.OnClickListener() {
             @Override
