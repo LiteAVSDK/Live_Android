@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -72,6 +71,9 @@ public class LivePKEnterActivity extends MLVBBaseActivity {
         mLayoutSelectRole = findViewById(R.id.ll_role);
         mButtonRoleAnchor = findViewById(R.id.bt_anchor);
         mButtonRoleAudience = findViewById(R.id.bt_audience);
+
+        mRoleSelected = ROLE_ANCHOR;
+        mButtonRoleAnchor.setSelected(true);
 
         mButtonRoleAnchor.setOnClickListener(new View.OnClickListener() {
             @Override

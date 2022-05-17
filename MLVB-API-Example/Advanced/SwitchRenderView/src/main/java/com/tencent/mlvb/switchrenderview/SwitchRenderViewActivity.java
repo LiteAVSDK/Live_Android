@@ -11,16 +11,13 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import com.tencent.live2.V2TXLiveDef;
 import com.tencent.live2.V2TXLivePusher;
 import com.tencent.live2.impl.V2TXLivePusherImpl;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 import com.tencent.mlvb.common.URLUtils;
 import com.tencent.rtmp.ui.TXCloudVideoView;
-
 import java.util.Random;
 
 /**
@@ -91,10 +88,10 @@ public class SwitchRenderViewActivity extends MLVBBaseActivity {
         mButtonPush.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mLivePusher != null && mLivePusher.isPushing() == 1){
+                if (mLivePusher != null && mLivePusher.isPushing() == 1) {
                     stopPush();
                     mButtonPush.setText(R.string.switchrenderview_start_push);
-                }else{
+                } else {
                     startPush();
                     mButtonPush.setText(R.string.switchrenderview_stop_push);
                 }
@@ -104,27 +101,30 @@ public class SwitchRenderViewActivity extends MLVBBaseActivity {
         mRadioView.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int id) {
-                if(id == R.id.rb_txcloudvideoview){
-                    if(mLivePusher != null && mLivePusher.isPushing() == 1){
-                        Toast.makeText(SwitchRenderViewActivity.this, getString(R.string.switchrenderview_please_restart_push), Toast.LENGTH_SHORT).show();
+                if (id == R.id.rb_txcloudvideoview) {
+                    if (mLivePusher != null && mLivePusher.isPushing() == 1) {
+                        Toast.makeText(SwitchRenderViewActivity.this,
+                                getString(R.string.switchrenderview_please_restart_push), Toast.LENGTH_SHORT).show();
                         mRadioView.check(mLastRadioButton);
                         return;
                     }
                     mPushSurfaceView.setVisibility(View.GONE);
                     mPushTextureView.setVisibility(View.GONE);
                     mPushTencentView.setVisibility(View.VISIBLE);
-                }else if(id == R.id.rb_textureview){
-                    if(mLivePusher != null && mLivePusher.isPushing() == 1){
-                        Toast.makeText(SwitchRenderViewActivity.this, getString(R.string.switchrenderview_please_restart_push), Toast.LENGTH_SHORT).show();
+                } else if (id == R.id.rb_textureview) {
+                    if (mLivePusher != null && mLivePusher.isPushing() == 1) {
+                        Toast.makeText(SwitchRenderViewActivity.this,
+                                getString(R.string.switchrenderview_please_restart_push), Toast.LENGTH_SHORT).show();
                         mRadioView.check(mLastRadioButton);
                         return;
                     }
                     mPushSurfaceView.setVisibility(View.GONE);
                     mPushTencentView.setVisibility(View.GONE);
                     mPushTextureView.setVisibility(View.VISIBLE);
-                }else if(id == R.id.rb_surfaceview){
-                    if(mLivePusher != null && mLivePusher.isPushing() == 1){
-                        Toast.makeText(SwitchRenderViewActivity.this, getString(R.string.switchrenderview_please_restart_push), Toast.LENGTH_SHORT).show();
+                } else if (id == R.id.rb_surfaceview) {
+                    if (mLivePusher != null && mLivePusher.isPushing() == 1) {
+                        Toast.makeText(SwitchRenderViewActivity.this,
+                                getString(R.string.switchrenderview_please_restart_push), Toast.LENGTH_SHORT).show();
                         mRadioView.check(mLastRadioButton);
                         return;
                     }
@@ -135,16 +135,16 @@ public class SwitchRenderViewActivity extends MLVBBaseActivity {
             }
         });
 
-        if(!TextUtils.isEmpty(mEditStreamId.getText().toString())){
+        if (!TextUtils.isEmpty(mEditStreamId.getText().toString())) {
             mTextTitle.setText(mEditStreamId.getText().toString());
         }
     }
 
-    private void stopPush(){
-        if(mLivePusher != null){
+    private void stopPush() {
+        if (mLivePusher != null) {
             mLivePusher.stopCamera();
             mLivePusher.stopMicrophone();
-            if(mLivePusher != null && mLivePusher.isPushing() == 1){
+            if (mLivePusher != null && mLivePusher.isPushing() == 1) {
                 mLivePusher.stopPush();
             }
         }
@@ -153,29 +153,30 @@ public class SwitchRenderViewActivity extends MLVBBaseActivity {
 
     private void startPush() {
         String streamId = mEditStreamId.getText().toString();
-        if(TextUtils.isEmpty(streamId)){
-            Toast.makeText(SwitchRenderViewActivity.this,getString(R.string.switchrenderview_please_input_streamid), Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(streamId)) {
+            Toast.makeText(SwitchRenderViewActivity.this, getString(R.string.switchrenderview_please_input_streamid),
+                    Toast.LENGTH_SHORT).show();
             return;
         }
         mTextTitle.setText(streamId);
         String userId = String.valueOf(new Random().nextInt(10000));
         String pushUrl = URLUtils.generatePushUrl(streamId, userId, 0);
-        if(mLivePusher == null){
+        if (mLivePusher == null) {
             mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTC);
         }
-        if(mRadioView.getCheckedRadioButtonId() == R.id.rb_txcloudvideoview){
+        if (mRadioView.getCheckedRadioButtonId() == R.id.rb_txcloudvideoview) {
             mLivePusher.setRenderView(mPushTencentView);
             mPushSurfaceView.setVisibility(View.GONE);
             mPushTextureView.setVisibility(View.GONE);
             mPushTencentView.setVisibility(View.VISIBLE);
             mLastRadioButton = R.id.rb_txcloudvideoview;
-        }else if(mRadioView.getCheckedRadioButtonId() == R.id.rb_textureview){
+        } else if (mRadioView.getCheckedRadioButtonId() == R.id.rb_textureview) {
             mLivePusher.setRenderView(mPushTextureView);
             mPushSurfaceView.setVisibility(View.GONE);
             mPushTextureView.setVisibility(View.VISIBLE);
             mPushTencentView.setVisibility(View.GONE);
             mLastRadioButton = R.id.rb_textureview;
-        }else if(mRadioView.getCheckedRadioButtonId() == R.id.rb_surfaceview){
+        } else if (mRadioView.getCheckedRadioButtonId() == R.id.rb_surfaceview) {
             mLivePusher.setRenderView(mPushSurfaceView);
             mPushSurfaceView.setVisibility(View.VISIBLE);
             mPushTextureView.setVisibility(View.GONE);
