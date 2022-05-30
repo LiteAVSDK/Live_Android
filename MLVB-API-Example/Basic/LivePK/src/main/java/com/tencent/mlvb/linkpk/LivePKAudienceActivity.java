@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.tencent.live2.V2TXLiveDef;
 import com.tencent.live2.V2TXLivePlayer;
 import com.tencent.live2.V2TXLivePlayerObserver;
 import com.tencent.live2.impl.V2TXLivePlayerImpl;

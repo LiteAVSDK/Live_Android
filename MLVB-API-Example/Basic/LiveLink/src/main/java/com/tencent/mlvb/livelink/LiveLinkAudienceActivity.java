@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
-
 import com.tencent.live2.V2TXLiveDef;
 import com.tencent.live2.V2TXLivePlayer;
 import com.tencent.live2.V2TXLivePlayerObserver;
@@ -110,7 +108,6 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
                 finish();
             }
         });
-
     }
 
     private void startPush(String streamId, String userId) {
@@ -126,14 +123,15 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
 
     private void startPlay() {
         String playURL = URLUtils.generatePlayUrl(mStreamId, "", 2);
-        if(mLivePlayer == null){
+        if (mLivePlayer == null) {
             mLivePlayer = new V2TXLivePlayerImpl(LiveLinkAudienceActivity.this);
             mLivePlayer.setRenderView(mVideoViewAnchor);
             mLivePlayer.setObserver(new V2TXLivePlayerObserver() {
 
                 @Override
                 public void onError(V2TXLivePlayer player, int code, String msg, Bundle extraInfo) {
-                    Log.e(TAG, "[Player] onError: player-" + player + " code-" + code + " msg-" + msg + " info-" + extraInfo);
+                    Log.e(TAG, "[Player] onError: player-" + player + " code-" + code + " msg-" + msg + " info-"
+                            + extraInfo);
                 }
 
                 @Override
@@ -160,7 +158,7 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
     }
 
     public void startLink(){
-        if(mLivePlayer != null && mLivePlayer.isPlaying() == 1){
+        if (mLivePlayer != null && mLivePlayer.isPlaying() == 1) {
             mLivePlayer.stopPlay();
         }
 
@@ -177,12 +175,12 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
     }
 
     public void stopLink(){
-        if(mLivePlayer != null && mLivePlayer.isPlaying() == 1){
+        if (mLivePlayer != null && mLivePlayer.isPlaying() == 1) {
             mLivePlayer.stopPlay();
         }
-        if(mLivePusher != null){
+        if (mLivePusher != null) {
             mLivePusher.stopCamera();
-            if(mLivePusher.isPushing() == 1){
+            if (mLivePusher.isPushing() == 1) {
                 mLivePusher.stopPush();
             }
 
@@ -197,17 +195,17 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mLivePusher != null){
+        if (mLivePusher != null) {
             mLivePusher.stopCamera();
-            if(mLivePusher.isPushing() == 1){
+            if (mLivePusher.isPushing() == 1) {
                 mLivePusher.stopPush();
             }
 
             mLivePusher = null;
         }
 
-        if(mLivePlayer != null){
-            if(mLivePlayer.isPlaying() == 1){
+        if (mLivePlayer != null) {
+            if (mLivePlayer.isPlaying() == 1) {
                 mLivePlayer.stopPlay();
             }
             mLivePlayer = null;

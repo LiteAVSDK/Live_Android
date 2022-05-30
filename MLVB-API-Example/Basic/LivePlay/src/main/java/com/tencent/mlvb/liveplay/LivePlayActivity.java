@@ -6,9 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
-
 import com.tencent.live2.V2TXLiveDef;
 import com.tencent.live2.V2TXLivePlayer;
 import com.tencent.live2.V2TXLivePlayerObserver;
@@ -16,7 +14,6 @@ import com.tencent.live2.impl.V2TXLivePlayerImpl;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 import com.tencent.mlvb.common.URLUtils;
 import com.tencent.rtmp.ui.TXCloudVideoView;
-
 import java.util.Random;
 
 /**
@@ -80,7 +77,7 @@ public class LivePlayActivity extends MLVBBaseActivity implements View.OnClickLi
 
         mButtonMute.setOnClickListener(this);
         findViewById(R.id.iv_back).setOnClickListener(this);
-        if(!TextUtils.isEmpty(mStreamId)){
+        if (!TextUtils.isEmpty(mStreamId)) {
             mTextTitle.setText(mStreamId);
         }
     }
@@ -127,7 +124,7 @@ public class LivePlayActivity extends MLVBBaseActivity implements View.OnClickLi
         });
 
         int result = mLivePlayer.startPlay(playURL);
-        if(result == 0){
+        if (result == 0) {
             mPlayFlag = true;
         }
         Log.d(TAG, "startPlay : " + result);
@@ -136,8 +133,8 @@ public class LivePlayActivity extends MLVBBaseActivity implements View.OnClickLi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mLivePlayer != null){
-            if(mPlayFlag){
+        if (mLivePlayer != null) {
+            if (mPlayFlag) {
                 mLivePlayer.stopPlay();
             }
             mLivePlayer = null;
@@ -147,20 +144,20 @@ public class LivePlayActivity extends MLVBBaseActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        if(id == R.id.iv_back){
+        if (id == R.id.iv_back) {
             finish();
-        }else if(id == R.id.btn_mute){
+        } else if (id == R.id.btn_mute) {
             mute();
         }
     }
 
     private void mute() {
-        if(mLivePlayer != null && mLivePlayer.isPlaying() == 1){
-            if(mPlayAudioFlag){
+        if (mLivePlayer != null && mLivePlayer.isPlaying() == 1) {
+            if (mPlayAudioFlag) {
                 mLivePlayer.pauseAudio();
                 mPlayAudioFlag = false;
                 mButtonMute.setText(R.string.liveplay_cancel_mute);
-            }else{
+            } else {
                 mLivePlayer.resumeAudio();
                 mPlayAudioFlag = true;
                 mButtonMute.setText(R.string.liveplay_mute);

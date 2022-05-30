@@ -1,14 +1,7 @@
 package com.tencent.mlvb.common;
 
-import android.net.Uri;
-import android.text.TextUtils;
-
 import com.tencent.mlvb.debug.GenerateTestUserSig;
-
 import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * MLVB 移动直播地址生成
@@ -38,9 +31,9 @@ public class URLUtils {
      */
     public static String generatePushUrl(String streamId, String userId, int type){
         String pushUrl = "";
-        if(type == 0){
+        if (type == 0) {
             pushUrl = TRTC + TRTC_DOMAIN + "/push/" + streamId + "?sdkappid=" + GenerateTestUserSig.SDKAPPID + "&userid=" + userId + "&usersig=" + GenerateTestUserSig.genTestUserSig(userId);
-        }else if(type == 1){
+        } else if (type == 1) {
             pushUrl = RTMP + GenerateTestUserSig.PUSH_DOMAIN + File.separator + APP_NAME + File.separator + streamId + GenerateTestUserSig.getSafeUrl(streamId);
         }
         return pushUrl;
@@ -57,11 +50,11 @@ public class URLUtils {
      */
     public static String generatePlayUrl(String streamId, String userId, int type){
         String playUrl = "";
-        if(type == 0){
+        if (type == 0) {
             playUrl = TRTC + TRTC_DOMAIN + "/play/" + streamId + "?sdkappid=" + GenerateTestUserSig.SDKAPPID + "&userid=" + userId + "&usersig=" + GenerateTestUserSig.genTestUserSig(userId);
-        }else if(type == 1){
+        } else if (type == 1) {
             playUrl = HTTP + GenerateTestUserSig.PLAY_DOMAIN + File.separator + APP_NAME + File.separator + streamId + ".flv";
-        }else if(type == 2){
+        } else if (type == 2) {
             playUrl = WEBRTC + GenerateTestUserSig.PLAY_DOMAIN + File.separator + APP_NAME + File.separator + streamId;
         }
         return playUrl;

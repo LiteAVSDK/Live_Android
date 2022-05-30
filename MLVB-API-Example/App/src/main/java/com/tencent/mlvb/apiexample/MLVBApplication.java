@@ -4,8 +4,9 @@ import android.app.Application;
 
 import androidx.multidex.MultiDex;
 
+import com.tencent.live2.V2TXLiveDef.V2TXLiveLogConfig;
+import com.tencent.live2.V2TXLivePremier;
 import com.tencent.mlvb.debug.GenerateTestUserSig;
-import com.tencent.rtmp.TXLiveBase;
 
 public class MLVBApplication extends Application {
 
@@ -16,8 +17,10 @@ public class MLVBApplication extends Application {
         super.onCreate();
         MultiDex.install(this);
         instance = this;
-        TXLiveBase.setConsoleEnabled(true);
-        TXLiveBase.getInstance().setLicence(instance, GenerateTestUserSig.LICENSEURL, GenerateTestUserSig.LICENSEURLKEY);
+        V2TXLiveLogConfig liveLogConfig = new V2TXLiveLogConfig();
+        liveLogConfig.enableConsole = true;
+        V2TXLivePremier.setLogConfig(liveLogConfig);
+        V2TXLivePremier.setLicence(instance, GenerateTestUserSig.LICENSEURL, GenerateTestUserSig.LICENSEURLKEY);
     }
 
 }

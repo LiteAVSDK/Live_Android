@@ -11,9 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import com.tencent.mlvb.common.MLVBBaseActivity;
 
 /**
@@ -43,7 +41,7 @@ public class LivePlayEnterActivity extends MLVBBaseActivity {
     }
 
     private void initView(){
-        mEditStreamId       = findViewById(R.id.et_stream_id);
+        mEditStreamId = findViewById(R.id.et_stream_id);
 
         mEditStreamId.setText(generateStreamId());
         findViewById(R.id.btn_play_rtc).setOnClickListener(new View.OnClickListener() {
@@ -72,16 +70,18 @@ public class LivePlayEnterActivity extends MLVBBaseActivity {
         String text = mTextDesc.getText().toString();
 
         SpannableString str = new SpannableString(text);
-        str.setSpan(new URLSpan("https://cloud.tencent.com/document/product/454/56598"),text.indexOf("https://"),text.indexOf("56598") + 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        str.setSpan(new URLSpan("https://cloud.tencent.com/document/product/454/56598"), text.indexOf("https://"),
+                text.indexOf("56598") + 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         mTextDesc.setMovementMethod(LinkMovementMethod.getInstance());
         mTextDesc.setText(str);
     }
 
     private void startPlay(int type) {
         String streamId = mEditStreamId.getText().toString();
-        if(TextUtils.isEmpty(streamId)){
-            Toast.makeText(LivePlayEnterActivity.this,getString(R.string.liveplay_please_input_streamid), Toast.LENGTH_SHORT).show();
-        }else{
+        if (TextUtils.isEmpty(streamId)) {
+            Toast.makeText(LivePlayEnterActivity.this, getString(R.string.liveplay_please_input_streamid),
+                    Toast.LENGTH_SHORT).show();
+        } else {
             Intent intent = new Intent(LivePlayEnterActivity.this, LivePlayActivity.class);
             intent.putExtra("STREAM_ID", streamId);
             intent.putExtra("STREAM_TYPE", type);

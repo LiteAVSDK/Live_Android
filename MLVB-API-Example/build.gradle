@@ -33,7 +33,7 @@ task clean(type: Delete) {
 ext {
     compileSdkVersion = 29
     buildToolsVersion = "29.0.3"
-    minSdkVersion = 16
+    minSdkVersion = 19
     targetSdkVersion = 26
     supportSdkVersion = "29.0.3"
     liteavSdk="com.tencent.liteav:LiteAVSDK_Live:latest.release"

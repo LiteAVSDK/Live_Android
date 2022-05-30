@@ -1,5 +1,8 @@
 package com.tencent.mlvb.livelink;
 
+import static com.tencent.live2.V2TXLiveCode.V2TXLIVE_OK;
+import static com.tencent.live2.V2TXLiveDef.V2TXLiveMixInputType.V2TXLiveMixInputTypePureVideo;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -12,9 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import com.tencent.live2.V2TXLiveDef;
 import com.tencent.live2.V2TXLivePlayer;
 import com.tencent.live2.V2TXLivePlayerObserver;
@@ -24,11 +25,7 @@ import com.tencent.live2.impl.V2TXLivePusherImpl;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 import com.tencent.mlvb.common.URLUtils;
 import com.tencent.rtmp.ui.TXCloudVideoView;
-
 import java.util.ArrayList;
-
-import static com.tencent.live2.V2TXLiveCode.V2TXLIVE_OK;
-import static com.tencent.live2.V2TXLiveDef.V2TXLiveMixInputType.V2TXLiveMixInputTypePureVideo;
 
 /**
  * MLVB 连麦互动的主播视角
@@ -123,7 +120,6 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
         });
     }
 
-
     private void startPush() {
         String pushUrl = URLUtils.generatePushUrl(mStreamId, mUserId, 0);
         mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTC);
@@ -136,8 +132,9 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
     }
 
     public void startLink(String linkUserId){
-        if(TextUtils.isEmpty(linkUserId)){
-            Toast.makeText(LiveLinkAnchorActivity.this, getString(R.string.livelink_please_input_userid), Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(linkUserId)) {
+            Toast.makeText(LiveLinkAnchorActivity.this, getString(R.string.livelink_please_input_userid),
+                    Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -145,19 +142,20 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
         startPlay(linkUserId);
 
         int result = mLivePusher.setMixTranscodingConfig(createConfig(linkUserId, linkUserId));
-        if(result == V2TXLIVE_OK){
+        if (result == V2TXLIVE_OK) {
             mButtonAcceptLink.setVisibility(View.GONE);
             mButtonStopLink.setVisibility(View.VISIBLE);
-        }else{
-            Toast.makeText(LiveLinkAnchorActivity.this, getString(R.string.livelink_mix_stream_fail), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(LiveLinkAnchorActivity.this, getString(R.string.livelink_mix_stream_fail),
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
     private void stopLink() {
-        if(mLivePusher != null && mLivePusher.isPushing() == 1){
+        if (mLivePusher != null && mLivePusher.isPushing() == 1) {
             mLivePusher.setMixTranscodingConfig(null);
         }
-        if(mLivePlayer != null && mLivePlayer.isPlaying() == 1){
+        if (mLivePlayer != null && mLivePlayer.isPlaying() == 1) {
             mLivePlayer.stopPlay();
         }
         mButtonAcceptLink.setVisibility(View.VISIBLE);
@@ -166,14 +164,15 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
 
     private void startPlay(String linkStreamId) {
         String playURL = URLUtils.generatePlayUrl(linkStreamId, mUserId, 0);
-        if(mLivePlayer == null){
+        if (mLivePlayer == null) {
             mLivePlayer = new V2TXLivePlayerImpl(LiveLinkAnchorActivity.this);
             mLivePlayer.setRenderView(mVideoViewAnchor);
             mLivePlayer.setObserver(new V2TXLivePlayerObserver() {
 
                 @Override
                 public void onError(V2TXLivePlayer player, int code, String msg, Bundle extraInfo) {
-                    Log.e(TAG, "[Player] onError: player-" + player + " code-" + code + " msg-" + msg + " info-" + extraInfo);
+                    Log.e(TAG, "[Player] onError: player-" + player + " code-" + code + " msg-" + msg + " info-"
+                            + extraInfo);
                 }
 
                 @Override
@@ -207,7 +206,7 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
         dialog.setPositiveButton(R.string.livelink_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
-                if (editText != null){
+                if (editText != null) {
                     startLink(editText.getText().toString());
                 }
             }
@@ -220,17 +219,17 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mLivePusher != null){
+        if (mLivePusher != null) {
             mLivePusher.stopCamera();
             mLivePusher.stopMicrophone();
-            if(mLivePusher.isPushing() == 1){
+            if (mLivePusher.isPushing() == 1) {
                 mLivePusher.stopPush();
             }
             mLivePusher = null;
         }
 
-        if(mLivePlayer != null){
-            if(mLivePlayer.isPlaying() == 1){
+        if (mLivePlayer != null) {
+            if (mLivePlayer.isPlaying() == 1) {
                 mLivePlayer.stopPlay();
             }
             mLivePlayer = null;
