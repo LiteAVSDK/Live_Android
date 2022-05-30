@@ -37,7 +37,7 @@ import static com.tencent.live2.V2TXLiveDef.V2TXLiveMixInputType.V2TXLiveMixInpu
  * <p>
  * 包含如下简单功能：
  * - 开始推流{@link LivePKAnchorActivity#startPush()}
- * - 开始PK{@link LivePKAnchorActivity#startPK(String, String)}
+ * - 开始PK{@link LivePKAnchorActivity#startPK(String)}
  * - 停止PK{@link LivePKAnchorActivity#stopPK()}
  * - 播放对面主播的流{@link LivePKAnchorActivity#startPlay(String)}
  * <p>
@@ -48,7 +48,7 @@ import static com.tencent.live2.V2TXLiveDef.V2TXLiveMixInputType.V2TXLiveMixInpu
  * <p>
  * Features:
  * - Start publishing {@link LivePKAnchorActivity#startPush()}
- * - Start competition {@link LivePKAnchorActivity#startPK(String, String)}
+ * - Start competition {@link LivePKAnchorActivity#startPK(String)}
  * - Stop competition {@link LivePKAnchorActivity#stopPK()}
  * - Play the other anchor’s streams {@link LivePKAnchorActivity#startPlay(String)}
  * <p>
@@ -115,19 +115,15 @@ public class LivePKAnchorActivity extends MLVBBaseActivity implements View.OnCli
     }
 
     @SuppressLint("SetTextI18n")
-    public void startPK(String pkStreamId, String pkUserId) {
+    public void startPK(String pkStreamId) {
         if (TextUtils.isEmpty(pkStreamId)) {
             Toast.makeText(LivePKAnchorActivity.this, getString(R.string.livepk_please_input_streamid), Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (TextUtils.isEmpty(pkUserId)) {
-            Toast.makeText(LivePKAnchorActivity.this, getString(R.string.livepk_please_input_userid), Toast.LENGTH_SHORT).show();
             return;
         }
 
         startPlay(pkStreamId);
 
-        int result = mLivePusher.setMixTranscodingConfig(createConfig(pkStreamId, pkUserId));
+        int result = mLivePusher.setMixTranscodingConfig(createConfig(pkStreamId));
         if (result == V2TXLIVE_OK) {
             findViewById(R.id.btn_stop_pk).setVisibility(View.VISIBLE);
             findViewById(R.id.btn_accept_pk).setVisibility(View.GONE);
@@ -182,7 +178,7 @@ public class LivePKAnchorActivity extends MLVBBaseActivity implements View.OnCli
         Log.d(TAG, "startPlay : " + result);
     }
 
-    private V2TXLiveDef.V2TXLiveTranscodingConfig createConfig(String linkStreamId, String linkUserId) {
+    private V2TXLiveDef.V2TXLiveTranscodingConfig createConfig(String linkStreamId) {
         V2TXLiveDef.V2TXLiveTranscodingConfig config = new V2TXLiveDef.V2TXLiveTranscodingConfig();
         config.videoWidth = 750;
         config.videoHeight = 640;
@@ -209,7 +205,6 @@ public class LivePKAnchorActivity extends MLVBBaseActivity implements View.OnCli
         config.mixStreams.add(mixStream);
 
         V2TXLiveDef.V2TXLiveMixStream remote = new V2TXLiveDef.V2TXLiveMixStream();
-        remote.userId = linkUserId;
         remote.streamId = linkStreamId;
         remote.x = 380;
         remote.y = 0;
@@ -267,17 +262,12 @@ public class LivePKAnchorActivity extends MLVBBaseActivity implements View.OnCli
         editStreamId.setInputType(InputType.TYPE_CLASS_NUMBER);
         editStreamId.setHint(getString(R.string.livepk_please_input_streamid));
         ll.addView(editStreamId);
-        final EditText editUserId = new EditText(this);
-        editUserId.setInputType(InputType.TYPE_CLASS_NUMBER);
-        editUserId.setHint(getString(R.string.livepk_please_input_userid));
-        ll.addView(editUserId);
         dialog.setView(ll);
         dialog.setPositiveButton(R.string.livepk_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
                 String streamId = editStreamId.getText().toString();
-                String userId = editUserId.getText().toString();
-                startPK(streamId, userId);
+                startPK(streamId);
             }
         });
         dialog.create();

@@ -8,9 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import com.tencent.mlvb.common.MLVBBaseActivity;
 
 /**
@@ -27,9 +25,9 @@ import com.tencent.mlvb.common.MLVBBaseActivity;
  */
 public class RTCPushAndPlayEnterActivity extends MLVBBaseActivity {
 
-    private EditText        mEditStreamId;
-    private Button          mButtonCommit;
-    private RadioGroup      mRadioRole;
+    private EditText   mEditStreamId;
+    private Button     mButtonCommit;
+    private RadioGroup mRadioRole;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,17 +37,17 @@ public class RTCPushAndPlayEnterActivity extends MLVBBaseActivity {
     }
 
     private void initView(){
-        mEditStreamId   = findViewById(R.id.et_stream_id);
-        mRadioRole      = findViewById(R.id.rg_role);
-        mButtonCommit   = findViewById(R.id.btn_commit);
+        mEditStreamId = findViewById(R.id.et_stream_id);
+        mRadioRole    = findViewById(R.id.rg_role);
+        mButtonCommit = findViewById(R.id.btn_commit);
 
         mEditStreamId.setText(generateStreamId());
         mRadioRole.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if(i == R.id.rb_anchor){
+                if (i == R.id.rb_anchor) {
                     mButtonCommit.setText(R.string.rtcpushandplay_rtc_push);
-                }else if(i == R.id.rb_audience){
+                } else if (i == R.id.rb_audience) {
                     mButtonCommit.setText(R.string.rtcpushandplay_rtc_play);
                 }
             }
@@ -61,15 +59,16 @@ public class RTCPushAndPlayEnterActivity extends MLVBBaseActivity {
             public void onClick(View view) {
                 String streamId = mEditStreamId.getText().toString();
 
-                if(TextUtils.isEmpty(streamId)){
-                    Toast.makeText(RTCPushAndPlayEnterActivity.this, getString(R.string.rtcpushandplay_please_input_streamid), Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(streamId)) {
+                    Toast.makeText(RTCPushAndPlayEnterActivity.this,
+                            getString(R.string.rtcpushandplay_please_input_streamid), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 Intent intent = null;
-                if(mRadioRole.getCheckedRadioButtonId() == R.id.rb_anchor){
+                if (mRadioRole.getCheckedRadioButtonId() == R.id.rb_anchor) {
                     intent = new Intent(RTCPushAndPlayEnterActivity.this, RTCPushAndPlayAnchorActivity.class);
-                }else if(mRadioRole.getCheckedRadioButtonId() == R.id.rb_audience){
+                } else if (mRadioRole.getCheckedRadioButtonId() == R.id.rb_audience) {
                     intent = new Intent(RTCPushAndPlayEnterActivity.this, RTCPushAndPlayAudienceActivity.class);
                 }
                 intent.putExtra("STREAM_ID", streamId);

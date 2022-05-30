@@ -10,17 +10,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.PopupMenu;
-
 import com.tencent.live2.V2TXLiveDef;
 import com.tencent.live2.V2TXLivePusher;
 import com.tencent.live2.impl.V2TXLivePusherImpl;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 import com.tencent.mlvb.common.URLUtils;
 import com.tencent.rtmp.ui.TXCloudVideoView;
-
 import java.util.Random;
 
 /**
@@ -122,11 +119,11 @@ public class LivePushCameraActivity extends MLVBBaseActivity implements View.OnC
 
     private void startPush() {
         String pushUrl = "";
-        if(mStreamType == 0){
+        if (mStreamType == 0) {
             String userId = String.valueOf(new Random().nextInt(10000));
             pushUrl = URLUtils.generatePushUrl(mStreamId, userId, 0);
             mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTC);
-        }else{
+        } else {
             pushUrl = URLUtils.generatePushUrl(mStreamId, "", 1);
             mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTMP);
         }
@@ -137,15 +134,14 @@ public class LivePushCameraActivity extends MLVBBaseActivity implements View.OnC
         int ret = mLivePusher.startPush(pushUrl);
         mLivePusher.startMicrophone();
         Log.i(TAG, "startPush return: " + ret);
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mLivePusher != null){
+        if (mLivePusher != null) {
             mLivePusher.stopCamera();
-            if(mLivePusher.isPushing() == 1){
+            if (mLivePusher.isPushing() == 1) {
                 mLivePusher.stopPush();
             }
 
@@ -162,16 +158,16 @@ public class LivePushCameraActivity extends MLVBBaseActivity implements View.OnC
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        if(id == R.id.iv_back){
+        if (id == R.id.iv_back) {
             finish();
-        }else if(id == R.id.btn_mic){
+        } else if (id == R.id.btn_mic) {
             mMicFlag = !mMicFlag;
             enableMic(mMicFlag);
-        }else if(id == R.id.ll_resolution){
+        } else if (id == R.id.ll_resolution) {
             showResolutionMenu();
-        }else if(id == R.id.ll_rotate){
+        } else if (id == R.id.ll_rotate) {
             showRotateMenu();
-        }else if(id == R.id.ll_mirror){
+        } else if (id == R.id.ll_mirror) {
             showMirrorMenu();
         }
     }
@@ -182,25 +178,28 @@ public class LivePushCameraActivity extends MLVBBaseActivity implements View.OnC
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if(mLivePusher != null && mLivePusher.isPushing() == 1){
-                   if(item.getItemId() == R.id.resolution_360){
+                if (mLivePusher != null && mLivePusher.isPushing() == 1) {
+                    if (item.getItemId() == R.id.resolution_360) {
                         mResolutionFlag = V2TXLiveDef.V2TXLiveVideoResolution.V2TXLiveVideoResolution640x360;
                         mTextResolution.setText("360P");
-                    }else if(item.getItemId() == R.id.resolution_540){
+                    } else if (item.getItemId() == R.id.resolution_540) {
                         mResolutionFlag = V2TXLiveDef.V2TXLiveVideoResolution.V2TXLiveVideoResolution960x540;
                         mTextResolution.setText("540P");
-                    }else if(item.getItemId() == R.id.resolution_720){
+                    } else if (item.getItemId() == R.id.resolution_720) {
                         mResolutionFlag = V2TXLiveDef.V2TXLiveVideoResolution.V2TXLiveVideoResolution1280x720;
                         mTextResolution.setText("720P");
-                    }else if(item.getItemId() == R.id.resolution_1080){
+                    } else if (item.getItemId() == R.id.resolution_1080) {
                         mResolutionFlag = V2TXLiveDef.V2TXLiveVideoResolution.V2TXLiveVideoResolution1920x1080;
                         mTextResolution.setText("1080P");
                     }
-                    V2TXLiveDef.V2TXLiveVideoEncoderParam param = new V2TXLiveDef.V2TXLiveVideoEncoderParam(mResolutionFlag);
-                    param.videoResolutionMode =  V2TXLiveDef.V2TXLiveVideoResolutionMode.V2TXLiveVideoResolutionModePortrait;
+                    V2TXLiveDef.V2TXLiveVideoEncoderParam param = new V2TXLiveDef.V2TXLiveVideoEncoderParam(
+                            mResolutionFlag);
+                    param.videoResolutionMode =
+                            V2TXLiveDef.V2TXLiveVideoResolutionMode.V2TXLiveVideoResolutionModePortrait;
                     mLivePusher.setVideoQuality(param);
-                }else{
-                    Toast.makeText(LivePushCameraActivity.this, getString(R.string.livepushcamera_please_ensure_pushing), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(LivePushCameraActivity.this,
+                            getString(R.string.livepushcamera_please_ensure_pushing), Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }
@@ -214,20 +213,21 @@ public class LivePushCameraActivity extends MLVBBaseActivity implements View.OnC
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if(mLivePusher != null && mLivePusher.isPushing() == 1){
-                    if(item.getItemId() == R.id.mirror_auto){
+                if (mLivePusher != null && mLivePusher.isPushing() == 1) {
+                    if (item.getItemId() == R.id.mirror_auto) {
                         mMirrorFlag = V2TXLiveDef.V2TXLiveMirrorType.V2TXLiveMirrorTypeAuto;
                         mTextMirror.setText(R.string.livepushcamera_front_camera_open);
-                    }else if(item.getItemId() == R.id.mirror_enable){
+                    } else if (item.getItemId() == R.id.mirror_enable) {
                         mMirrorFlag = V2TXLiveDef.V2TXLiveMirrorType.V2TXLiveMirrorTypeEnable;
                         mTextMirror.setText(R.string.livepushcamera_camera_all_open);
-                    }else if(item.getItemId() == R.id.mirror_disable){
+                    } else if (item.getItemId() == R.id.mirror_disable) {
                         mMirrorFlag = V2TXLiveDef.V2TXLiveMirrorType.V2TXLiveMirrorTypeDisable;
                         mTextMirror.setText(R.string.livepushcamera_camera_all_close);
                     }
                     mLivePusher.setRenderMirror(mMirrorFlag);
-                }else{
-                    Toast.makeText(LivePushCameraActivity.this, getString(R.string.livepushcamera_please_ensure_pushing), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(LivePushCameraActivity.this,
+                            getString(R.string.livepushcamera_please_ensure_pushing), Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }
@@ -241,23 +241,24 @@ public class LivePushCameraActivity extends MLVBBaseActivity implements View.OnC
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if(mLivePusher != null && mLivePusher.isPushing() == 1){
-                    if(item.getItemId() == R.id.rotate_0){
+                if (mLivePusher != null && mLivePusher.isPushing() == 1) {
+                    if (item.getItemId() == R.id.rotate_0) {
                         mRotationFlag = V2TXLiveDef.V2TXLiveRotation.V2TXLiveRotation0;
                         mTextRotate.setText("0");
-                    }else if(item.getItemId() == R.id.rotate_90){
+                    } else if (item.getItemId() == R.id.rotate_90) {
                         mRotationFlag = V2TXLiveDef.V2TXLiveRotation.V2TXLiveRotation90;
                         mTextRotate.setText("90");
-                    }else if(item.getItemId() == R.id.rotate_180){
+                    } else if (item.getItemId() == R.id.rotate_180) {
                         mRotationFlag = V2TXLiveDef.V2TXLiveRotation.V2TXLiveRotation180;
                         mTextRotate.setText("180");
-                    }else if(item.getItemId() == R.id.rotate_270){
+                    } else if (item.getItemId() == R.id.rotate_270) {
                         mRotationFlag = V2TXLiveDef.V2TXLiveRotation.V2TXLiveRotation270;
                         mTextRotate.setText("270");
                     }
                     mLivePusher.setRenderRotation(mRotationFlag);
-                }else{
-                    Toast.makeText(LivePushCameraActivity.this, getString(R.string.livepushcamera_please_ensure_pushing), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(LivePushCameraActivity.this,
+                            getString(R.string.livepushcamera_please_ensure_pushing), Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }
@@ -266,16 +267,17 @@ public class LivePushCameraActivity extends MLVBBaseActivity implements View.OnC
     }
 
     private void enableMic(boolean mMicFlag) {
-        if(mLivePusher != null && mLivePusher.isPushing() == 1){
-            if(mMicFlag){
+        if (mLivePusher != null && mLivePusher.isPushing() == 1) {
+            if (mMicFlag) {
                 mLivePusher.startMicrophone();
                 mButtonMic.setText(R.string.livepushcamera_close_mic);
-            }else{
+            } else {
                 mLivePusher.stopMicrophone();
                 mButtonMic.setText(R.string.livepushcamera_open_mic);
             }
-        }else{
-            Toast.makeText(LivePushCameraActivity.this, getString(R.string.livepushcamera_please_ensure_pushing), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(LivePushCameraActivity.this, getString(R.string.livepushcamera_please_ensure_pushing),
+                    Toast.LENGTH_SHORT).show();
         }
     }
 }

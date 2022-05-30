@@ -8,9 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import com.tencent.live2.V2TXLiveDef;
 import com.tencent.live2.V2TXLivePlayer;
 import com.tencent.live2.V2TXLivePlayerObserver;
@@ -20,7 +18,6 @@ import com.tencent.live2.impl.V2TXLivePusherImpl;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 import com.tencent.mlvb.common.URLUtils;
 import com.tencent.rtmp.ui.TXCloudVideoView;
-
 import java.util.Random;
 
 /**
@@ -87,7 +84,7 @@ public class RTCPushAndPlayAnchorActivity extends MLVBBaseActivity implements Vi
         mButtonLink.setOnClickListener(this);
         findViewById(R.id.iv_back).setOnClickListener(this);
 
-        if(!TextUtils.isEmpty(mStreamId)){
+        if (!TextUtils.isEmpty(mStreamId)) {
             mTextTitle.setText(mStreamId);
         }
     }
@@ -105,16 +102,16 @@ public class RTCPushAndPlayAnchorActivity extends MLVBBaseActivity implements Vi
     }
 
     private void link() {
-        if(mLivePlayer != null && mLivePlayer.isPlaying() == 1){
+        if (mLivePlayer != null && mLivePlayer.isPlaying() == 1) {
             stopLink();
-        }else{
+        } else {
             startLink();
         }
     }
 
-    public void startLink(){
+    public void startLink() {
         String linkStreamId = mEditStreamId.getText().toString();
-        if(TextUtils.isEmpty(linkStreamId)){
+        if (TextUtils.isEmpty(linkStreamId)) {
             Toast.makeText(RTCPushAndPlayAnchorActivity.this, "请输入streamId", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -123,7 +120,7 @@ public class RTCPushAndPlayAnchorActivity extends MLVBBaseActivity implements Vi
     }
 
     private void stopLink() {
-        if(mLivePlayer != null && mLivePlayer.isPlaying() == 1){
+        if (mLivePlayer != null && mLivePlayer.isPlaying() == 1) {
             mLivePlayer.stopPlay();
         }
         mButtonLink.setText(R.string.rtcpushandplay_start_link);
@@ -132,14 +129,15 @@ public class RTCPushAndPlayAnchorActivity extends MLVBBaseActivity implements Vi
     private void startPlay(String linkStreamId) {
         String userId = String.valueOf(new Random().nextInt(10000));
         String playURL = URLUtils.generatePlayUrl(linkStreamId, userId, 0);
-        if(mLivePlayer == null){
+        if (mLivePlayer == null) {
             mLivePlayer = new V2TXLivePlayerImpl(RTCPushAndPlayAnchorActivity.this);
             mLivePlayer.setRenderView(mPlayRenderView);
             mLivePlayer.setObserver(new V2TXLivePlayerObserver() {
 
                 @Override
                 public void onError(V2TXLivePlayer player, int code, String msg, Bundle extraInfo) {
-                    Log.e(TAG, "[Player] onError: player-" + player + " code-" + code + " msg-" + msg + " info-" + extraInfo);
+                    Log.e(TAG, "[Player] onError: player-" + player + " code-" + code + " msg-" + msg + " info-"
+                            + extraInfo);
                 }
 
                 @Override
@@ -167,17 +165,17 @@ public class RTCPushAndPlayAnchorActivity extends MLVBBaseActivity implements Vi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mLivePusher != null){
+        if (mLivePusher != null) {
             mLivePusher.stopCamera();
             mLivePusher.stopMicrophone();
-            if(mLivePusher.isPushing() == 1){
+            if (mLivePusher.isPushing() == 1) {
                 mLivePusher.stopPush();
             }
             mLivePusher = null;
         }
 
-        if(mLivePlayer != null){
-            if(mLivePlayer.isPlaying() == 1){
+        if (mLivePlayer != null) {
+            if (mLivePlayer.isPlaying() == 1) {
                 mLivePlayer.stopPlay();
             }
             mLivePlayer = null;
@@ -192,9 +190,9 @@ public class RTCPushAndPlayAnchorActivity extends MLVBBaseActivity implements Vi
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        if(id == R.id.iv_back){
+        if (id == R.id.iv_back) {
             finish();
-        }else if(id == R.id.btn_link){
+        } else if (id == R.id.btn_link) {
             link();
         }
     }
