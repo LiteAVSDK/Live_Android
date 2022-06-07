@@ -8,17 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
-import com.tencent.live2.V2TXLiveDef;
 import com.tencent.live2.V2TXLivePlayer;
 import com.tencent.live2.V2TXLivePlayerObserver;
 import com.tencent.live2.impl.V2TXLivePlayerImpl;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 import com.tencent.mlvb.common.URLUtils;
 import com.tencent.rtmp.ui.TXCloudVideoView;
-
 import java.util.Random;
 
 /**
@@ -73,16 +69,16 @@ public class RTCPushAndPlayAudienceActivity extends MLVBBaseActivity implements 
     }
 
     private void initView() {
-        mPlayRenderView = findViewById(R.id.tx_cloud_view_push);
+        mPlayRenderView     = findViewById(R.id.tx_cloud_view_push);
         mLinkPlayRenderView = findViewById(R.id.tx_cloud_view_play);
-        mEditStreamId   = findViewById(R.id.et_stream_id);
-        mButtonLink     = findViewById(R.id.btn_link);
-        mTextTitle      = findViewById(R.id.tv_title);
+        mEditStreamId       = findViewById(R.id.et_stream_id);
+        mButtonLink         = findViewById(R.id.btn_link);
+        mTextTitle          = findViewById(R.id.tv_title);
 
         findViewById(R.id.iv_back).setOnClickListener(this);
         mButtonLink.setOnClickListener(this);
 
-        if(!TextUtils.isEmpty(mStreamId)){
+        if (!TextUtils.isEmpty(mStreamId)) {
             mTextTitle.setText(mStreamId);
         }
     }
@@ -90,14 +86,15 @@ public class RTCPushAndPlayAudienceActivity extends MLVBBaseActivity implements 
     private void startPlay() {
         String userId = String.valueOf(new Random().nextInt(10000));
         String playURL = URLUtils.generatePlayUrl(mStreamId, userId, 0);
-        if(mLivePlayer == null){
+        if (mLivePlayer == null) {
             mLivePlayer = new V2TXLivePlayerImpl(RTCPushAndPlayAudienceActivity.this);
             mLivePlayer.setRenderView(mPlayRenderView);
             mLivePlayer.setObserver(new V2TXLivePlayerObserver() {
 
                 @Override
                 public void onError(V2TXLivePlayer player, int code, String msg, Bundle extraInfo) {
-                    Log.e(TAG, "[Player] onError: player-" + player + " code-" + code + " msg-" + msg + " info-" + extraInfo);
+                    Log.e(TAG, "[Player] onError: player-" + player + " code-" + code + " msg-" + msg + " info-"
+                            + extraInfo);
                 }
 
                 @Override
@@ -124,29 +121,30 @@ public class RTCPushAndPlayAudienceActivity extends MLVBBaseActivity implements 
     }
 
     private void link() {
-        if(mLinkPlayer != null && mLinkPlayer.isPlaying() == 1){
+        if (mLinkPlayer != null && mLinkPlayer.isPlaying() == 1) {
             stopLink();
-        }else{
+        } else {
             startLink();
         }
     }
 
-    public void startLink(){
+    private void startLink() {
         String linkStreamId = mEditStreamId.getText().toString();
-        if(TextUtils.isEmpty(linkStreamId)){
+        if (TextUtils.isEmpty(linkStreamId)) {
             Toast.makeText(RTCPushAndPlayAudienceActivity.this, "请输入streamId", Toast.LENGTH_SHORT).show();
             return;
         }
         String userId = String.valueOf(new Random().nextInt(10000));
         String playURL = URLUtils.generatePlayUrl(linkStreamId, userId, 0);
-        if(mLinkPlayer == null){
+        if (mLinkPlayer == null) {
             mLinkPlayer = new V2TXLivePlayerImpl(RTCPushAndPlayAudienceActivity.this);
             mLinkPlayer.setRenderView(mLinkPlayRenderView);
             mLinkPlayer.setObserver(new V2TXLivePlayerObserver() {
 
                 @Override
                 public void onError(V2TXLivePlayer player, int code, String msg, Bundle extraInfo) {
-                    Log.e(TAG, "[Player] onError: player-" + player + " code-" + code + " msg-" + msg + " info-" + extraInfo);
+                    Log.e(TAG, "[Player] onError: player-" + player + " code-" + code + " msg-" + msg + " info-"
+                            + extraInfo);
                 }
 
                 @Override
@@ -173,8 +171,8 @@ public class RTCPushAndPlayAudienceActivity extends MLVBBaseActivity implements 
         mButtonLink.setText(R.string.rtcpushandplay_stop_play);
     }
 
-    public void stopLink(){
-        if(mLinkPlayer != null && mLinkPlayer.isPlaying() == 1){
+    private void stopLink() {
+        if (mLinkPlayer != null && mLinkPlayer.isPlaying() == 1) {
             mLinkPlayer.stopPlay();
         }
         mButtonLink.setText(R.string.rtcpushandplay_rtc_play);
@@ -184,15 +182,15 @@ public class RTCPushAndPlayAudienceActivity extends MLVBBaseActivity implements 
     protected void onDestroy() {
         super.onDestroy();
 
-        if(mLivePlayer != null){
-            if(mLivePlayer.isPlaying() == 1){
+        if (mLivePlayer != null) {
+            if (mLivePlayer.isPlaying() == 1) {
                 mLivePlayer.stopPlay();
             }
             mLivePlayer = null;
         }
 
-        if(mLinkPlayer != null){
-            if(mLinkPlayer.isPlaying() == 1){
+        if (mLinkPlayer != null) {
+            if (mLinkPlayer.isPlaying() == 1) {
                 mLinkPlayer.stopPlay();
             }
             mLinkPlayer = null;
@@ -207,9 +205,9 @@ public class RTCPushAndPlayAudienceActivity extends MLVBBaseActivity implements 
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        if(id == R.id.iv_back){
+        if (id == R.id.iv_back) {
             finish();
-        }else if(id == R.id.btn_link){
+        } else if (id == R.id.btn_link) {
             link();
         }
     }
