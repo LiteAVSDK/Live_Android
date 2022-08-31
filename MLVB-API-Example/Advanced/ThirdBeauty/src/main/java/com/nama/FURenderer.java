@@ -100,6 +100,7 @@ public class FURenderer implements IFURenderer, IModuleManager {
             return;
         }
         long startTime = System.currentTimeMillis();
+        LogUtils.debug(TAG, "startTime : " + startTime);
         // fuSetup 需要 eglContext
         faceunity.fuCreateEGLContext();
         faceunity.fuSetLogLevel(FuLogLevel.FU_LOG_LEVEL_WARN);
@@ -113,7 +114,8 @@ public class FURenderer implements IFURenderer, IModuleManager {
         boolean isInited = isInit();
         sIsInited = isInited;
         LogUtils.info(TAG, "setup. isLibInit: %s", isInited);
-        boolean isLoaded = BundleUtils.loadAiModel(context, "model/ai_face_processor.bundle", faceunity.FUAITYPE_FACEPROCESSOR);
+        boolean isLoaded =
+                BundleUtils.loadAiModel(context, "model/ai_face_processor.bundle", faceunity.FUAITYPE_FACEPROCESSOR);
         LogUtils.info(TAG, "load aiFaceProcessor. isLoaded: %s", isLoaded);
         // 释放创建的 eglContext
         faceunity.fuReleaseEGLContext();
@@ -273,7 +275,8 @@ public class FURenderer implements IFURenderer, IModuleManager {
 
 
     @Override
-    public int onDrawFrameSingleInput(byte[] img, int w, int h, int format, byte[] readBackImg, int readBackW, int readBackH) {
+    public int onDrawFrameSingleInput(byte[] img, int w, int h, int format, byte[] readBackImg, int readBackW,
+                                      int readBackH) {
         if (img == null || w <= 0 || h <= 0 || readBackImg == null || readBackW <= 0 || readBackH <= 0) {
             LogUtils.error(TAG, "onDrawFrame data is invalid");
             return 0;
@@ -329,7 +332,8 @@ public class FURenderer implements IFURenderer, IModuleManager {
     }
 
     @Override
-    public int onDrawFrameDualInput(byte[] img, int tex, int w, int h, byte[] readBackImg, int readBackW, int readBackH) {
+    public int onDrawFrameDualInput(byte[] img, int tex, int w, int h, byte[] readBackImg, int readBackW,
+                                    int readBackH) {
         if (img == null || tex <= 0 || w <= 0 || h <= 0 || readBackImg == null || readBackW <= 0 || readBackH <= 0) {
             LogUtils.error(TAG, "onDrawFrame data is invalid");
             return 0;
@@ -380,7 +384,8 @@ public class FURenderer implements IFURenderer, IModuleManager {
         if (mCameraFacing == cameraFacing && mInputImageOrientation == cameraOrientation) {
             return;
         }
-        LogUtils.debug(TAG, "onCameraChanged() cameraFacing: %d, cameraOrientation: %d", cameraFacing, cameraOrientation);
+        LogUtils.debug(TAG, "onCameraChanged() cameraFacing: %d, cameraOrientation: %d", cameraFacing,
+                cameraOrientation);
         mCameraFacing = cameraFacing;
         mInputImageOrientation = cameraOrientation;
         callWhenDeviceChanged();
@@ -943,6 +948,11 @@ public class FURenderer implements IFURenderer, IModuleManager {
             return this;
         }
 
+        /**
+         * 初始化 FURenderer。
+         *
+         * @return FURenderer
+         */
         public FURenderer build() {
             FURenderer fuRenderer = new FURenderer(context);
             fuRenderer.mIsCreateEglContext = isCreateEglContext;

@@ -41,7 +41,8 @@ public class BodySlimModule extends AbstractEffectModule implements IBodySlimMod
                     LogUtils.warn(TAG, "create body slim item failed: %d", itemBodySlim);
                     return;
                 }
-                boolean isLoaded = BundleUtils.loadAiModel(context, "model/ai_human_processor.bundle", faceunity.FUAITYPE_HUMAN_PROCESSOR);
+                boolean isLoaded = BundleUtils
+                        .loadAiModel(context, "model/ai_human_processor.bundle", faceunity.FUAITYPE_HUMAN_PROCESSOR);
                 if (!isLoaded) {
                     LogUtils.warn(TAG, "load human processor failed");
                     return;

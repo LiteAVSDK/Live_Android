@@ -28,7 +28,6 @@ import java.util.Random;
 
 /**
  * TRTC 第三方美颜页面
- * <p>
  * 首先需要调用 {@link V2TXLivePusher#enableCustomVideoProcess(boolean,
  * V2TXLiveDef.V2TXLivePixelFormat, V2TXLiveDef.V2TXLiveBufferType)}
  * 开启自定义视频处理，才会收到这个回调通知。
@@ -37,14 +36,10 @@ import java.util.Random;
  * - 然后掉用{@link V2TXLivePusher#setObserver(V2TXLivePusherObserver)} 监听SDK的视频数据
  * - 当收到数据时，在{@link V2TXLivePusherObserver#onProcessVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame,
  * V2TXLiveDef.V2TXLiveVideoFrame)}中适应第三方的美颜组件去处理。
- * <p>
  * 本DemO集成的是相芯的第三方美颜功能
  * 如需调通此功能，需要参考相芯SDK集成文档：{https://www.faceunity.com/developer-center.html} 本Demo已经集成了相芯SDK,
  * 但需注意相芯科技 为Android端 发放的证书为authpack.java 文件， 你需要获取该证书， 使用您的证书替换我们demo中的 {@link com.nama.authpack} 文件即可
- * <p>
- * <p>
  * TRTC Third-Party Beauty Filter View
- * <p>
  * You must call {@link V2TXLivePusher#enableCustomVideoProcess(boolean,
  * V2TXLiveDef.V2TXLivePixelFormat, V2TXLiveDef.V2TXLiveBufferType)}
  * to enable custom video processing before you can receive this callback.
@@ -54,8 +49,6 @@ import java.util.Random;
  * - After data is received, use third-party beauty filters to process the data
  * in {@link V2TXLivePusherObserver#onProcessVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame,
  * V2TXLiveDef.V2TXLiveVideoFrame)}.
- * <p>
- * <p>
  * This demo integrates the third-party beauty function of faceunity
  * To enable this function, you need to refer to the faceunity SDK integration document:{ https://www.faceunity.com/developer-center.html }This demo has integrated the faceunity SDK,
  * However, it should be noted that the certificate issued by faceunity

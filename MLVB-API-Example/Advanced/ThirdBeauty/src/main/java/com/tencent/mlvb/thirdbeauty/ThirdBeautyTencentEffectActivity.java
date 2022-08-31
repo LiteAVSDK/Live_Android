@@ -32,7 +32,6 @@ import java.util.Random;
 
 /**
  * MLVB 第三方美颜页面
- * <p>
  * 接入步骤：
  * 第一步：集成腾讯特效SDK并拷贝资源（可参考腾讯特效提供的接入文档：https://cloud.tencent.com/document/product/616/65888）
  * 第二步：腾讯特效SDK的鉴权与初始化,详见{@link ThirdBeautyTencentEffectActivity#authXmagic()},License获取请参考 {https://cloud.tencent.com/document/product/616/65878}
@@ -42,13 +41,9 @@ import java.util.Random;
  * - 然后掉用{@link V2TXLivePusher#setObserver(V2TXLivePusherObserver)} 监听SDK的视频数据
  * - 当收到数据时，在{@link V2TXLivePusherObserver#onProcessVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame,
  * V2TXLiveDef.V2TXLiveVideoFrame)}中适应第三方的美颜组件去处理。
- * <p>
  * 注意：腾讯特效提供的 License 与 applicationId 一一对应的，测试过程中需要修改 applicationId 为 License对应的applicationId
  *
- * <p>
  * MLVB Third-Party Beauty Filter View
- * <p>
- * <p>
  * Access steps：
  * First step：
  * Integrate Tencent Effect SDK and copy resources（You can refer to the access document provided by Tencent Effects：https://cloud.tencent.com/document/product/616/65888）
@@ -64,7 +59,6 @@ import java.util.Random;
  * - After data is received, use third-party beauty filters to process the data
  * in {@link V2TXLivePusherObserver#onProcessVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame,
  * V2TXLiveDef.V2TXLiveVideoFrame)}.
- * <p>
  * Note：The applicationId and License provided by Tencent Effects are in one-to-one correspondence.
  * During the test process, the applicationId needs to be modified to the applicationId corresponding to the License.
  **/

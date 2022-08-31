@@ -74,7 +74,7 @@ public abstract class MLVBBaseActivity extends AppCompatActivity {
         }
     }
 
-    public String generateStreamId(){
+    public String generateStreamId() {
         int flag = new Random().nextInt(999999);
         if (flag < 100000) {
             flag += 100000;

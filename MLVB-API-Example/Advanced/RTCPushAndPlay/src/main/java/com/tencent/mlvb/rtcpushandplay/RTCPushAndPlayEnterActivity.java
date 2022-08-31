@@ -36,7 +36,7 @@ public class RTCPushAndPlayEnterActivity extends MLVBBaseActivity {
         initView();
     }
 
-    private void initView(){
+    private void initView() {
         mEditStreamId = findViewById(R.id.et_stream_id);
         mRadioRole    = findViewById(R.id.rg_role);
         mButtonCommit = findViewById(R.id.btn_commit);

@@ -20,9 +20,7 @@ public class FlowRadioGroup extends RadioGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+
         measureChildren(widthMeasureSpec, heightMeasureSpec);
 
         int maxWidth = 0;
@@ -58,6 +56,9 @@ public class FlowRadioGroup extends RadioGroup {
         }
         maxWidth += getPaddingLeft() + getPaddingRight();
         totalHeight += getPaddingTop() + getPaddingBottom();
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         setMeasuredDimension(widthMode == MeasureSpec.EXACTLY ? widthSize : maxWidth,
                 heightMode == MeasureSpec.EXACTLY ? heightSize : totalHeight);
     }
@@ -71,7 +72,8 @@ public class FlowRadioGroup extends RadioGroup {
         for (int i = 0; i < count; i++) {
             View child = getChildAt(i);
             MarginLayoutParams params = (MarginLayoutParams) child.getLayoutParams();
-            if (preLeft + params.leftMargin + child.getMeasuredWidth() + params.rightMargin + getPaddingRight() > (r - l)) {
+            if (preLeft + params.leftMargin + child.getMeasuredWidth() + params.rightMargin + getPaddingRight() > (r
+                    - l)) {
                 preLeft = getPaddingLeft();
                 preTop = preTop + maxHeight;
                 maxHeight = getChildAt(i).getMeasuredHeight() + params.topMargin + params.bottomMargin;

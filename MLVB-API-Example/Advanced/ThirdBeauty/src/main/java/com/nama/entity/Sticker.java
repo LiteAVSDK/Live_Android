@@ -63,10 +63,7 @@ public class Sticker {
 
     @Override
     public String toString() {
-        return "Sticker{" +
-                "filePath='" + filePath + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return "Sticker{" + "filePath='" + filePath + '\'' + ", description='" + description + '\'' + '}';
     }
 
 }

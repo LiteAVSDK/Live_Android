@@ -8,17 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
+
 import com.tencent.mlvb.common.MLVBBaseActivity;
 
 /**
  * MLVB 连麦互动的入口页面
- *
  * - 以主播角色进入连麦互动{@link LiveLinkAnchorActivity}
  * - 以观众角色进入连麦互动{@link LiveLinkAudienceActivity}
- *
  * Co-anchoring Entrance View
- *
  * - Enter as an anchor {@link LiveLinkAnchorActivity}
  * - Enter as audience {@link LiveLinkAudienceActivity}
  */
@@ -28,9 +27,9 @@ public class LiveLinkEnterActivity extends MLVBBaseActivity {
     private static final int STEP_INPUT_ROLE   = 1;
     private static final int STEP_INPUT_STREAM = 2;
 
-    private static final int ROLE_UNKNOWN      = -1;
-    private static final int ROLE_ANCHOR       = 0;
-    private static final int ROLE_AUDIENCE     = 1;
+    private static final int ROLE_UNKNOWN  = -1;
+    private static final int ROLE_ANCHOR   = 0;
+    private static final int ROLE_AUDIENCE = 1;
 
     private LinearLayout mLayoutStreamId;
     private EditText     mEditStreamId;
@@ -41,10 +40,10 @@ public class LiveLinkEnterActivity extends MLVBBaseActivity {
     private Button       mButtonRoleAudience;
     private Button       mButtonNext;
 
-    private String       mUserId;
-    private String       mStreamId;
-    private int          mStateInput   = STEP_INPUT_USERID;
-    private int          mRoleSelected = ROLE_UNKNOWN;
+    private String mUserId;
+    private String mStreamId;
+    private int    mStateInput   = STEP_INPUT_USERID;
+    private int    mRoleSelected = ROLE_UNKNOWN;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -120,8 +119,8 @@ public class LiveLinkEnterActivity extends MLVBBaseActivity {
                 } else if (mStateInput == STEP_INPUT_STREAM) {
                     mStreamId = mEditStreamId.getText().toString();
                     if (TextUtils.isEmpty(mStreamId)) {
-                        Toast.makeText(LiveLinkEnterActivity.this, getString(R.string.livelink_please_input_streamid)
-                                , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LiveLinkEnterActivity.this, getString(R.string.livelink_please_input_streamid),
+                                Toast.LENGTH_SHORT).show();
                         return;
                     }
                     Class<?> cls = mRoleSelected == ROLE_ANCHOR ? LiveLinkAnchorActivity.class :

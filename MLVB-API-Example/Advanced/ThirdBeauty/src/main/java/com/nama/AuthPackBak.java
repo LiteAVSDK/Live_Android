@@ -1,14 +1,14 @@
 package com.nama;
 
-public class authpack {
+public class AuthPackBak {
     public static void main(String[] args) {
-        byte[] a = A();
+        byte[] a = aa();
         for (byte b : a) {
             System.out.print(b + ", ");
         }
     }
 
-    public static byte[] A(){
+    public static byte[] aa() {
         return null;
     }
 }

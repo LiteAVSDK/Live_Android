@@ -71,7 +71,8 @@ public class FaceBeautyModule extends AbstractEffectModule implements IFaceBeaut
                 setEyeBright(mEyeBright);
                 setToothWhiten(mToothWhiten);
                 mRenderEventQueue.addItemSetParamEvent(mItemHandle, BeautificationParam.FACE_SHAPE, 4.0); // 精细变形
-                mRenderEventQueue.addItemSetParamEvent(mItemHandle, BeautificationParam.FACE_SHAPE_LEVEL, 1.0); // 精细变形程度
+                mRenderEventQueue
+                        .addItemSetParamEvent(mItemHandle, BeautificationParam.FACE_SHAPE_LEVEL, 1.0); // 精细变形程度
                 setEyeEnlarging(mEyeEnlarging);
                 setCheekThinning(mCheekThinning);
                 setCheekNarrow(mCheekNarrow);
@@ -90,17 +91,17 @@ public class FaceBeautyModule extends AbstractEffectModule implements IFaceBeaut
                 setIntensityEyeSpace(mIntensityEyeSpace);
                 setIntensityEyeRotate(mIntensityEyeRotate);
 
-                LogUtils.debug(TAG, "face beauty param: isBeautyOn:" + mIsBeautyOn + ", filterName:"
-                        + mFilterName + ", filterLevel:" + mFilterLevel + ", blurLevel:" + mBlurLevel + ", colorLevel:"
-                        + mColorLevel + ", redLevel:" + mRedLevel + ", eyeBright:" + mEyeBright + ", toothWhiten:"
-                        + mToothWhiten + ", eyeEnlarging:" + mEyeEnlarging + ", cheekThinning:" + mCheekThinning + ", cheekNarrow:"
+                LogUtils.debug(TAG, "face beauty param: isBeautyOn:" + mIsBeautyOn + ", filterName:" + mFilterName
+                        + ", filterLevel:" + mFilterLevel + ", blurLevel:" + mBlurLevel + ", colorLevel:" + mColorLevel
+                        + ", redLevel:" + mRedLevel + ", eyeBright:" + mEyeBright + ", toothWhiten:" + mToothWhiten
+                        + ", eyeEnlarging:" + mEyeEnlarging + ", cheekThinning:" + mCheekThinning + ", cheekNarrow:"
                         + mCheekNarrow + ", cheekSmall:" + mCheekSmall + ", cheekV:" + mCheekV + ", intensityNose:"
                         + mIntensityNose + ", intensityChin:" + mIntensityChin + ", intensityForehead:"
                         + mIntensityForehead + ", intensityMouth:" + mIntensityMouth + ", removePouchStrength:"
-                        + mRemovePouchStrength + ", removeNasolabialFoldsStrength:" + mRemoveNasolabialFoldsStrength + ", intensitySmile:"
-                        + mIntensitySmile + ", intensityCanthus:" + mIntensityCanthus + ", intensityPhiltrum:"
-                        + mIntensityPhiltrum + ", intensityLongNose:" + mIntensityLongNose + ", intensityEyeSpace:"
-                        + mIntensityEyeSpace + ", eyeRotate:" + mIntensityEyeRotate);
+                        + mRemovePouchStrength + ", removeNasolabialFoldsStrength:" + mRemoveNasolabialFoldsStrength
+                        + ", intensitySmile:" + mIntensitySmile + ", intensityCanthus:" + mIntensityCanthus
+                        + ", intensityPhiltrum:" + mIntensityPhiltrum + ", intensityLongNose:" + mIntensityLongNose
+                        + ", intensityEyeSpace:" + mIntensityEyeSpace + ", eyeRotate:" + mIntensityEyeRotate);
 
                 if (moduleCallback != null) {
                     moduleCallback.onBundleCreated(itemFaceBeauty);
@@ -274,7 +275,8 @@ public class FaceBeautyModule extends AbstractEffectModule implements IFaceBeaut
     public void setRemoveNasolabialFoldsStrength(float strength) {
         mRemoveNasolabialFoldsStrength = strength;
         if (mRenderEventQueue != null) {
-            mRenderEventQueue.addItemSetParamEvent(mItemHandle, BeautificationParam.REMOVE_NASOLABIAL_FOLDS_STRENGTH, strength);
+            mRenderEventQueue
+                    .addItemSetParamEvent(mItemHandle, BeautificationParam.REMOVE_NASOLABIAL_FOLDS_STRENGTH, strength);
         }
     }
 
