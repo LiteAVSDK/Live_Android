@@ -15,7 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
+
 import com.tencent.live2.V2TXLiveDef;
 import com.tencent.live2.V2TXLivePlayer;
 import com.tencent.live2.V2TXLivePlayerObserver;
@@ -25,45 +27,41 @@ import com.tencent.live2.impl.V2TXLivePusherImpl;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 import com.tencent.mlvb.common.URLUtils;
 import com.tencent.rtmp.ui.TXCloudVideoView;
+
 import java.util.ArrayList;
 
 /**
  * MLVB 连麦互动的主播视角
- *
  * 包含如下简单功能：
  * - 开始推流{@link LiveLinkAnchorActivity#startPush()}
  * - 接受连麦{@link LiveLinkAnchorActivity#startLink(String)}
  * - 断开连麦{@link LiveLinkAnchorActivity#stopLink()} ()}
  * - 拉去连麦观众的流{@link LiveLinkAnchorActivity#startPlay(String)}
- *
  * 详见接入文档{https://cloud.tencent.com/document/product/454/52751}
- *
- *
  * Co-anchoring View for Anchors
- *
  * Features:
  * - Start publishing {@link LiveLinkAnchorActivity#startPush()}
  * - Start co-anchoring {@link LiveLinkAnchorActivity#startLink(String)}
  * - Stop co-anchoring {@link LiveLinkAnchorActivity#stopLink()}
  * - Play the co-anchoring user’s streams {@link LiveLinkAnchorActivity#startPlay(String)}
- *
- * For more information, please see the integration document {https://intl.cloud.tencent.com/document/product/1071/39888}.
+ * For more information, please see the integration document {https://intl.cloud.tencent
+ * .com/document/product/1071/39888}.
  */
 public class LiveLinkAnchorActivity extends MLVBBaseActivity {
     private static final String TAG = "LiveLinkAnchorActivity";
 
-    private TextView            mTextTitle;
-    private ImageView           mButtonBack;
-    private TXCloudVideoView    mVideoViewAnchor;
-    private TXCloudVideoView    mVideoViewAudience;
-    private Button              mButtonAcceptLink;
-    private Button              mButtonStopLink;
+    private TextView         mTextTitle;
+    private ImageView        mButtonBack;
+    private TXCloudVideoView mVideoViewAnchor;
+    private TXCloudVideoView mVideoViewAudience;
+    private Button           mButtonAcceptLink;
+    private Button           mButtonStopLink;
 
-    private V2TXLivePlayer      mLivePlayer;
-    private V2TXLivePusher      mLivePusher;
+    private V2TXLivePlayer mLivePlayer;
+    private V2TXLivePusher mLivePusher;
 
-    private String              mStreamId;
-    private String              mUserId;
+    private String mStreamId;
+    private String mUserId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,8 +82,8 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
     }
 
     private void initData() {
-        mStreamId   = getIntent().getStringExtra("STREAM_ID");
-        mUserId     = getIntent().getStringExtra("USER_ID");
+        mStreamId = getIntent().getStringExtra("STREAM_ID");
+        mUserId = getIntent().getStringExtra("USER_ID");
     }
 
     private void initView() {
@@ -121,17 +119,21 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
     }
 
     private void startPush() {
-        String pushUrl = URLUtils.generatePushUrl(mStreamId, mUserId, 0);
         mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTC);
-
         mLivePusher.setRenderView(mVideoViewAudience);
         mLivePusher.startCamera(true);
+        String pushUrl = URLUtils.generatePushUrl(mStreamId, mUserId, 0);
         int ret = mLivePusher.startPush(pushUrl);
         Log.i(TAG, "startPush return: " + ret);
         mLivePusher.startMicrophone();
     }
 
-    public void startLink(String linkUserId){
+    /**
+     * 开始和指定的用户连麦。
+     *
+     * @param linkUserId 需要连麦的用户 id。
+     */
+    public void startLink(String linkUserId) {
         if (TextUtils.isEmpty(linkUserId)) {
             Toast.makeText(LiveLinkAnchorActivity.this, getString(R.string.livelink_please_input_userid),
                     Toast.LENGTH_SHORT).show();
@@ -182,14 +184,14 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
 
                 @Override
                 public void onVideoPlaying(V2TXLivePlayer player, boolean firstPlay, Bundle extraInfo) {
-                    Log.i(TAG, "[Player] onVideoPlaying: player-"
-                            + player + " firstPlay-" + firstPlay + " info-" + extraInfo);
+                    Log.i(TAG, "[Player] onVideoPlaying: player-" + player + " firstPlay-" + firstPlay + " info-"
+                            + extraInfo);
                 }
 
                 @Override
                 public void onVideoResolutionChanged(V2TXLivePlayer player, int width, int height) {
-                    Log.i(TAG, "[Player] onVideoResolutionChanged: player-"
-                            + player + " width-" + width + " height-" + height);
+                    Log.i(TAG, "[Player] onVideoResolutionChanged: player-" + player + " width-" + width + " height-"
+                            + height);
                 }
             });
         }
@@ -243,17 +245,17 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
 
     private V2TXLiveDef.V2TXLiveTranscodingConfig createConfig(String linkStreamId, String linkUserId) {
         V2TXLiveDef.V2TXLiveTranscodingConfig config = new V2TXLiveDef.V2TXLiveTranscodingConfig();
-        config.videoWidth      = 360;
-        config.videoHeight     = 640;
-        config.videoBitrate    = 900;
-        config.videoFramerate  = 15;
-        config.videoGOP        = 2;
+        config.videoWidth = 360;
+        config.videoHeight = 640;
+        config.videoBitrate = 900;
+        config.videoFramerate = 15;
+        config.videoGOP = 2;
         config.backgroundColor = 0x000000;
         config.backgroundImage = null;
         config.audioSampleRate = 48000;
-        config.audioBitrate    = 64;
-        config.audioChannels   = 1;
-        config.outputStreamId  = null;
+        config.audioBitrate = 64;
+        config.audioChannels = 1;
+        config.outputStreamId = null;
         config.mixStreams = new ArrayList<>();
 
         V2TXLiveDef.V2TXLiveMixStream mixStream = new V2TXLiveDef.V2TXLiveMixStream();
@@ -270,9 +272,9 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
         V2TXLiveDef.V2TXLiveMixStream remote = new V2TXLiveDef.V2TXLiveMixStream();
         remote.userId = linkUserId;
         remote.streamId = linkStreamId;
-        remote.x      = 150;
-        remote.y      = 300;
-        remote.width  = 135;
+        remote.x = 150;
+        remote.y = 300;
+        remote.width = 135;
         remote.height = 240;
         remote.zOrder = 1;
         mixStream.inputType = V2TXLiveMixInputTypePureVideo;

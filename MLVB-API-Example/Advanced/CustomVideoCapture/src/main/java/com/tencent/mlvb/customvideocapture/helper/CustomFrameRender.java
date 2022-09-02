@@ -98,6 +98,11 @@ public class CustomFrameRender extends V2TXLivePusherObserver implements Handler
         Log.i(TAG, "TestRenderVideoFrame");
     }
 
+    /**
+     * 开始视频自定义渲染。
+     *
+     * @param videoView 用于显示画面的 view。
+     */
     public void start(TextureView videoView) {
         if (videoView == null) {
             Log.w(TAG, "start error when render view is null");
@@ -164,7 +169,8 @@ public class CustomFrameRender extends V2TXLivePusherObserver implements Handler
 
         try {
             if (eglContext instanceof javax.microedition.khronos.egl.EGLContext) {
-                mEglCore = new EglCore((javax.microedition.khronos.egl.EGLContext) eglContext, new Surface(mSurfaceTexture));
+                mEglCore = new EglCore((javax.microedition.khronos.egl.EGLContext) eglContext,
+                        new Surface(mSurfaceTexture));
             } else {
                 mEglCore = new EglCore((android.opengl.EGLContext) eglContext, new Surface(mSurfaceTexture));
             }
@@ -198,7 +204,8 @@ public class CustomFrameRender extends V2TXLivePusherObserver implements Handler
         if (mEglCore == null && mSurfaceTexture != null) {
             Object eglContext = null;
             if (frame.texture != null) {
-                eglContext = frame.texture.eglContext10 != null ? frame.texture.eglContext10 : frame.texture.eglContext14;
+                eglContext =
+                        frame.texture.eglContext10 != null ? frame.texture.eglContext10 : frame.texture.eglContext14;
             }
             initGlComponent(eglContext);
         }
@@ -269,6 +276,9 @@ public class CustomFrameRender extends V2TXLivePusherObserver implements Handler
                 break;
             case MSG_DESTROY:
                 destroyInternal();
+                break;
+            default:
+                Log.e(TAG, "handleMessage wrong what : " + msg.what);
                 break;
         }
         return false;

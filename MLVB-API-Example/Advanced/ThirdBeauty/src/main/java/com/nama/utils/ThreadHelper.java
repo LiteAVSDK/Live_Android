@@ -21,9 +21,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author Richie on 2020.07.07
  */
 public final class ThreadHelper {
-    private final Handler mMainHandler;
+    private final Handler            mMainHandler;
     private final ThreadPoolExecutor mExecutorService;
-    private Handler mWorkHandler;
+    private       Handler            mWorkHandler;
 
     private ThreadHelper() {
         mMainHandler = new Handler(Looper.getMainLooper());
@@ -40,7 +40,8 @@ public final class ThreadHelper {
         int corePoolSize = Math.max(2, Math.min(cpuCount - 1, 4));
         int maxPoolSize = cpuCount * 2 + 1;
         BlockingQueue<Runnable> blockingQueue = new LinkedBlockingQueue<>(128);
-        mExecutorService = new ThreadPoolExecutor(corePoolSize, maxPoolSize, 30, TimeUnit.SECONDS, blockingQueue, threadFactory);
+        mExecutorService =
+                new ThreadPoolExecutor(corePoolSize, maxPoolSize, 30, TimeUnit.SECONDS, blockingQueue, threadFactory);
         mExecutorService.allowCoreThreadTimeOut(true);
     }
 
@@ -287,7 +288,7 @@ public final class ThreadHelper {
      * onStart-->onSuccess-->onFinish
      * onStart-->onFailure-->onFinish
      */
-    public static abstract class Callback<T> {
+    public abstract static class Callback<T> {
         protected void onStart() {
         }
 

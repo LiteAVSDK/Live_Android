@@ -26,7 +26,8 @@ public class EGL14Helper implements EGLHelper<EGLContext> {
             EGL14.EGL_ALPHA_SIZE, 8,
             EGL14.EGL_DEPTH_SIZE, 0,
             EGL14.EGL_STENCIL_SIZE, 0,
-            EGL14.EGL_RENDERABLE_TYPE, GLES_VERSION == 2 ? EGL14.EGL_OPENGL_ES2_BIT : EGL14.EGL_OPENGL_ES2_BIT | EGLExt.EGL_OPENGL_ES3_BIT_KHR,
+            EGL14.EGL_RENDERABLE_TYPE,
+            GLES_VERSION == 2 ? EGL14.EGL_OPENGL_ES2_BIT : EGL14.EGL_OPENGL_ES2_BIT | EGLExt.EGL_OPENGL_ES3_BIT_KHR,
             EGL_RECORDABLE_ANDROID, 1,
             EGL14.EGL_NONE
     };
@@ -38,7 +39,8 @@ public class EGL14Helper implements EGLHelper<EGLContext> {
             EGL14.EGL_ALPHA_SIZE, 8,
             EGL14.EGL_DEPTH_SIZE, 0,
             EGL14.EGL_STENCIL_SIZE, 0,
-            EGL14.EGL_RENDERABLE_TYPE, GLES_VERSION == 2 ? EGL14.EGL_OPENGL_ES2_BIT : EGL14.EGL_OPENGL_ES2_BIT | EGLExt.EGL_OPENGL_ES3_BIT_KHR,
+            EGL14.EGL_RENDERABLE_TYPE,
+            GLES_VERSION == 2 ? EGL14.EGL_OPENGL_ES2_BIT : EGL14.EGL_OPENGL_ES2_BIT | EGLExt.EGL_OPENGL_ES3_BIT_KHR,
             EGL_RECORDABLE_ANDROID, 1,
             EGL14.EGL_NONE
     };
@@ -54,7 +56,8 @@ public class EGL14Helper implements EGLHelper<EGLContext> {
         mHeight = height;
     }
 
-    public static EGL14Helper createEGLSurface(EGLConfig config, EGLContext context, Surface surface, int width, int height) {
+    public static EGL14Helper createEGLSurface(EGLConfig config, EGLContext context, Surface surface, int width,
+                                               int height) {
         EGL14Helper egl = new EGL14Helper(width, height);
         if (egl.initialize(config, context, surface)) {
             return egl;
@@ -114,9 +117,9 @@ public class EGL14Helper implements EGLHelper<EGLContext> {
         if (config != null) {
             mEGLConfig = config;
         } else {
-            EGLConfig[] configs    = new EGLConfig[1];
-            int[]       numConfigs = new int[1];
-            int[]       attribList = surface == null ? ATTRIBUTE_LIST_FOR_OFFSCREEN_SURFACE : ATTRIBUTE_LIST_FOR_SURFACE;
+            EGLConfig[] configs = new EGLConfig[1];
+            int[] numConfigs = new int[1];
+            int[] attribList = surface == null ? ATTRIBUTE_LIST_FOR_OFFSCREEN_SURFACE : ATTRIBUTE_LIST_FOR_SURFACE;
             if (!EGL14.eglChooseConfig(mEGLDisplay, attribList, 0, configs, 0, configs.length, numConfigs, 0)) {
                 return false;
             }
@@ -126,12 +129,12 @@ public class EGL14Helper implements EGLHelper<EGLContext> {
         if (context == null) {
             context = EGL14.EGL_NO_CONTEXT;
         }
-        int[] attrib_list = {
+        int[] attribList = {
                 EGL14.EGL_CONTEXT_CLIENT_VERSION, GLES_VERSION,
                 EGL14.EGL_NONE
         };
 
-        mEGLContext = EGL14.eglCreateContext(mEGLDisplay, mEGLConfig, context, attrib_list, 0);
+        mEGLContext = EGL14.eglCreateContext(mEGLDisplay, mEGLConfig, context, attribList, 0);
 
         if (mEGLContext == EGL14.EGL_NO_CONTEXT) {
             checkEGLError();
@@ -181,9 +184,6 @@ public class EGL14Helper implements EGLHelper<EGLContext> {
 
     private void checkEGLError() {
         int ec = EGL14.eglGetError();
-        if(ec == EGL14.EGL_BAD_CONTEXT){
-
-        }
         if (ec != EGL14.EGL_SUCCESS) {
             Log.e(TAG, "EGL error:" + ec);
             throw new RuntimeException(": EGL error: 0x" + Integer.toHexString(ec));

@@ -6,9 +6,9 @@ package com.nama.entity;
  * @author Richie on 2019.11.11
  */
 public class Makeup {
-    private int iconId;
-    private String name;
-    private String filePath;
+    private int     iconId;
+    private String  name;
+    private String  filePath;
     private boolean isNeedFlipPoints;
 
     public Makeup(Makeup makeup) {
@@ -73,11 +73,8 @@ public class Makeup {
 
     @Override
     public String toString() {
-        return "Makeup{" +
-                "name='" + name + '\'' +
-                ", filePath='" + filePath + '\'' +
-                ", isNeedFlipPoints=" + isNeedFlipPoints +
-                '}';
+        return "Makeup{" + "name='" + name + '\'' + ", filePath='" + filePath + '\'' + ", isNeedFlipPoints="
+                + isNeedFlipPoints + '}';
     }
 
 }

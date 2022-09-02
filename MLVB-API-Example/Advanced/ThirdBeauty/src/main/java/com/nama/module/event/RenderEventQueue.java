@@ -6,7 +6,7 @@ import com.nama.utils.LogUtils;
 import java.util.ArrayList;
 
 /**
- * @author Richie on 2020.07.07
+ * 渲染事件的队列。
  */
 public class RenderEventQueue {
     private static final String TAG = "RenderEventQueue";
@@ -18,6 +18,9 @@ public class RenderEventQueue {
         }
     }
 
+    /**
+     * 以任务队列的形式，将参数设置到 Faceunity。
+     */
     public void addItemSetParamEvent(final int itemHandle, final String key, final Object value) {
         if (itemHandle <= 0 || key == null || key.length() == 0 || value == null) {
             return;

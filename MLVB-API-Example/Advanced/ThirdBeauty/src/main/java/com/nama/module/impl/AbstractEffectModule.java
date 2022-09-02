@@ -24,7 +24,8 @@ public abstract class AbstractEffectModule implements IEffectModule {
                 @Override
                 public void run() {
                     faceunity.fuSetDefaultRotationMode(rotationMode);
-                    LogUtils.debug(TAG, "%s fuSetDefaultRotationMode : %d", AbstractEffectModule.this.getClass().getSimpleName(), rotationMode);
+                    LogUtils.debug(TAG, "%s fuSetDefaultRotationMode : %d",
+                            AbstractEffectModule.this.getClass().getSimpleName(), rotationMode);
                 }
             });
         }

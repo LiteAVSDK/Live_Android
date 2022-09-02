@@ -38,41 +38,45 @@ public class CustomCameraCapture implements SurfaceTexture.OnFrameAvailableListe
 
     private static final String TAG = "CameraVideoFrameReader";
 
-    private static final int        WIDTH       = 1280;
-    private static final int        HEIGHT      = 720;
-    private static final int        WHAT_START  = 0;
-    private static final int        WHAT_UPDATE = 1;
-    public static final int         VIDEO_FPS   = 15;
+    private static final int WIDTH       = 1280;
+    private static final int HEIGHT      = 720;
+    private static final int WHAT_START  = 0;
+    private static final int WHAT_UPDATE = 1;
+    public static final  int VIDEO_FPS   = 15;
 
-    private Camera                  mCamera;
-    private SurfaceTexture          mSurfaceTexture;
-    private EglCore                 mEglCore;
-    private FrameBuffer             mFrameBuffer;
-    private OesInputFilter          mOesInputFilter;
-    private GPUImageFilterGroup     mGpuImageFilterGroup;
+    private Camera              mCamera;
+    private SurfaceTexture      mSurfaceTexture;
+    private EglCore             mEglCore;
+    private FrameBuffer         mFrameBuffer;
+    private OesInputFilter      mOesInputFilter;
+    private GPUImageFilterGroup mGpuImageFilterGroup;
 
-    private final FloatBuffer       mGLCubeBuffer;
-    private final FloatBuffer       mGLTextureBuffer;
-    private final float[]           mTextureTransform = new float[16]; // OES纹理转换为2D纹理
-    private int                     mSurfaceTextureId = NO_TEXTURE;
-    private boolean                 mFrameUpdated;
-    private VideoFrameReadListener  mVideoFrameReadListener;
-    private HandlerThread           mRenderHandlerThread;
-    private volatile RenderHandler  mRenderHandler;
+    private final    FloatBuffer            mGLCubeBuffer;
+    private final    FloatBuffer            mGLTextureBuffer;
+    private final    float[]                mTextureTransform = new float[16]; // OES纹理转换为2D纹理
+    private          int                    mSurfaceTextureId = NO_TEXTURE;
+    private          boolean                mFrameUpdated;
+    private          VideoFrameReadListener mVideoFrameReadListener;
+    private          HandlerThread          mRenderHandlerThread;
+    private volatile RenderHandler          mRenderHandler;
 
 
-    public interface VideoFrameReadListener{
+    public interface VideoFrameReadListener {
         void onFrameAvailable(EGLContext eglContext, int textureId, int width, int height);
     }
 
     public CustomCameraCapture() {
         mFrameUpdated = false;
 
-        Pair<float[], float[]> cubeAndTextureBuffer = OpenGlUtils.calcCubeAndTextureBuffer(ImageView.ScaleType.CENTER, Rotation.NORMAL, false, WIDTH, HEIGHT, WIDTH, HEIGHT);
+        Pair<float[], float[]> cubeAndTextureBuffer = OpenGlUtils
+                .calcCubeAndTextureBuffer(ImageView.ScaleType.CENTER, Rotation.NORMAL, false, WIDTH, HEIGHT, WIDTH,
+                        HEIGHT);
 
-        mGLCubeBuffer = ByteBuffer.allocateDirect(OpenGlUtils.CUBE.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+        mGLCubeBuffer =
+                ByteBuffer.allocateDirect(OpenGlUtils.CUBE.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
         mGLCubeBuffer.put(cubeAndTextureBuffer.first);
-        mGLTextureBuffer = ByteBuffer.allocateDirect(OpenGlUtils.TEXTURE.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+        mGLTextureBuffer = ByteBuffer.allocateDirect(OpenGlUtils.TEXTURE.length * 4).order(ByteOrder.nativeOrder())
+                .asFloatBuffer();
         mGLTextureBuffer.put(cubeAndTextureBuffer.second);
     }
 
@@ -83,6 +87,11 @@ public class CustomCameraCapture implements SurfaceTexture.OnFrameAvailableListe
         mRenderHandler.sendEmptyMessage(WHAT_UPDATE);
     }
 
+    /**
+     * 开始视频自定义渲染。
+     *
+     * @param videoFrameReadListener 用于通知自定义渲染已经完成。
+     */
     public void start(final VideoFrameReadListener videoFrameReadListener) {
         mVideoFrameReadListener = videoFrameReadListener;
         mRenderHandlerThread = new HandlerThread("RenderHandlerThread");
@@ -91,6 +100,9 @@ public class CustomCameraCapture implements SurfaceTexture.OnFrameAvailableListe
         mRenderHandler.sendEmptyMessage(WHAT_START);
     }
 
+    /**
+     * 停止视频自定义渲染。
+     */
     public void stop() {
         if (mRenderHandlerThread != null) {
             mRenderHandlerThread.quit();
@@ -99,17 +111,17 @@ public class CustomCameraCapture implements SurfaceTexture.OnFrameAvailableListe
         if (mCamera != null) {
             mCamera.stopPreview();
         }
-        if(mGpuImageFilterGroup != null){
+        if (mGpuImageFilterGroup != null) {
             mGpuImageFilterGroup.destroy();
             mGpuImageFilterGroup = null;
         }
 
-        if(mFrameBuffer != null){
+        if (mFrameBuffer != null) {
             mFrameBuffer.uninitialize();
             mFrameBuffer = null;
         }
 
-        if(mSurfaceTextureId != NO_TEXTURE){
+        if (mSurfaceTextureId != NO_TEXTURE) {
             OpenGlUtils.deleteTexture(mSurfaceTextureId);
             mSurfaceTextureId = NO_TEXTURE;
         }
@@ -119,7 +131,7 @@ public class CustomCameraCapture implements SurfaceTexture.OnFrameAvailableListe
             mSurfaceTexture = null;
         }
 
-        if(mEglCore != null){
+        if (mEglCore != null) {
             mEglCore.unmakeCurrent();
             mEglCore.destroy();
             mEglCore = null;
@@ -177,7 +189,8 @@ public class CustomCameraCapture implements SurfaceTexture.OnFrameAvailableListe
                     mSurfaceTexture.updateTexImage();
                     mSurfaceTexture.getTransformMatrix(mTextureTransform);
                     mOesInputFilter.setTexutreTransform(mTextureTransform);
-                    mGpuImageFilterGroup.draw(mSurfaceTextureId, mFrameBuffer.getFrameBufferId(), mGLCubeBuffer, mGLTextureBuffer);
+                    mGpuImageFilterGroup
+                            .draw(mSurfaceTextureId, mFrameBuffer.getFrameBufferId(), mGLCubeBuffer, mGLTextureBuffer);
 
                     GLES20.glFinish();
 
@@ -187,7 +200,9 @@ public class CustomCameraCapture implements SurfaceTexture.OnFrameAvailableListe
                         textureFrame.textureId = mFrameBuffer.getTextureId();
                         textureFrame.width = HEIGHT;
                         textureFrame.height = WIDTH;
-                        mVideoFrameReadListener.onFrameAvailable(textureFrame.eglContext, textureFrame.textureId, textureFrame.width, textureFrame.height);
+                        mVideoFrameReadListener
+                                .onFrameAvailable(textureFrame.eglContext, textureFrame.textureId, textureFrame.width,
+                                        textureFrame.height);
                     }
                 }
             } catch (Exception e) {

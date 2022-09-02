@@ -59,9 +59,6 @@ public class Filter {
 
     @Override
     public String toString() {
-        return "Filter{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return "Filter{" + "name='" + name + '\'' + ", description='" + description + '\'' + '}';
     }
 }

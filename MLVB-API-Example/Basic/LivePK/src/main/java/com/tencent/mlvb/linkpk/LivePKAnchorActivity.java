@@ -34,25 +34,20 @@ import static com.tencent.live2.V2TXLiveDef.V2TXLiveMixInputType.V2TXLiveMixInpu
 
 /**
  * MLVB 连麦PK的主播视角
- * <p>
  * 包含如下简单功能：
  * - 开始推流{@link LivePKAnchorActivity#startPush()}
  * - 开始PK{@link LivePKAnchorActivity#startPK(String)}
  * - 停止PK{@link LivePKAnchorActivity#stopPK()}
  * - 播放对面主播的流{@link LivePKAnchorActivity#startPlay(String)}
- * <p>
  * 详见接入文档{https://cloud.tencent.com/document/product/454/52751}
- * <p>
- * <p>
  * Competition View for Anchors
- * <p>
  * Features:
  * - Start publishing {@link LivePKAnchorActivity#startPush()}
  * - Start competition {@link LivePKAnchorActivity#startPK(String)}
  * - Stop competition {@link LivePKAnchorActivity#stopPK()}
  * - Play the other anchor’s streams {@link LivePKAnchorActivity#startPlay(String)}
- * <p>
- * For more information, please see the integration document {https://intl.cloud.tencent.com/document/product/1071/39888}.
+ * For more information, please see the integration document {https://intl.cloud.tencent
+ * .com/document/product/1071/39888}.
  */
 public class LivePKAnchorActivity extends MLVBBaseActivity implements View.OnClickListener {
     private static final String TAG = "LivePKAnchorActivity";
@@ -104,20 +99,25 @@ public class LivePKAnchorActivity extends MLVBBaseActivity implements View.OnCli
     }
 
     private void startPush() {
-        String pushUrl = URLUtils.generatePushUrl(mStreamId, mUserId, 0);
         mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTC);
-
         mLivePusher.setRenderView(mPushRenderView);
         mLivePusher.startCamera(true);
+        String pushUrl = URLUtils.generatePushUrl(mStreamId, mUserId, 0);
         int ret = mLivePusher.startPush(pushUrl);
         Log.i(TAG, "startPush return: " + ret);
         mLivePusher.startMicrophone();
     }
 
+    /**
+     * 开始和对应流 id 的用户进行pk。
+     *
+     * @param pkStreamId 需要进行 PK 的流 id。
+     */
     @SuppressLint("SetTextI18n")
     public void startPK(String pkStreamId) {
         if (TextUtils.isEmpty(pkStreamId)) {
-            Toast.makeText(LivePKAnchorActivity.this, getString(R.string.livepk_please_input_streamid), Toast.LENGTH_SHORT).show();
+            Toast.makeText(LivePKAnchorActivity.this, getString(R.string.livepk_please_input_streamid),
+                    Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -128,7 +128,8 @@ public class LivePKAnchorActivity extends MLVBBaseActivity implements View.OnCli
             findViewById(R.id.btn_stop_pk).setVisibility(View.VISIBLE);
             findViewById(R.id.btn_accept_pk).setVisibility(View.GONE);
         } else {
-            Toast.makeText(LivePKAnchorActivity.this, getString(R.string.livepk_mix_stream_fail), Toast.LENGTH_SHORT).show();
+            Toast.makeText(LivePKAnchorActivity.this, getString(R.string.livepk_mix_stream_fail), Toast.LENGTH_SHORT)
+                    .show();
         }
     }
 
@@ -153,7 +154,8 @@ public class LivePKAnchorActivity extends MLVBBaseActivity implements View.OnCli
 
                 @Override
                 public void onError(V2TXLivePlayer player, int code, String msg, Bundle extraInfo) {
-                    Log.e(TAG, "[Player] onError: player-" + player + " code-" + code + " msg-" + msg + " info-" + extraInfo);
+                    Log.e(TAG, "[Player] onError: player-" + player + " code-" + code + " msg-" + msg + " info-"
+                            + extraInfo);
                 }
 
                 @Override
@@ -163,14 +165,14 @@ public class LivePKAnchorActivity extends MLVBBaseActivity implements View.OnCli
 
                 @Override
                 public void onVideoPlaying(V2TXLivePlayer player, boolean firstPlay, Bundle extraInfo) {
-                    Log.i(TAG, "[Player] onVideoPlaying: player-"
-                            + player + " firstPlay-" + firstPlay + " info-" + extraInfo);
+                    Log.i(TAG, "[Player] onVideoPlaying: player-" + player + " firstPlay-" + firstPlay + " info-"
+                            + extraInfo);
                 }
 
                 @Override
                 public void onVideoResolutionChanged(V2TXLivePlayer player, int width, int height) {
-                    Log.i(TAG, "[Player] onVideoResolutionChanged: player-"
-                            + player + " width-" + width + " height-" + height);
+                    Log.i(TAG, "[Player] onVideoResolutionChanged: player-" + player + " width-" + width + " height-"
+                            + height);
                 }
             });
         }

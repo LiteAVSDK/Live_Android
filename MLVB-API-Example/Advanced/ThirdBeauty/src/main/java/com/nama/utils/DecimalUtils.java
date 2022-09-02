@@ -22,6 +22,11 @@ public final class DecimalUtils {
         return Math.abs(a - b) < THRESHOLD;
     }
 
+    /**
+     * 判断两个 float 数组内容是否一样。
+     *
+     * @return True，如果两个数组内容一样。
+     */
     public static boolean floatArrayEquals(float[] a, float[] b) {
         if (a == null && b == null) {
             return true;
@@ -41,6 +46,11 @@ public final class DecimalUtils {
         return true;
     }
 
+    /**
+     * 判断两个 double 数组内容是否一样。
+     *
+     * @return True，如果两个数组内容一样。
+     */
     public static boolean doubleArrayEquals(double[] a, double[] b) {
         if (a == null && b == null) {
             return true;

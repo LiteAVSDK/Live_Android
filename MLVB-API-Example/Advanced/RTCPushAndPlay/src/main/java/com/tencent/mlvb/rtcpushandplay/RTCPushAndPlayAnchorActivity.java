@@ -90,12 +90,11 @@ public class RTCPushAndPlayAnchorActivity extends MLVBBaseActivity implements Vi
     }
 
     private void startPush() {
-        String userId = String.valueOf(new Random().nextInt(10000));
-        String pushUrl = URLUtils.generatePushUrl(mStreamId, userId, 0);
         mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTC);
-
         mLivePusher.setRenderView(mPushRenderView);
         mLivePusher.startCamera(true);
+        String userId = String.valueOf(new Random().nextInt(10000));
+        String pushUrl = URLUtils.generatePushUrl(mStreamId, userId, 0);
         int ret = mLivePusher.startPush(pushUrl);
         Log.i(TAG, "startPush return: " + ret);
         mLivePusher.startMicrophone();

@@ -9,6 +9,9 @@ public class TextureRotationUtils {
     private TextureRotationUtils() {
     }
 
+    /**
+     * 获取 Texture 的旋转方向。
+     */
     public static float[] getRotation(final Rotation rotation,
                                       final boolean flipHorizontal,
                                       final boolean flipVertical) {
