@@ -6,8 +6,6 @@ import java.io.File;
 /**
  * MLVB 移动直播地址生成
  * 详情请参考：「https://cloud.tencent.com/document/product/454/7915」
- * <p>
- * <p>
  * Generating Streaming URLs
  * See [https://cloud.tencent.com/document/product/454/7915].
  */
@@ -29,12 +27,15 @@ public class URLUtils {
      * @param type 0:RTC  1：RTMP
      * @return
      */
-    public static String generatePushUrl(String streamId, String userId, int type){
+    public static String generatePushUrl(String streamId, String userId, int type) {
         String pushUrl = "";
         if (type == 0) {
-            pushUrl = TRTC + TRTC_DOMAIN + "/push/" + streamId + "?sdkappid=" + GenerateTestUserSig.SDKAPPID + "&userid=" + userId + "&usersig=" + GenerateTestUserSig.genTestUserSig(userId);
+            pushUrl =
+                    TRTC + TRTC_DOMAIN + "/push/" + streamId + "?sdkappid=" + GenerateTestUserSig.SDKAPPID + "&userid="
+                            + userId + "&usersig=" + GenerateTestUserSig.genTestUserSig(userId);
         } else if (type == 1) {
-            pushUrl = RTMP + GenerateTestUserSig.PUSH_DOMAIN + File.separator + APP_NAME + File.separator + streamId + GenerateTestUserSig.getSafeUrl(streamId);
+            pushUrl = RTMP + GenerateTestUserSig.PUSH_DOMAIN + File.separator + APP_NAME + File.separator + streamId
+                    + GenerateTestUserSig.getSafeUrl(streamId);
         }
         return pushUrl;
     }
@@ -48,12 +49,15 @@ public class URLUtils {
      * @param type type 0:RTC  1：RTMP 2:WEBRTC
      * @return
      */
-    public static String generatePlayUrl(String streamId, String userId, int type){
+    public static String generatePlayUrl(String streamId, String userId, int type) {
         String playUrl = "";
         if (type == 0) {
-            playUrl = TRTC + TRTC_DOMAIN + "/play/" + streamId + "?sdkappid=" + GenerateTestUserSig.SDKAPPID + "&userid=" + userId + "&usersig=" + GenerateTestUserSig.genTestUserSig(userId);
+            playUrl =
+                    TRTC + TRTC_DOMAIN + "/play/" + streamId + "?sdkappid=" + GenerateTestUserSig.SDKAPPID + "&userid="
+                            + userId + "&usersig=" + GenerateTestUserSig.genTestUserSig(userId);
         } else if (type == 1) {
-            playUrl = HTTP + GenerateTestUserSig.PLAY_DOMAIN + File.separator + APP_NAME + File.separator + streamId + ".flv";
+            playUrl = HTTP + GenerateTestUserSig.PLAY_DOMAIN + File.separator + APP_NAME + File.separator + streamId
+                    + ".flv";
         } else if (type == 2) {
             playUrl = WEBRTC + GenerateTestUserSig.PLAY_DOMAIN + File.separator + APP_NAME + File.separator + streamId;
         }

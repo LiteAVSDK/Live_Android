@@ -28,15 +28,12 @@ public class GPUImageFilter {
             + "     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n"
             + "}";
 
-    public static final String               NO_FILTER_FRAGMENT_SHADER_FLIP = ""
-            + "varying highp vec2 textureCoordinate;\n"
-            + " \n"
-            + "uniform sampler2D inputImageTexture;\n"
-            + " \n"
-            + "void main()\n"
-            + "{\n"
-            + "     gl_FragColor = texture2D(inputImageTexture, vec2(textureCoordinate.x, 1.0 - textureCoordinate.y));\n"
-            + "}";
+    public static final String NO_FILTER_FRAGMENT_SHADER_FLIP =
+            "" + "varying highp vec2 textureCoordinate;\n" + " \n" + "uniform sampler2D inputImageTexture;\n" + " \n"
+                    + "void main()\n" + "{\n"
+                    + "     gl_FragColor = texture2D(inputImageTexture, vec2(textureCoordinate.x, 1.0 - "
+                    + "textureCoordinate.y));\n"
+                    + "}";
     protected final     Program              mProgram;
     private final       LinkedList<Runnable> mRunOnDraw;
     protected           float[]              mTextureMatrix;
@@ -96,6 +93,9 @@ public class GPUImageFilter {
         return mIsInitialized;
     }
 
+    /**
+     * 使用 OpenGL 对画面进行渲染。
+     */
     public void onDraw(final int textureId, final FloatBuffer cubeBuffer, final FloatBuffer textureBuffer) {
         GLES20.glUseProgram(mProgram.getProgramId());
         runPendingOnDrawTasks();

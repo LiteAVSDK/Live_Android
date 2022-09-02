@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.Nullable;
+
 import com.tencent.live2.V2TXLiveDef;
 import com.tencent.live2.V2TXLivePlayer;
 import com.tencent.live2.V2TXLivePlayerObserver;
@@ -20,23 +22,18 @@ import com.tencent.rtmp.ui.TXCloudVideoView;
 
 /**
  * MLVB 连麦互动的观众视角
- *
  * 包含如下简单功能：
  * - 播放音视频流{@link LiveLinkAudienceActivity#startPlay()} ()}
  * - 开始连麦{@link LiveLinkAudienceActivity#startLink()}
  * - 停止连麦{@link LiveLinkAudienceActivity#stopLink()} ()}
- *
  * - 详见接入文档{https://cloud.tencent.com/document/product/454/52751}
- *
- *
  * Co-anchoring View for Audience
- *
  * Features:
  * - Play audio/video streams {@link LiveLinkAudienceActivity#startPlay()}
  * - Start co-anchoring {@link LiveLinkAudienceActivity#startLink()}
  * - Stop co-anchoring {@link LiveLinkAudienceActivity#stopLink()}
- *
- * - For more information, please see the integration document {https://intl.cloud.tencent.com/document/product/1071/39888}.
+ * - For more information, please see the integration document {https://intl.cloud.tencent
+ * .com/document/product/1071/39888}.
  */
 public class LiveLinkAudienceActivity extends MLVBBaseActivity {
     private static final String TAG = "LiveLinkActivity";
@@ -48,11 +45,11 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
     private Button           mButtonStopLink;
     private ImageView        mButtonBack;
 
-    private V2TXLivePlayer   mLivePlayer;
-    private V2TXLivePusher   mLivePusher;
+    private V2TXLivePlayer mLivePlayer;
+    private V2TXLivePusher mLivePusher;
 
-    private String           mStreamId;
-    private String           mUserId;
+    private String mStreamId;
+    private String mUserId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -111,11 +108,10 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
     }
 
     private void startPush(String streamId, String userId) {
-        String pushUrl = URLUtils.generatePushUrl(streamId, userId, 0);
         mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTC);
-
         mLivePusher.setRenderView(mVideoViewAudience);
         mLivePusher.startCamera(true);
+        String pushUrl = URLUtils.generatePushUrl(streamId, userId, 0);
         int ret = mLivePusher.startPush(pushUrl);
         Log.i(TAG, "startPush return: " + ret);
         mLivePusher.startMicrophone();
@@ -141,14 +137,14 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
 
                 @Override
                 public void onVideoPlaying(V2TXLivePlayer player, boolean firstPlay, Bundle extraInfo) {
-                    Log.i(TAG, "[Player] onVideoPlaying: player-"
-                            + player + " firstPlay-" + firstPlay + " info-" + extraInfo);
+                    Log.i(TAG, "[Player] onVideoPlaying: player-" + player + " firstPlay-" + firstPlay + " info-"
+                            + extraInfo);
                 }
 
                 @Override
                 public void onVideoResolutionChanged(V2TXLivePlayer player, int width, int height) {
-                    Log.i(TAG, "[Player] onVideoResolutionChanged: player-"
-                            + player + " width-" + width + " height-" + height);
+                    Log.i(TAG, "[Player] onVideoResolutionChanged: player-" + player + " width-" + width + " height-"
+                            + height);
                 }
             });
         }
@@ -157,7 +153,7 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
         Log.d(TAG, "startPlay : " + result);
     }
 
-    public void startLink(){
+    public void startLink() {
         if (mLivePlayer != null && mLivePlayer.isPlaying() == 1) {
             mLivePlayer.stopPlay();
         }
@@ -174,7 +170,7 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
         mButtonStopLink.setVisibility(View.VISIBLE);
     }
 
-    public void stopLink(){
+    public void stopLink() {
         if (mLivePlayer != null && mLivePlayer.isPlaying() == 1) {
             mLivePlayer.stopPlay();
         }

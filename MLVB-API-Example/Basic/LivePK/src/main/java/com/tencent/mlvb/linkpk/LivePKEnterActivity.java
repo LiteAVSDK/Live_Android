@@ -16,13 +16,9 @@ import com.tencent.mlvb.livepk.R;
 
 /**
  * MLVB 连麦PK的入口页面
- *
  * - 以主播角色进入连麦PK{@link LivePKAnchorActivity}
  * - 以观众角色进入连麦PK{@link LivePKAudienceActivity}
- *
- *
  * Competition Entrance View
- *
  * - Enter as an anchor {@link LivePKAnchorActivity}
  * - Enter as audience {@link LivePKAudienceActivity}
  */
@@ -32,9 +28,9 @@ public class LivePKEnterActivity extends MLVBBaseActivity {
     private static final int STEP_INPUT_ROLE   = 1;
     private static final int STEP_INPUT_STREAM = 2;
 
-    private static final int ROLE_UNKNOWN      = -1;
-    private static final int ROLE_ANCHOR       = 0;
-    private static final int ROLE_AUDIENCE     = 1;
+    private static final int ROLE_UNKNOWN  = -1;
+    private static final int ROLE_ANCHOR   = 0;
+    private static final int ROLE_AUDIENCE = 1;
 
     private LinearLayout mLayoutStreamId;
     private EditText     mEditStreamId;
@@ -45,10 +41,10 @@ public class LivePKEnterActivity extends MLVBBaseActivity {
     private Button       mButtonRoleAudience;
     private Button       mButtonNext;
 
-    private String       mUserId;
-    private String       mStreamId;
-    private int          mStateInput   = STEP_INPUT_USERID;
-    private int          mRoleSelected = ROLE_UNKNOWN;
+    private String mUserId;
+    private String mStreamId;
+    private int    mStateInput   = STEP_INPUT_USERID;
+    private int    mRoleSelected = ROLE_UNKNOWN;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -119,18 +115,18 @@ public class LivePKEnterActivity extends MLVBBaseActivity {
                     mLayoutUserId.setVisibility(View.GONE);
                     mLayoutSelectRole.setVisibility(View.GONE);
                     mLayoutStreamId.setVisibility(View.VISIBLE);
-                    mButtonNext.setText(mRoleSelected == ROLE_ANCHOR ? R.string.livepk_rtc_push :
-                            R.string.livepk_webrtc_play);
+                    mButtonNext.setText(
+                            mRoleSelected == ROLE_ANCHOR ? R.string.livepk_rtc_push : R.string.livepk_webrtc_play);
                     mStateInput = STEP_INPUT_STREAM;
                 } else if (mStateInput == STEP_INPUT_STREAM) {
                     mStreamId = mEditStreamId.getText().toString();
                     if (TextUtils.isEmpty(mStreamId)) {
-                        Toast.makeText(LivePKEnterActivity.this, getString(R.string.livepk_please_input_streamid)
-                                , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LivePKEnterActivity.this, getString(R.string.livepk_please_input_streamid),
+                                Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    Class<?> cls = mRoleSelected == ROLE_ANCHOR ? LivePKAnchorActivity.class :
-                            LivePKAudienceActivity.class;
+                    Class<?> cls =
+                            mRoleSelected == ROLE_ANCHOR ? LivePKAnchorActivity.class : LivePKAudienceActivity.class;
                     Intent intent = new Intent(LivePKEnterActivity.this, cls);
                     intent.putExtra("USER_ID", mUserId);
                     intent.putExtra("STREAM_ID", mStreamId);

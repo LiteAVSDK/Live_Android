@@ -11,27 +11,23 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
+
 import com.tencent.mlvb.common.MLVBBaseActivity;
 
 /**
  * MLVB 直播拉流的入口页面
- *
  * 其中包含三种拉流方式，RTC拉流，RTMP拉流，WebRTC拉流，推荐使用WebRtc拉流
- *
  * - 拉流详情页见{@link LivePlayActivity}
- *
- *
  * Playback Entrance View
- *
  * You can play streams over RTC, RTMP, or WebRTC (recommended).
- *
  * - For the playback view, see {@link LivePlayActivity}.
  */
 public class LivePlayEnterActivity extends MLVBBaseActivity {
 
-    private EditText    mEditStreamId;
-    private TextView    mTextDesc;
+    private EditText mEditStreamId;
+    private TextView mTextDesc;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,7 +36,7 @@ public class LivePlayEnterActivity extends MLVBBaseActivity {
         initView();
     }
 
-    private void initView(){
+    private void initView() {
         mEditStreamId = findViewById(R.id.et_stream_id);
 
         mEditStreamId.setText(generateStreamId());

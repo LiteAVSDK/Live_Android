@@ -14,7 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
+
 import com.tencent.live2.V2TXLiveDef;
 import com.tencent.live2.V2TXLivePusher;
 import com.tencent.live2.V2TXLivePusherObserver;
@@ -24,38 +26,38 @@ import com.tencent.mlvb.common.URLUtils;
 import com.tencent.mlvb.customvideocapture.helper.CustomCameraCapture;
 import com.tencent.mlvb.customvideocapture.helper.CustomFrameRender;
 import com.tencent.rtmp.ui.TXCloudVideoView;
+
 import java.util.Random;
 
 /**
  * MLVB 自定义视频采集&渲染的示例
- *
  * 本文件展示了如何实现自定义采集&渲染功能，主要流程如下：
- *
  * 自定义采集：
  * - 首先在推流之前调用{@link V2TXLivePusher#enableCustomVideoCapture(boolean)},设置开启自定义采集
  * - 然后掉用{@link V2TXLivePusher#sendCustomVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame)} 发送数据给SDK
- *
  * 自定义渲染
- * - 首先在推流之前调用{@link V2TXLivePusher#enableCustomVideoProcess(boolean, V2TXLiveDef.V2TXLivePixelFormat, V2TXLiveDef.V2TXLiveBufferType)},设置开启自定义渲染
+ * -
+ * 首先在推流之前调用
+ * {@link V2TXLivePusher#enableCustomVideoProcess(boolean, V2TXLiveDef.V2TXLivePixelFormat,
+ * V2TXLiveDef.V2TXLiveBufferType)},设置开启自定义渲染
  * - 然后掉用{@link V2TXLivePusher#setObserver(V2TXLivePusherObserver)} 监听SDK的视频数据
- * - 当收到数据时，在{@link V2TXLivePusherObserver#onProcessVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame, V2TXLiveDef.V2TXLiveVideoFrame)}中处理渲染逻辑
- *
+ * -
+ * 当收到数据时，在
+ * {@link V2TXLivePusherObserver#onProcessVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame, V2TXLiveDef.V2TXLiveVideoFrame)}
+ * 中处理渲染逻辑
  * - 更多细节，详见API说明文档{https://cloud.tencent.com/document/product/454/56601}
- *
- *
  * Example for Custom Video Capturing & Rendering
- *
  * This document shows how to enable custom video capturing and rendering.
- *
  * Custom capturing:
  * - Before stream publishing, call {@link V2TXLivePusher#enableCustomVideoCapture(boolean)} to enable custom capturing.
  * - Call {@link V2TXLivePusher#sendCustomVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame)} to send data to the SDK.
- *
  * Custom rendering
- * - Before stream publishing, call {@link V2TXLivePusher#enableCustomVideoProcess(boolean, V2TXLiveDef.V2TXLivePixelFormat, V2TXLiveDef.V2TXLiveBufferType)} to enable custom rendering.
+ * - Before stream publishing, call
+ * {@link V2TXLivePusher#enableCustomVideoProcess(boolean, V2TXLiveDef.V2TXLivePixelFormat,
+ * V2TXLiveDef.V2TXLiveBufferType)} to enable custom rendering.
  * - Call {@link V2TXLivePusher#setObserver(V2TXLivePusherObserver)} to listen for video data from the SDK.
- * - After data is received, execute the rendering logic in {@link V2TXLivePusherObserver#onProcessVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame, V2TXLiveDef.V2TXLiveVideoFrame)}.
- *
+ * - After data is received, execute the rendering logic in
+ * {@link V2TXLivePusherObserver#onProcessVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame, V2TXLiveDef.V2TXLiveVideoFrame)}.
  * - For more information, please see the API document {https://cloud.tencent.com/document/product/454/56601}.
  */
 public class CustomVideoCaptureActivity extends MLVBBaseActivity implements View.OnClickListener {
@@ -71,24 +73,24 @@ public class CustomVideoCaptureActivity extends MLVBBaseActivity implements View
 
     private CustomCameraCapture.VideoFrameReadListener mVideoFrameReadListener =
             new CustomCameraCapture.VideoFrameReadListener() {
-        @SuppressLint("NewApi")
-        @Override
-        public void onFrameAvailable(EGLContext eglContext, int textureId, int width, int height) {
-            V2TXLiveDef.V2TXLiveVideoFrame videoFrame = new V2TXLiveDef.V2TXLiveVideoFrame();
-            videoFrame.pixelFormat = V2TXLivePixelFormatTexture2D;
-            videoFrame.bufferType = V2TXLiveBufferTypeTexture;
-            videoFrame.texture = new V2TXLiveDef.V2TXLiveTexture();
-            videoFrame.texture.textureId = textureId;
-            videoFrame.texture.eglContext14 = eglContext;
-            videoFrame.width = width;
-            videoFrame.height = height;
+                @SuppressLint("NewApi")
+                @Override
+                public void onFrameAvailable(EGLContext eglContext, int textureId, int width, int height) {
+                    V2TXLiveDef.V2TXLiveVideoFrame videoFrame = new V2TXLiveDef.V2TXLiveVideoFrame();
+                    videoFrame.pixelFormat = V2TXLivePixelFormatTexture2D;
+                    videoFrame.bufferType = V2TXLiveBufferTypeTexture;
+                    videoFrame.texture = new V2TXLiveDef.V2TXLiveTexture();
+                    videoFrame.texture.textureId = textureId;
+                    videoFrame.texture.eglContext14 = eglContext;
+                    videoFrame.width = width;
+                    videoFrame.height = height;
 
-            if (mLivePusher != null && mLivePusher.isPushing() == 1) {
-                int ret = mLivePusher.sendCustomVideoFrame(videoFrame);
-                Log.d(TAG, "sendCustomVideoFrame : " + ret);
-            }
-        }
-    };
+                    if (mLivePusher != null && mLivePusher.isPushing() == 1) {
+                        int ret = mLivePusher.sendCustomVideoFrame(videoFrame);
+                        Log.d(TAG, "sendCustomVideoFrame : " + ret);
+                    }
+                }
+            };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -106,9 +108,9 @@ public class CustomVideoCaptureActivity extends MLVBBaseActivity implements View
 
     private void initView() {
         mPushRenderView = findViewById(R.id.tx_cloud_view);
-        mButtonPush     = findViewById(R.id.btn_push);
-        mEditStreamId   = findViewById(R.id.et_stream_id);
-        mTextTitle      = findViewById(R.id.tv_title);
+        mButtonPush = findViewById(R.id.btn_push);
+        mEditStreamId = findViewById(R.id.et_stream_id);
+        mTextTitle = findViewById(R.id.tv_title);
 
         mEditStreamId.setText(generateStreamId());
         findViewById(R.id.iv_back).setOnClickListener(this);
@@ -127,8 +129,6 @@ public class CustomVideoCaptureActivity extends MLVBBaseActivity implements View
             return;
         }
         mTextTitle.setText(streamId);
-        String userId = String.valueOf(new Random().nextInt(10000));
-        String pushUrl = URLUtils.generatePushUrl(streamId, userId, 0);
 
         mCustomCameraCapture = new CustomCameraCapture();
         mCustomFrameRender = new CustomFrameRender();
@@ -137,6 +137,8 @@ public class CustomVideoCaptureActivity extends MLVBBaseActivity implements View
         mLivePusher.setObserver(mCustomFrameRender);
         mLivePusher.enableCustomVideoCapture(true);
 
+        String userId = String.valueOf(new Random().nextInt(10000));
+        String pushUrl = URLUtils.generatePushUrl(streamId, userId, 0);
         int ret = mLivePusher.startPush(pushUrl);
         Log.i(TAG, "startPush return: " + ret);
         mLivePusher.startMicrophone();

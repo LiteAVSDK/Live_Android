@@ -10,64 +10,63 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.PopupMenu;
+
 import com.tencent.live2.V2TXLiveDef;
 import com.tencent.live2.V2TXLivePusher;
 import com.tencent.live2.impl.V2TXLivePusherImpl;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 import com.tencent.mlvb.common.URLUtils;
 import com.tencent.rtmp.ui.TXCloudVideoView;
+
 import java.util.Random;
 
 /**
  * MLVB 摄像头推流详情页
- *
  * 包含如下简单功能：
  * - 开始推流{@link LivePushCameraActivity#startPush()} ()}
  * - 麦克风{@link LivePushCameraActivity#enableMic(boolean)}
  * - 设置分辨率{@link LivePushCameraActivity#showResolutionMenu()}
  * - 设置旋转角度{@link LivePushCameraActivity#showRotateMenu()}
  * - 设置镜像{@link LivePushCameraActivity#showMirrorMenu()}
- *
  * 详见接入文档{https://cloud.tencent.com/document/product/454/56592}
- *
- *
- *
  * Publishing (Camera) View
- *
  * Features:
  * - Start publishing {@link LivePushCameraActivity#startPush()}
  * - Turn on mic {@link LivePushCameraActivity#enableMic(boolean)}
  * - Set resolution {@link LivePushCameraActivity#showResolutionMenu()}
  * - Set rotation {@link LivePushCameraActivity#showRotateMenu()}
  * - Set mirror mode {@link LivePushCameraActivity#showMirrorMenu()}
- *
- * For more information, please see the integration document {https://intl.cloud.tencent.com/document/product/1071/38158}.
+ * For more information, please see the integration document {https://intl.cloud.tencent
+ * .com/document/product/1071/38158}.
  */
 public class LivePushCameraActivity extends MLVBBaseActivity implements View.OnClickListener {
 
     private static final String TAG = "LivePushCameraActivity";
 
-    private TXCloudVideoView    mPushRenderView;
-    private V2TXLivePusher      mLivePusher;
-    private TextView            mTextTitle;
-    private LinearLayout        mLinearResolution;
-    private TextView            mTextResolution;
-    private LinearLayout        mLinearRotate;
-    private TextView            mTextRotate;
-    private LinearLayout        mLinearMirror;
-    private TextView            mTextMirror;
-    private Button              mButtonMic;
+    private TXCloudVideoView mPushRenderView;
+    private V2TXLivePusher   mLivePusher;
+    private TextView         mTextTitle;
+    private LinearLayout     mLinearResolution;
+    private TextView         mTextResolution;
+    private LinearLayout     mLinearRotate;
+    private TextView         mTextRotate;
+    private LinearLayout     mLinearMirror;
+    private TextView         mTextMirror;
+    private Button           mButtonMic;
 
-    private String              mStreamId;
-    private int                 mStreamType     = 0;
-    private boolean             mMicFlag        = true;
+    private String  mStreamId;
+    private int     mStreamType = 0;
+    private boolean mMicFlag    = true;
 
-    private V2TXLiveDef.V2TXLiveAudioQuality    mAudioQuality   = V2TXLiveDef.V2TXLiveAudioQuality.V2TXLiveAudioQualityDefault;
+    private V2TXLiveDef.V2TXLiveAudioQuality    mAudioQuality   =
+            V2TXLiveDef.V2TXLiveAudioQuality.V2TXLiveAudioQualityDefault;
     private V2TXLiveDef.V2TXLiveRotation        mRotationFlag   = V2TXLiveDef.V2TXLiveRotation.V2TXLiveRotation0;
     private V2TXLiveDef.V2TXLiveMirrorType      mMirrorFlag     = V2TXLiveDef.V2TXLiveMirrorType.V2TXLiveMirrorTypeAuto;
-    private V2TXLiveDef.V2TXLiveVideoResolution mResolutionFlag = V2TXLiveDef.V2TXLiveVideoResolution.V2TXLiveVideoResolution960x540;
+    private V2TXLiveDef.V2TXLiveVideoResolution mResolutionFlag =
+            V2TXLiveDef.V2TXLiveVideoResolution.V2TXLiveVideoResolution960x540;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,9 +80,9 @@ public class LivePushCameraActivity extends MLVBBaseActivity implements View.OnC
     }
 
     private void initIntentData() {
-        mStreamId       = getIntent().getStringExtra("STREAM_ID");
-        mStreamType     = getIntent().getIntExtra("STREAM_TYPE", 0);
-        mAudioQuality   = (V2TXLiveDef.V2TXLiveAudioQuality)getIntent().getSerializableExtra("AUDIO_QUALITY");
+        mStreamId = getIntent().getStringExtra("STREAM_ID");
+        mStreamType = getIntent().getIntExtra("STREAM_TYPE", 0);
+        mAudioQuality = (V2TXLiveDef.V2TXLiveAudioQuality) getIntent().getSerializableExtra("AUDIO_QUALITY");
 
         Log.d(TAG, "initIntentData: " + mStreamId + " : " + mStreamType + " : " + mAudioQuality);
     }
@@ -96,15 +95,15 @@ public class LivePushCameraActivity extends MLVBBaseActivity implements View.OnC
     }
 
     private void initView() {
-        mPushRenderView     = findViewById(R.id.pusher_tx_cloud_view);
-        mTextTitle          = findViewById(R.id.tv_stream_id);
-        mLinearResolution   = findViewById(R.id.ll_resolution);
-        mTextResolution     = findViewById(R.id.tv_resolution);
-        mLinearRotate       = findViewById(R.id.ll_rotate);
-        mTextRotate         = findViewById(R.id.tv_rotate);
-        mLinearMirror       = findViewById(R.id.ll_mirror);
-        mTextMirror         = findViewById(R.id.tv_mirror);
-        mButtonMic          = findViewById(R.id.btn_mic);
+        mPushRenderView = findViewById(R.id.pusher_tx_cloud_view);
+        mTextTitle = findViewById(R.id.tv_stream_id);
+        mLinearResolution = findViewById(R.id.ll_resolution);
+        mTextResolution = findViewById(R.id.tv_resolution);
+        mLinearRotate = findViewById(R.id.ll_rotate);
+        mTextRotate = findViewById(R.id.tv_rotate);
+        mLinearMirror = findViewById(R.id.ll_mirror);
+        mTextMirror = findViewById(R.id.tv_mirror);
+        mButtonMic = findViewById(R.id.btn_mic);
 
         findViewById(R.id.iv_back).setOnClickListener(this);
         findViewById(R.id.btn_mic).setOnClickListener(this);
@@ -192,8 +191,8 @@ public class LivePushCameraActivity extends MLVBBaseActivity implements View.OnC
                         mResolutionFlag = V2TXLiveDef.V2TXLiveVideoResolution.V2TXLiveVideoResolution1920x1080;
                         mTextResolution.setText("1080P");
                     }
-                    V2TXLiveDef.V2TXLiveVideoEncoderParam param = new V2TXLiveDef.V2TXLiveVideoEncoderParam(
-                            mResolutionFlag);
+                    V2TXLiveDef.V2TXLiveVideoEncoderParam param =
+                            new V2TXLiveDef.V2TXLiveVideoEncoderParam(mResolutionFlag);
                     param.videoResolutionMode =
                             V2TXLiveDef.V2TXLiveVideoResolutionMode.V2TXLiveVideoResolutionModePortrait;
                     mLivePusher.setVideoQuality(param);

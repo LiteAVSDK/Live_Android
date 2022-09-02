@@ -21,6 +21,9 @@ public class GPUImageFilterGroup extends GPUImageFilter {
     private final   FloatBuffer          mGLTextureBuffer;
     private final   FloatBuffer          mGLTextureFlipBuffer;
 
+    /**
+     * GPUImageFilterGroup 的构造函数。
+     */
     public GPUImageFilterGroup() {
         mGLCubeBuffer = ByteBuffer.allocateDirect(CUBE.length * 4)
                 .order(ByteOrder.nativeOrder())
@@ -54,6 +57,9 @@ public class GPUImageFilterGroup extends GPUImageFilter {
         return mMergedFilters;
     }
 
+    /**
+     * 更新 GPU 图像过滤器。
+     */
     public void updateMergedFilters() {
         if (mFilters == null) {
             return;
@@ -167,7 +173,8 @@ public class GPUImageFilterGroup extends GPUImageFilter {
             if (i == 0) {
                 filter.onDraw(previousTexture, cubeBuffer, textureBuffer);
             } else if (i == size - 1) {
-                filter.onDraw(previousTexture, mGLCubeBuffer, (size % 2 == 0) ? mGLTextureFlipBuffer : mGLTextureBuffer);
+                filter.onDraw(previousTexture, mGLCubeBuffer,
+                        (size % 2 == 0) ? mGLTextureFlipBuffer : mGLTextureBuffer);
             } else {
                 filter.onDraw(previousTexture, mGLCubeBuffer, mGLTextureBuffer);
             }

@@ -12,31 +12,28 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
+
 import com.tencent.live2.V2TXLiveDef;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 
 /**
  * MLVB 录屏推流的入口页面
- *
  * 其中包含两种推流方式，RTC推流，RTMP推流，推荐使用RTC推流方式
- *
  * - 推流详情页见{@link LivePushScreenActivity}
- *
- *
  * Publishing (Screen) Entrance View
- *
  * You can publish via RTC (recommended) or RTMP.
- *
  * - For the publishing view, see {@link LivePushScreenActivity}.
  */
 public class LivePushScreenEnterActivity extends MLVBBaseActivity {
 
-    private EditText    mEditStreamId;
-    private RadioGroup  mRadioAudiQuality;
-    private TextView    mTextDesc;
+    private EditText   mEditStreamId;
+    private RadioGroup mRadioAudiQuality;
+    private TextView   mTextDesc;
 
-    private V2TXLiveDef.V2TXLiveAudioQuality mAudioQuality = V2TXLiveDef.V2TXLiveAudioQuality.V2TXLiveAudioQualityDefault;
+    private V2TXLiveDef.V2TXLiveAudioQuality mAudioQuality =
+            V2TXLiveDef.V2TXLiveAudioQuality.V2TXLiveAudioQualityDefault;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,8 +42,8 @@ public class LivePushScreenEnterActivity extends MLVBBaseActivity {
         initView();
     }
 
-    private void initView(){
-        mEditStreamId     = findViewById(R.id.et_stream_id);
+    private void initView() {
+        mEditStreamId = findViewById(R.id.et_stream_id);
         mRadioAudiQuality = findViewById(R.id.rg_audio_quality);
 
         mEditStreamId.setText(generateStreamId());
