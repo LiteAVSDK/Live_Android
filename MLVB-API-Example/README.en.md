@@ -2,7 +2,7 @@
 _[中文](README.md) | English_
 
 ## Background
-This open-source demo shows how to use some APIs of the [MLVB SDK](https://cloud.tencent.com/document/product/454) to help you better understand the APIs and use them to implement some basic MLVB features.
+This open-source demo shows how to use some APIs of the [MLVB SDK](https://www.tencentcloud.com/document/product/1071) to help you better understand the APIs and use them to implement some basic MLVB features.
 
 ## Contents
 This demo covers the following features (click to view the details of a feature):
@@ -34,15 +34,15 @@ This demo covers the following features (click to view the details of a feature)
 You have [signed up for a Tencent Cloud account](https://intl.cloud.tencent.com/document/product/378/17985) and completed [identity verification](https://intl.cloud.tencent.com/document/product/378/3629).
 
 ### Obtaining `SDKAppID` and secret key
-1. In the TRTC console, select **Development Assistance** > **[Demo Quick Run](https://console.cloud.tencent.com/trtc/quickstart)**.
-2. Enter an application name such as `TestTRTC`, and click **Create**.
+1. In the TRTC console, select **Application Management** > **[Create application](https://console.tencentcloud.com/trtc/app/create)**.
+2. Enter an application name such as `TestTRTC`, and click **Next**.
 
-![ #900px](https://main.qcloudimg.com/raw/169391f6711857dca6ed8cfce7b391bd.png)
+![ #900px](https://qcloudimg.tencent-cloud.cn/raw/51c73a617e69a76ed26e6f74b0071ec9.png)
 3. Click **Next** to view your `SDKAppID` and key.
 
 ### Activating MLVB
-1. [Activate CSS and add domain names](https://console.cloud.tencent.com/live/livestat). If you haven’t activated CSS, click **Apply for Activation**, and add publishing and playback domain names in **Domain Management**.
-2. [Obtain a trial license to use the SDK](https://console.cloud.tencent.com/live/license).
+1. [Activate CSS and add domain names](https://console.intl.cloud.tencent.com/live/common/apply?code=0). If you haven’t activated CSS, click **Apply for Activation**, and add publishing and playback domain names in **Domain Management**.
+2. [Obtain a trial license to use the SDK](https://console.intl.cloud.tencent.com/live/license).
 
 ### Configuring demo project files
 1. Open the demo project `MLVB-API-Example` with Android Studio (3.5 or above).
@@ -88,7 +88,7 @@ defaultConfig {
 #### Method 2: manual download (AAR)
 If you have difficulty accessing JCenter, you can manually download the SDK and integrate it into your project.
 
-1. Download the latest version of the [MLVB SDK](https://cloud.tencent.com/document/product/454/7873).
+1. Download the latest version of the [MLVB SDK](https://www.tencentcloud.com/document/product/1071/38150?has_map=1).
 2. Copy the downloaded AAR file to the **App/libs** directory of your project.
 3. Add **flatDir** to `build.gradle` under the project’s root directory and specify a local path for the repository.
 ```
@@ -122,10 +122,19 @@ defaultConfig {
 ```
 6. Click **Sync Now** to complete the integration.
 
-### Compiling and running the project
+
+## Compiling and running the project
 Open the project with Android Studio, connect to an Android device, and compile and run the project.
 
-# Contact Us
-- [FAQs](https://cloud.tencent.com/document/product/454/7937)
-- [Documentation](https://cloud.tencent.com/document/product/454)
-- [API documentation](https://liteav.sdk.qcloud.com/doc/api/zh-cn/group__V2TXLivePusher__android.html#afc848d88fe99790b8c0988b8525dd4d9)
+## Contact Us
+- If you have questions, see [FAQs](https://www.tencentcloud.com/document/product/1071/39477).
+
+- To learn about how the MLVB SDK can be used in different scenarios, see [Sample Code](https://www.tencentcloud.com/document/product/1071).
+
+- For complete API documentation, see [SDK API Documentation](https://liteav.sdk.qcloud.com/doc/api/en/group__V2TXLivePusher__android.html).
+
+- Communication & Feedback   
+Welcome to join our Telegram Group to communicate with our professional engineers! We are more than happy to hear from you~
+Click to join: [https://t.me/+EPk6TMZEZMM5OGY1](https://t.me/+EPk6TMZEZMM5OGY1)   
+Or scan the QR code   
+  <img src="https://qcloudimg.tencent-cloud.cn/raw/79cbfd13877704ff6e17f30de09002dd.jpg" width="300px">    
