@@ -18,18 +18,18 @@
 |  |  ├─ ThirdBeauty			// 演示第三方美颜示例代码
 |  
 ├─ SDK 
-│  ├─ LiteAVSDK_Smart_x.y.zzzz.aar        // 如果您下载的是 Smart 专用 zip 包，解压后将出现此文件夹，其中 x.y.zzzz 表示 SDK 版本号 
-|  ├─ LiteAVSDK_Professional_x.y.zzzz.aar // 如果您下载的是专业版 zip 包，解压后将出现此文件夹，其中 x.y.zzzz 表示 SDK 版本号 
-|  ├─ LiteAVSDK_Enterprise_x.y.zzzz.aar   // 如果您下载的是企业版 zip 包，解压后将出现此文件夹，其中 x.y.zzzz 表示 SDK 版本号 
+│  ├─ LiteAVSDK_Smart_x.y.zzzz.aar          // 如果您下载的是 Smart 版本 zip 包，解压后将出现此文件夹，其中 x.y.zzzz 表示 SDK 版本号 
+|  ├─ LiteAVSDK_Live_x.y.zzzz.aar           // 如果您下载的是 Live 版本 zip 包，解压后将出现此文件夹，其中 x.y.zzzz 表示 SDK 版本号 
+|  ├─ LiteAVSDK_Professional_x.y.zzzz.aar   // 如果您下载的是 Professional 版本 zip 包，解压后将出现此文件夹，其中 x.y.zzzz 表示 SDK 版本号 
 ```
 
 ## SDK 分类和下载
 
 腾讯云 移动直播 SDK 基于 LiteAVSDK 统一框架设计和实现，该框架包含直播、点播、短视频、RTC、AI美颜在内的多项功能：
 
-- 如果您追求最小化体积增量，可以下载 Smart 版：[TXLiteAVSDK_Smart.zip](https://cloud.tencent.com/document/product/454/7873)
-- 如果您需要使用多个功能而不希望打包多个 SDK，可以下载专业版：[TXLiteAVSDK_Professional.zip](https://cloud.tencent.com/document/product/647/32689#Professional)
-- 如果您已经通过腾讯云商务购买了 AI 美颜 License，可以下载企业版：[TXLiteAVSDK_Enterprise.zip](https://cloud.tencent.com/document/product/647/32689#Enterprise)
+- 如果您追求最小化体积增量，可以下载 Smart 版：[TXLiteAVSDK_Smart_Android_latest.zip](https://cloud.tencent.com/document/product/454/7873)
+- 如果您还需要 连麦PK 的功能，可以下载 Live 版：[TXLiteAVSDK_Live_Android_latest.zip](https://cloud.tencent.com/document/product/454/7873)
+- 如果您需要使用多个功能而不希望打包多个 SDK，可以下载专业版：[TXLiteAVSDK_Professional_Android_latest.zip](https://cloud.tencent.com/document/product/454/7873)
 
 ## 相关文档链接
 
