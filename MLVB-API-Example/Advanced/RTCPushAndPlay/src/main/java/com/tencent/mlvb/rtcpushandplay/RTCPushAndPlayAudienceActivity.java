@@ -116,8 +116,8 @@ public class RTCPushAndPlayAudienceActivity extends MLVBBaseActivity implements 
             });
         }
 
-        int result = mLivePlayer.startPlay(playURL);
-        Log.d(TAG, "startPlay : " + result);
+        int result = mLivePlayer.startLivePlay(playURL);
+        Log.d(TAG, "startLivePlay : " + result);
     }
 
     private void link() {
@@ -166,8 +166,8 @@ public class RTCPushAndPlayAudienceActivity extends MLVBBaseActivity implements 
             });
         }
 
-        int result = mLinkPlayer.startPlay(playURL);
-        Log.d(TAG, "startPlay : " + result);
+        int result = mLinkPlayer.startLivePlay(playURL);
+        Log.d(TAG, "startLivePlay : " + result);
         mButtonLink.setText(R.string.rtcpushandplay_stop_play);
     }
 
