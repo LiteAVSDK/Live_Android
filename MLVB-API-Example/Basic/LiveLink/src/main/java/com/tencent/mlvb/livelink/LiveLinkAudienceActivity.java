@@ -149,8 +149,8 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
             });
         }
 
-        int result = mLivePlayer.startPlay(playURL);
-        Log.d(TAG, "startPlay : " + result);
+        int result = mLivePlayer.startLivePlay(playURL);
+        Log.d(TAG, "startLivePlay : " + result);
     }
 
     public void startLink() {
@@ -160,8 +160,8 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
 
         String playURL = URLUtils.generatePlayUrl(mStreamId, mUserId, 0);
         mLivePlayer.setRenderView(mVideoViewAnchor);
-        int result = mLivePlayer.startPlay(playURL);
-        Log.d(TAG, "startPlay : " + result);
+        int result = mLivePlayer.startLivePlay(playURL);
+        Log.d(TAG, "startLivePlay : " + result);
 
         // 备注：使用userId作为streamId，尽可能的减少参数；
         startPush(mUserId, mUserId);

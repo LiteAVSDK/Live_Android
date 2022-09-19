@@ -106,8 +106,8 @@ public class LivePKAudienceActivity extends MLVBBaseActivity {
             });
         }
 
-        int result = mLivePlayer.startPlay(playURL);
-        Log.d(TAG, "startPlay : " + result);
+        int result = mLivePlayer.startLivePlay(playURL);
+        Log.d(TAG, "startLivePlay : " + result);
     }
 
     @Override

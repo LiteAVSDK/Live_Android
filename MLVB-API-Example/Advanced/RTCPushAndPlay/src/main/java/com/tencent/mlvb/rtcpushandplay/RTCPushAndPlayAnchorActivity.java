@@ -157,8 +157,8 @@ public class RTCPushAndPlayAnchorActivity extends MLVBBaseActivity implements Vi
                 }
             });
         }
-        int result = mLivePlayer.startPlay(playURL);
-        Log.d(TAG, "startPlay : " + result);
+        int result = mLivePlayer.startLivePlay(playURL);
+        Log.d(TAG, "startLivePlay : " + result);
     }
 
     @Override

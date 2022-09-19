@@ -122,11 +122,11 @@ public class LivePlayActivity extends MLVBBaseActivity implements View.OnClickLi
 
         String userId = String.valueOf(new Random().nextInt(10000));
         String playURL = URLUtils.generatePlayUrl(mStreamId, userId, mStreamType);
-        int result = mLivePlayer.startPlay(playURL);
+        int result = mLivePlayer.startLivePlay(playURL);
         if (result == 0) {
             mPlayFlag = true;
         }
-        Log.d(TAG, "startPlay : " + result);
+        Log.d(TAG, "startLivePlay : " + result);
     }
 
     @Override
