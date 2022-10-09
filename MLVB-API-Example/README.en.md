@@ -20,6 +20,7 @@ This demo covers the following features (click to view the details of a feature)
   - [Third-Party Beauty Filters](./Advanced/ThirdBeauty)
   - [RTC Co-anchoring + Ultra-low-latency Playback](./Advanced/RTCPushAndPlay)
   - [Webrtc Auto Bitrate](./Advanced/LebAutoBitrate)
+  - [Hls Auto Bitrate](./Advanced/HlsAutoBitrate)
   
 >  Note: for clarity purposes, the naming of folders in the project may differ slightly from a standard Android Studio project in terms of letter case.
  
