@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">live</string>
+    <string name="lebplay_mute">静音</string>
+    <string name="lebplay_cancel_mute">取消静音</string>
+    <string name="lebplay_mlvb_live_play">MLVB 快直播拉流</string>
+    <string name="lebplay_please_input_streamid">请输入streamId</string>
+    <string name="lebplay_live_play_desc">快直播（Live Event Broadcasting,LEB）是标准直播在超低延迟播放场景下的延伸，强烈推荐，秒开效果最好，支持超高并发。</string>
+    <string name="lebplay_webrtc_play">快直播拉流</string>
+    <string name="lebplay_desc_recommend">腾讯云官方推荐使用快直播拉流方式</string>
+</resources>

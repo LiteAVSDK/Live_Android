@@ -38,6 +38,7 @@ import java.util.ArrayList;
  * - 断开连麦{@link LiveLinkAnchorActivity#stopLink()} ()}
  * - 拉去连麦观众的流{@link LiveLinkAnchorActivity#startPlay(String)}
  * 详见接入文档{https://cloud.tencent.com/document/product/454/52751}
+ * 目前仅中国大陆支持，其他地区正陆续开发中。
  * Co-anchoring View for Anchors
  * Features:
  * - Start publishing {@link LiveLinkAnchorActivity#startPush()}
@@ -46,6 +47,7 @@ import java.util.ArrayList;
  * - Play the co-anchoring user’s streams {@link LiveLinkAnchorActivity#startPlay(String)}
  * For more information, please see the integration document {https://intl.cloud.tencent
  * .com/document/product/1071/39888}.
+ * Currently only supported in China, other regions are continuing to develop.
  */
 public class LiveLinkAnchorActivity extends MLVBBaseActivity {
     private static final String TAG = "LiveLinkAnchorActivity";
@@ -165,7 +167,7 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
     }
 
     private void startPlay(String linkStreamId) {
-        String playURL = URLUtils.generatePlayUrl(linkStreamId, mUserId, 0);
+        String playURL = URLUtils.generatePlayUrl(linkStreamId, mUserId, 3);
         if (mLivePlayer == null) {
             mLivePlayer = new V2TXLivePlayerImpl(LiveLinkAnchorActivity.this);
             mLivePlayer.setRenderView(mVideoViewAnchor);

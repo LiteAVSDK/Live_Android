@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">live</string>
+    <string name="hlsautobitrate_title">HLS Auto Bitrate Play</string>
+    <string name="hlsautobitrate_switch_1080">Switch To 1080P</string>
+    <string name="hlsautobitrate_switch_720">Switch To 720P</string>
+    <string name="hlsautobitrate_switch_540">Switch To 540P</string>
+    <string name="hlsautobitrate_switch_start">Start Auto Bitrate</string>
+</resources>

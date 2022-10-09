@@ -3,8 +3,11 @@
     <string name="app_main_mlvb_title">腾讯云MLVB API Example</string>
     <string name="app_basic_function">基础功能</string>
     <string name="app_camera_push">摄像头推流</string>
+    <string name="app_camera_push_desc">包含rtmp推流，rtc推流</string>
     <string name="app_screen_push">录屏推流</string>
     <string name="app_live_play">直播拉流</string>
+    <string name="app_live_play_desc">包含标准协议rtmp,flv,hls拉流和rtc拉流功能</string>
+    <string name="app_leb_play">快直播拉流</string>
     <string name="app_live_link">连麦互动</string>
     <string name="app_live_pk">PK互动</string>
     <string name="app_advanced_function">进阶功能</string>
@@ -12,5 +15,6 @@
     <string name="app_custom_video_capture">自定义视频采集</string>
     <string name="app_third_beauty">第三方美颜</string>
     <string name="app_rtc_push_and_play">RTC连麦+超低延时播放</string>
-
+    <string name="app_webrtc_auto_play">快直播自适应播放</string>
+    <string name="app_hls_auto_play">HLS自适应播放</string>
 </resources>

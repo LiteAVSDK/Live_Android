@@ -15,4 +15,5 @@
     <string name="livepk_next_action">下一步</string>
     <string name="livepk_ok">确定</string>
     <string name="livepk_input_other_info">请输入对方的直播间名称</string>
+    <string name="livepk_only_china">目前仅中国大陆支持，其他地区正持续开发中。</string>
 </resources>

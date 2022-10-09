@@ -32,6 +32,7 @@ import java.util.Random;
  * - 设置旋转角度{@link LivePushCameraActivity#showRotateMenu()}
  * - 设置镜像{@link LivePushCameraActivity#showMirrorMenu()}
  * 详见接入文档{https://cloud.tencent.com/document/product/454/56592}
+ * RTC推流目前仅中国大陆支持，其他地区正陆续开发中。
  * Publishing (Camera) View
  * Features:
  * - Start publishing {@link LivePushCameraActivity#startPush()}
@@ -41,6 +42,7 @@ import java.util.Random;
  * - Set mirror mode {@link LivePushCameraActivity#showMirrorMenu()}
  * For more information, please see the integration document {https://intl.cloud.tencent
  * .com/document/product/1071/38158}.
+ * RTC Push Currently only supported in China, other regions are continuing to develop.
  */
 public class LivePushCameraActivity extends MLVBBaseActivity implements View.OnClickListener {
 

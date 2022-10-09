@@ -15,4 +15,6 @@
     <string name="livepk_next_action">Next</string>
     <string name="livepk_ok">OK</string>
     <string name="livepk_input_other_info">Please Input Other StreamId</string>
+    <string name="livepk_only_china">Currently only supported in China, other regions are continuing to develop.
+</string>
 </resources>

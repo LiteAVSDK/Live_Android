@@ -24,6 +24,7 @@ import java.util.Random;
  * - 开始拉流{@link RTCPushAndPlayAudienceActivity#startPlay()}
  * - 开始连麦{@link RTCPushAndPlayAudienceActivity#startLink()}
  * - 停止连麦{@link RTCPushAndPlayAudienceActivity#stopLink()}
+ * 目前仅中国大陆支持，其他地区正陆续开发中。
  *
  * RTC Co-anchoring + Ultra-low-latency Playback View for Audience
  *
@@ -31,6 +32,7 @@ import java.util.Random;
  * - Start playback {@link RTCPushAndPlayAudienceActivity#startPlay()}
  * - Start co-anchoring {@link RTCPushAndPlayAudienceActivity#startLink()}
  * - Stop co-anchoring {@link RTCPushAndPlayAudienceActivity#stopLink()}
+ * Currently only supported in China, other regions are continuing to develop.
  */
 public class RTCPushAndPlayAudienceActivity extends MLVBBaseActivity implements View.OnClickListener {
     private static final String TAG = RTCPushAndPlayAudienceActivity.class.getSimpleName();
@@ -41,9 +43,7 @@ public class RTCPushAndPlayAudienceActivity extends MLVBBaseActivity implements 
     private Button           mButtonLink;
     private TXCloudVideoView mPlayRenderView;
     private V2TXLivePlayer   mLinkPlayer;
-
     private TextView         mTextTitle;
-
     private String           mStreamId;
 
     @Override
@@ -85,7 +85,7 @@ public class RTCPushAndPlayAudienceActivity extends MLVBBaseActivity implements 
 
     private void startPlay() {
         String userId = String.valueOf(new Random().nextInt(10000));
-        String playURL = URLUtils.generatePlayUrl(mStreamId, userId, 0);
+        String playURL = URLUtils.generatePlayUrl(mStreamId, userId, 3);
         if (mLivePlayer == null) {
             mLivePlayer = new V2TXLivePlayerImpl(RTCPushAndPlayAudienceActivity.this);
             mLivePlayer.setRenderView(mPlayRenderView);
@@ -135,7 +135,7 @@ public class RTCPushAndPlayAudienceActivity extends MLVBBaseActivity implements 
             return;
         }
         String userId = String.valueOf(new Random().nextInt(10000));
-        String playURL = URLUtils.generatePlayUrl(linkStreamId, userId, 0);
+        String playURL = URLUtils.generatePlayUrl(linkStreamId, userId, 3);
         if (mLinkPlayer == null) {
             mLinkPlayer = new V2TXLivePlayerImpl(RTCPushAndPlayAudienceActivity.this);
             mLinkPlayer.setRenderView(mLinkPlayRenderView);

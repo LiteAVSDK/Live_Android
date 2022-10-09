@@ -41,7 +41,7 @@ public class LivePlayActivity extends MLVBBaseActivity implements View.OnClickLi
     private TextView         mTextTitle;
 
     private String  mStreamId;
-    private int     mStreamType    = 0;    //0: RTC; 1:RTMP; 2:WEBRTC
+    private int     mStreamType    = 3;    //0:RTMP  1：FLV 2:HLS 3:RTC
     private boolean mPlayAudioFlag = true;
 
     @Override

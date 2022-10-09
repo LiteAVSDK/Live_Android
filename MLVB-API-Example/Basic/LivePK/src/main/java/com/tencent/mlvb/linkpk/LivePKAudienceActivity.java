@@ -75,7 +75,7 @@ public class LivePKAudienceActivity extends MLVBBaseActivity {
     }
 
     private void startPlay() {
-        String playURL = URLUtils.generatePlayUrl(mStreamId, "", 2);
+        String playURL = URLUtils.generatePlayUrl(mStreamId, "", 4);
         if (mLivePlayer == null) {
             mLivePlayer = new V2TXLivePlayerImpl(LivePKAudienceActivity.this);
             mLivePlayer.setRenderView(mPlayRenderView);

@@ -160,7 +160,7 @@ public class SwitchRenderViewActivity extends MLVBBaseActivity {
         }
         mTextTitle.setText(streamId);
         if (mLivePusher == null) {
-            mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTC);
+            mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTMP);
         }
         if (mRadioView.getCheckedRadioButtonId() == R.id.rb_txcloudvideoview) {
             mLivePusher.setRenderView(mPushTencentView);
@@ -183,7 +183,7 @@ public class SwitchRenderViewActivity extends MLVBBaseActivity {
         }
         mLivePusher.startCamera(true);
         String userId = String.valueOf(new Random().nextInt(10000));
-        String pushUrl = URLUtils.generatePushUrl(streamId, userId, 0);
+        String pushUrl = URLUtils.generatePushUrl(streamId, userId, 1);
         int ret = mLivePusher.startPush(pushUrl);
         Log.i(TAG, "startPush return: " + ret);
         mLivePusher.startMicrophone();

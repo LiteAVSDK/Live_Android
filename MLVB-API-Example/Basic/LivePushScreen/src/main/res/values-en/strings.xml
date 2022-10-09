@@ -8,7 +8,7 @@
     <string name="livepushscreen_voice">Speech</string>
     <string name="livepushscreen_music">Music</string>
     <string name="livepushscreen_rtmp_push">LVB Playback</string>
-    <string name="livepushscreen_rtc_desc">Tencent Cloud’s proprietary RTC protocol features lower latency and better adaptability to poor network conditions when compared with traditional live streaming protocols, and can be used worldwide. For details, visit https://cloud.tencent.com/document/product/454/56595</string>
-    <string name="livepushscreen_rtc_push">RTC Publishing (Recommended)</string>
+    <string name="livepushscreen_rtc_desc">Tencent Cloud’s proprietary RTC protocol features lower latency and better adaptability to poor network conditions when compared with traditional live streaming protocols, and can be used worldwide. For details, visit https://cloud.tencent.com/document/product/454/56595 Currently only supported in China, other regions are continuing to develop.</string>
+    <string name="livepushscreen_rtc_push">RTC Publishing</string>
     <string name="livepushscreen_close_screen_push">Stop</string>
 </resources>
