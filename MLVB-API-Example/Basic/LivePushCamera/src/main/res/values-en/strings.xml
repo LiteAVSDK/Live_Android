@@ -14,11 +14,11 @@
     <string name="livepushcamera_local_preview_rotate">Local Preview Rotation</string>
     <string name="livepushcamera_local_preview_mirror">Local Preview Mirror</string>
     <string name="mlvb">MLVB Publishing (Camera)</string>
-    <string name="livepushcamera_push_desc">Tencent Cloud’s proprietary RTC protocol features lower latency and better adaptability to poor network conditions when compared with traditional live streaming protocols, and can be used worldwide. For details, visit https://cloud.tencent.com/document/product/454/56592</string>
+    <string name="livepushcamera_push_desc">Tencent Cloud’s proprietary RTC protocol features lower latency and better adaptability to poor network conditions when compared with traditional live streaming protocols, and can be used worldwide. For details, visit https://cloud.tencent.com/document/product/454/56592 Currently only supported in China, other regions are continuing to develop.</string>
     <string name="livepushcamera_please_select_audio_quality">Audio Quality</string>
     <string name="livepushcamera_default">Default</string>
     <string name="livepushcamera_voice">Speech</string>
     <string name="livepushcamera_music">Music</string>
     <string name="livepushcamera_rtmp_push">LVB Playback</string>
-    <string name="livepushcamera_rtc_push">RTC Publishing (Recommended)</string>
+    <string name="livepushcamera_rtc_push">RTC Publishing</string>
 </resources>

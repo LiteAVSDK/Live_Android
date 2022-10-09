@@ -10,5 +10,5 @@
     <string name="rtcpushandplay_rtc_push">RTC推流</string>
     <string name="rtcpushandplay_stop_play">停止拉流</string>
     <string name="rtcpushandplay_stop_link">停止连麦</string>
-    <string name="rtcpushandplay_process_description">RTC连麦+低延时拉流：\n1、主播A\n1.1、主播A开始推流\n1.2、主播A的观众拉主播A的流\n\n2、主播B\n2.1、主播B开始推流\n2.2、主播B的观众拉主播B的流\n\n3、主播A连麦主播B\n3.1、主播A拉主播B的流\n3.2、主播B拉主播A的流\n\n4、主播连麦后的观众端\n4.1、主播A的观众拉主播B的流\n4.2、主播B的观众拉主播A的流</string>
+    <string name="rtcpushandplay_process_description">RTC连麦+低延时拉流：\n1、主播A\n1.1、主播A开始推流\n1.2、主播A的观众拉主播A的流\n\n2、主播B\n2.1、主播B开始推流\n2.2、主播B的观众拉主播B的流\n\n3、主播A连麦主播B\n3.1、主播A拉主播B的流\n3.2、主播B拉主播A的流\n\n4、主播连麦后的观众端\n4.1、主播A的观众拉主播B的流\n4.2、主播B的观众拉主播A的流\n\n目前仅中国大陆支持，其他地区正陆续开发中。</string>
 </resources>

@@ -61,6 +61,13 @@
                     android:text="@string/app_camera_push"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_camera_push_desc"
+                    android:textColor="@android:color/white"
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -81,6 +88,12 @@
                     android:text="@string/app_screen_push"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_camera_push_desc"
+                    android:textColor="@android:color/white"
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -99,6 +112,33 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/app_live_play"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_live_play_desc"
+                    android:textColor="@android:color/white"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_leb_play"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/button_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_leb_play"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -230,6 +270,45 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/app_rtc_push_and_play"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_leb_auto_play"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/button_bg"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_webrtc_auto_play"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_hls_auto_play"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/button_bg"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_hls_auto_play"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
             </LinearLayout>

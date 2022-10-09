@@ -171,7 +171,7 @@ public class ThirdBeautyTencentEffectActivity extends MLVBBaseActivity implement
             return;
         }
         mTextTitle.setText(streamId);
-        mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTC);
+        mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTMP);
 
 //        mLivePusher.enableCustomVideoProcess(true, V2TXLivePixelFormatTexture2D, V2TXLiveBufferTypeTexture);
 //        mLivePusher.setObserver(new V2TXLivePusherObserver() {
@@ -196,7 +196,7 @@ public class ThirdBeautyTencentEffectActivity extends MLVBBaseActivity implement
         mLivePusher.setRenderView(mPushRenderView);
         mLivePusher.startCamera(true);
         String userId = String.valueOf(new Random().nextInt(10000));
-        String pushUrl = URLUtils.generatePushUrl(streamId, userId, 0);
+        String pushUrl = URLUtils.generatePushUrl(streamId, userId, 1);
         int ret = mLivePusher.startPush(pushUrl);
         Log.i(TAG, "startPush return: " + ret);
         mLivePusher.startMicrophone();

@@ -101,7 +101,7 @@
         android:textSize="18sp"
         android:textColor="@android:color/white"
         android:text="@string/livepushscreen_rtmp_push"
-        android:background="@drawable/common_button_grey_bg"
+        android:background="@drawable/common_button_bg"
         android:layout_marginBottom="30dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>

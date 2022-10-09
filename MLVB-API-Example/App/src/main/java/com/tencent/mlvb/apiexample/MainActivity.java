@@ -7,8 +7,11 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.tencent.liteav.sdk.lebplay.LebPlayEnterActivity;
 import com.tencent.mlvb.customvideocapture.CustomVideoCaptureActivity;
 import com.tencent.mlvb.demo.R;
+import com.tencent.mlvb.hlsautobitrate.HlsAutoBitrateActivity;
+import com.tencent.mlvb.lebautobitrate.LebAutoBitrateActivity;
 import com.tencent.mlvb.linkpk.LivePKEnterActivity;
 import com.tencent.mlvb.livelink.LiveLinkEnterActivity;
 import com.tencent.mlvb.liveplay.LivePlayEnterActivity;
@@ -93,6 +96,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.ll_leb_play).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LebPlayEnterActivity.class);
+                startActivity(intent);
+            }
+        });
+
         findViewById(R.id.ll_link).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,6 +148,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RTCPushAndPlayEnterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.ll_leb_auto_play).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LebAutoBitrateActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.ll_hls_auto_play).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, HlsAutoBitrateActivity.class);
                 startActivity(intent);
             }
         });

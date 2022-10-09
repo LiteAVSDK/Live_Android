@@ -11,6 +11,7 @@ This demo covers the following features (click to view the details of a feature)
   - [Publishing from Camera](./Basic/LivePushCamera)
   - [Publishing from Screen](./Basic/LivePushScreen)
   - [Playback](./Basic/LivePlay)
+  - [Webrtc Playback](./Basic/LebPlay)
   - [Co-anchoring](./Basic/LiveLink)
   - [Competition](./Basic/LinkPK)
 - Advanced Features
@@ -18,6 +19,7 @@ This demo covers the following features (click to view the details of a feature)
   - [Custom Video Capturing](./Advanced/CustomVideoCapture)
   - [Third-Party Beauty Filters](./Advanced/ThirdBeauty)
   - [RTC Co-anchoring + Ultra-low-latency Playback](./Advanced/RTCPushAndPlay)
+  - [Webrtc Auto Bitrate](./Advanced/LebAutoBitrate)
   
 >  Note: for clarity purposes, the naming of folders in the project may differ slightly from a standard Android Studio project in terms of letter case.
  

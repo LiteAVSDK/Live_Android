@@ -43,31 +43,19 @@
 
     <TextView
         android:id="@+id/tv_desc"
-        android:layout_above="@+id/tv_desc_high"
+        android:layout_above="@+id/ll_play_mix"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="30dp"
         android:textColor="@android:color/white"
         android:layout_width="match_parent"
         android:textSize="12sp"
         android:text="@string/liveplay_live_play_desc"
         android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tv_desc_high"
-        android:layout_above="@+id/ll_play_mix"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@android:color/holo_red_dark"
-        android:layout_width="match_parent"
-        android:textSize="14sp"
-        android:text="@string/liveplay_desc_recommend"
-        android:layout_height="wrap_content"/>
-
     <LinearLayout
         android:id="@+id/ll_play_mix"
-        android:layout_above="@+id/btn_play_webrtc"
+        android:layout_above="@+id/ll_play_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
@@ -81,7 +69,42 @@
             android:textSize="18sp"
             android:textColor="@color/white"
             android:text="@string/liveplay_rtmp_play"
-            android:background="@drawable/common_button_grey_bg"
+            android:background="@drawable/common_button_bg"
+            android:layout_width="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btn_play_flv"
+            android:layout_above="@+id/tv_rtc_desc"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            android:text="@string/liveplay_flv_play"
+            android:background="@drawable/common_button_bg"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_play_bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_play_hls"
+            android:layout_above="@+id/tv_rtc_desc"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:text="@string/liveplay_hls_play"
+            android:background="@drawable/common_button_bg"
             android:layout_width="match_parent"
             android:layout_marginRight="10dp"
             android:layout_height="35dp"
@@ -94,22 +117,9 @@
             android:textColor="@color/white"
             android:layout_marginLeft="10dp"
             android:text="@string/liveplay_rtc_play"
-            android:background="@drawable/common_button_grey_bg"
+            android:background="@drawable/common_button_bg"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_weight="1"/>
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_play_webrtc"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:text="@string/liveplay_webrtc_play"
-        android:background="@drawable/common_button_bg"
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:layout_height="50dp"/>
 </RelativeLayout>

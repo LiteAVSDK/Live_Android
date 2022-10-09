@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">live</string>
+    <string name="lebautobitrate_title">快直播自适应播放</string>
+    <string name="lebautobitrate_switch_1080">无缝切流到1080P</string>
+    <string name="lebautobitrate_switch_720">无缝切流到720P</string>
+    <string name="lebautobitrate_switch_540">无缝切流到540P</string>
+    <string name="lebautobitrate_switch_start">开启自适应播放</string>
+    <string name="lebautobitrate_switch_stop">停止自适应播放</string>
+</resources>

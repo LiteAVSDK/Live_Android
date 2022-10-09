@@ -133,12 +133,12 @@ public class CustomVideoCaptureActivity extends MLVBBaseActivity implements View
         mCustomCameraCapture = new CustomCameraCapture();
         mCustomFrameRender = new CustomFrameRender();
 
-        mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTC);
+        mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTMP);
         mLivePusher.setObserver(mCustomFrameRender);
         mLivePusher.enableCustomVideoCapture(true);
 
         String userId = String.valueOf(new Random().nextInt(10000));
-        String pushUrl = URLUtils.generatePushUrl(streamId, userId, 0);
+        String pushUrl = URLUtils.generatePushUrl(streamId, userId, 1);
         int ret = mLivePusher.startPush(pushUrl);
         Log.i(TAG, "startPush return: " + ret);
         mLivePusher.startMicrophone();

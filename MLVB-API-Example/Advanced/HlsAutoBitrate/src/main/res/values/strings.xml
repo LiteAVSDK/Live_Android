@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">live</string>
+    <string name="hlsautobitrate_title">HLS自适应播放</string>
+    <string name="hlsautobitrate_switch_1080">无缝切流到1080P</string>
+    <string name="hlsautobitrate_switch_720">无缝切流到720P</string>
+    <string name="hlsautobitrate_switch_540">无缝切流到540P</string>
+    <string name="hlsautobitrate_switch_start">开启自适应播放</string>
+</resources>

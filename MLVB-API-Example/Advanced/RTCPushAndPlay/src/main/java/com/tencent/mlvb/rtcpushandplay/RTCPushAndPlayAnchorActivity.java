@@ -28,7 +28,7 @@ import java.util.Random;
  * - 开始连麦{@link RTCPushAndPlayAnchorActivity#startLink()} ()}
  * - 停止连麦{@link RTCPushAndPlayAnchorActivity#stopLink()} ()}
  * - 播放对面主播的流{@link RTCPushAndPlayAnchorActivity#startPlay(String)}
- *
+ * 目前仅中国大陆支持，其他地区正陆续开发中。
  *
  * RTC Co-anchoring + Ultra-low-latency Playback View for Anchors
  *
@@ -37,6 +37,7 @@ import java.util.Random;
  * - Start co-anchoring {@link RTCPushAndPlayAnchorActivity#startLink()}
  * - Stop co-anchoring {@link RTCPushAndPlayAnchorActivity#stopLink()}
  * - Play the other anchor’s streams {@link RTCPushAndPlayAnchorActivity#startPlay(String)}
+ * Currently only supported in China, other regions are continuing to develop.
  */
 public class RTCPushAndPlayAnchorActivity extends MLVBBaseActivity implements View.OnClickListener {
     private static final String TAG = "LiveLinkAnchorActivity";
@@ -127,7 +128,7 @@ public class RTCPushAndPlayAnchorActivity extends MLVBBaseActivity implements Vi
 
     private void startPlay(String linkStreamId) {
         String userId = String.valueOf(new Random().nextInt(10000));
-        String playURL = URLUtils.generatePlayUrl(linkStreamId, userId, 0);
+        String playURL = URLUtils.generatePlayUrl(linkStreamId, userId, 3);
         if (mLivePlayer == null) {
             mLivePlayer = new V2TXLivePlayerImpl(RTCPushAndPlayAnchorActivity.this);
             mLivePlayer.setRenderView(mPlayRenderView);

@@ -18,4 +18,5 @@
     <string name="livelink_tips_input_userid">请输入观众的用户名</string>
     <string name="livelink_process_description">连麦互动场景实现：\n1、主播A\n1.1、主播A开始推流\n1.2、主播A的观众拉主播A的流\n1.3、主播A的连麦观众B拉主播A的流\n\n2、连麦观众B\n2.1、连麦观众B输入自己的推流streamId和userId\n2.2、连麦观众B开始停止快直播拉流\n2.3、连麦观众B开始拉主播A的RTC流\n2.4、连麦观众B开始推流\n\n3、主播A连麦连麦观众B\n3.1、主播A与连麦观众B混流到主播A</string>
     <string name="livelink_next_action">下一步</string>
+    <string name="livelink_only_china">目前仅中国大陆支持，其他地区正持续开发中。</string>
 </resources>

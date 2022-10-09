@@ -118,7 +118,7 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
     }
 
     private void startPlay() {
-        String playURL = URLUtils.generatePlayUrl(mStreamId, "", 2);
+        String playURL = URLUtils.generatePlayUrl(mStreamId, "", 4);
         if (mLivePlayer == null) {
             mLivePlayer = new V2TXLivePlayerImpl(LiveLinkAudienceActivity.this);
             mLivePlayer.setRenderView(mVideoViewAnchor);
@@ -158,7 +158,7 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
             mLivePlayer.stopPlay();
         }
 
-        String playURL = URLUtils.generatePlayUrl(mStreamId, mUserId, 0);
+        String playURL = URLUtils.generatePlayUrl(mStreamId, mUserId, 3);
         mLivePlayer.setRenderView(mVideoViewAnchor);
         int result = mLivePlayer.startLivePlay(playURL);
         Log.d(TAG, "startLivePlay : " + result);

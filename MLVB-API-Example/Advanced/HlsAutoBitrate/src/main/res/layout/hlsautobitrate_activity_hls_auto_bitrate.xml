@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B1B1B">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@mipmap/common_ic_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/hlsautobitrate_title"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <com.tencent.rtmp.ui.TXCloudVideoView
+        android:id="@+id/tx_cloud_view"
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_height="280dp"
+        android:background="#1B1B1B"/>
+
+
+    <LinearLayout
+        android:layout_above="@+id/btn_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btn_switch_1080"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:text="@string/hlsautobitrate_switch_1080"
+            android:background="@drawable/common_button_bg"
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btn_switch_720"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="5dp"
+            android:text="@string/hlsautobitrate_switch_720"
+            android:background="@drawable/common_button_bg"
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btn_switch_540"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:text="@string/hlsautobitrate_switch_540"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/common_button_bg"
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_switch"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/common_button_bg"
+        android:text="@string/hlsautobitrate_switch_start"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+</RelativeLayout>

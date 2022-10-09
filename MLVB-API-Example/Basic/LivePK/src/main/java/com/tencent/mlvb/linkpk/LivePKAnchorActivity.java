@@ -40,6 +40,8 @@ import static com.tencent.live2.V2TXLiveDef.V2TXLiveMixInputType.V2TXLiveMixInpu
  * - 停止PK{@link LivePKAnchorActivity#stopPK()}
  * - 播放对面主播的流{@link LivePKAnchorActivity#startPlay(String)}
  * 详见接入文档{https://cloud.tencent.com/document/product/454/52751}
+ * 目前仅中国大陆支持，其他地区正陆续开发中。
+ *
  * Competition View for Anchors
  * Features:
  * - Start publishing {@link LivePKAnchorActivity#startPush()}
@@ -48,6 +50,7 @@ import static com.tencent.live2.V2TXLiveDef.V2TXLiveMixInputType.V2TXLiveMixInpu
  * - Play the other anchor’s streams {@link LivePKAnchorActivity#startPlay(String)}
  * For more information, please see the integration document {https://intl.cloud.tencent
  * .com/document/product/1071/39888}.
+ * Currently only supported in China, other regions are continuing to develop.
  */
 public class LivePKAnchorActivity extends MLVBBaseActivity implements View.OnClickListener {
     private static final String TAG = "LivePKAnchorActivity";
@@ -146,7 +149,7 @@ public class LivePKAnchorActivity extends MLVBBaseActivity implements View.OnCli
 
     private void startPlay(String linkStreamId) {
         String userId = String.valueOf(new Random().nextInt(10000));
-        String playURL = URLUtils.generatePlayUrl(linkStreamId, userId, 0);
+        String playURL = URLUtils.generatePlayUrl(linkStreamId, userId, 3);
         if (mLivePlayer == null) {
             mLivePlayer = new V2TXLivePlayerImpl(LivePKAnchorActivity.this);
             mLivePlayer.setRenderView(mPlayRenderView);

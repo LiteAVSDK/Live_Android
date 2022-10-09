@@ -11,6 +11,7 @@ _中文 | [English](README.en.md)_
   - [摄像头推流](./Basic/LivePushCamera)
   - [录屏推流](./Basic/LivePushScreen)
   - [直播拉流](./Basic/LivePlay)
+  - [快直播拉流](./Basic/LebPlay)
   - [连麦互动](./Basic/LiveLink)
   - [连麦PK](./Basic/LinkPK)
 - 进阶功能
@@ -18,6 +19,7 @@ _中文 | [English](README.en.md)_
   - [自定义视频采集](./Advanced/CustomVideoCapture)
   - [第三方美颜](./Advanced/ThirdBeauty)
   - [RTC连麦+超低延时播放](./Advanced/RTCPushAndPlay)
+  - [快直播自适应播放](./Advanced/LebAutoBitrate)
   
 >  说明：目前的工程结构跟标准的Android Studio工程在名称大小写上可能有略微的差异，主要目的是方便大家在网页上看到此工程时，名称意义更加清晰
  

@@ -24,7 +24,7 @@ import java.util.Random;
  * - 停止屏幕分享{@link LivePushScreenActivity#stopScreenPush()} (boolean)}】
  *
  * 详见接入文档{https://cloud.tencent.com/document/product/454/56595}
- *
+ * 目前仅中国大陆支持，其他地区正陆续开发中。
  *
  * Publishing (Screen) View
  *
@@ -33,6 +33,7 @@ import java.util.Random;
  * - Stop screen sharing {@link LivePushScreenActivity#stopScreenPush()} (boolean)}
  *
  * For more information, please see the integration document {https://cloud.tencent.com/document/product/454/56595}.
+ * Currently only supported in China, other regions are continuing to develop.
  */
 public class LivePushScreenActivity extends MLVBBaseActivity implements View.OnClickListener {
 

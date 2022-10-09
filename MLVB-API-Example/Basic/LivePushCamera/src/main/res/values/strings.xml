@@ -14,7 +14,7 @@
     <string name="livepushcamera_local_preview_rotate">本地预览旋转角度</string>
     <string name="livepushcamera_local_preview_mirror">本地预览镜像</string>
     <string name="mlvb">MLVB 摄像头推流</string>
-    <string name="livepushcamera_push_desc">腾讯云自研实时音视频协议，相比传统的直播协议，具备如下优势：超低延迟、弱网超强抗性、支持全球范围，更多细节详见：https://cloud.tencent.com/document/product/454/56592</string>
+    <string name="livepushcamera_push_desc">RTC推流为腾讯云自研实时音视频协议，相比传统的直播协议，具备如下优势：超低延迟、弱网超强抗性、支持全球范围，更多细节详见：https://cloud.tencent.com/document/product/454/56592 目前仅中国大陆支持，其他地区正持续开发中。</string>
     <string name="livepushcamera_please_select_audio_quality">请选择音频质量</string>
     <string name="livepushcamera_default">默认</string>
     <string name="livepushcamera_voice">语音</string>
