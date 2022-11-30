@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">live</string>
+    <string name="timeshift_title">直播时移</string>
+    <string name="timeshift_resume_live">返回直播</string>
+</resources>

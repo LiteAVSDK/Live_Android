@@ -21,7 +21,7 @@ import com.tencent.mlvb.rtcpushandplay.RTCPushAndPlayEnterActivity;
 import com.tencent.mlvb.switchrenderview.SwitchRenderViewActivity;
 import com.tencent.mlvb.thirdbeauty.ThirdBeautyFaceUnityActivity;
 import com.tencent.mlvb.thirdbeauty.ThirdBeautyEntranceActivity;
-
+import com.tencent.mlvb.timeshift.TimeShiftActivity;
 
 /**
  * MLVB API-Example 主页面
@@ -164,6 +164,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, HlsAutoBitrateActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.ll_time_shift).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, TimeShiftActivity.class);
                 startActivity(intent);
             }
         });

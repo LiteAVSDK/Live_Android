@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">live</string>
+    <string name="timeshift_title">Time Shift</string>
+    <string name="timeshift_resume_live">Resume Live</string>
+</resources>
