@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B1B1B">
+
+    <com.tencent.rtmp.ui.TXCloudVideoView
+        android:id="@+id/tx_cloud_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="#1B1B1B" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@mipmap/common_ic_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
+            android:text="@string/timeshift_title"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/timeshift_resume_live"
+        android:layout_alignParentBottom="true"
+        android:layout_width="100dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/common_button_bg"
+        android:text="@string/timeshift_resume_live"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/timeshift_date"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="120dp"
+        android:layout_height="36dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical|right"
+        android:textColor="@android:color/white"
+        android:text="00:00:00"
+        android:textSize="20sp" />
+
+    <SeekBar
+        android:id="@+id/timeshift_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_above="@+id/timeshift_resume_live"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:max="100"
+        android:progress="100"
+        android:textSize="20sp" />
+
+
+
+
+
+</RelativeLayout>

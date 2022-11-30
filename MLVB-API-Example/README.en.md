@@ -21,6 +21,7 @@ This demo covers the following features (click to view the details of a feature)
   - [RTC Co-anchoring + Ultra-low-latency Playback](./Advanced/RTCPushAndPlay)
   - [Webrtc Auto Bitrate](./Advanced/LebAutoBitrate)
   - [Hls Auto Bitrate](./Advanced/HlsAutoBitrate)
+  - [Time Shift](./Advanced/TimeShift)
   
 >  Note: for clarity purposes, the naming of folders in the project may differ slightly from a standard Android Studio project in terms of letter case.
  

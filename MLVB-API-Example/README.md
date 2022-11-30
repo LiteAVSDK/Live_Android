@@ -20,7 +20,8 @@ _中文 | [English](README.en.md)_
   - [第三方美颜](./Advanced/ThirdBeauty)
   - [RTC连麦+超低延时播放](./Advanced/RTCPushAndPlay)
   - [快直播自适应播放](./Advanced/LebAutoBitrate)
-  - [Hls自适应播放](./Advanced/HlsAutoBitrate)
+  - [HLS自适应播放](./Advanced/HlsAutoBitrate)
+  - [直播时移](./Advanced/TimeShift)
   
 >  说明：目前的工程结构跟标准的Android Studio工程在名称大小写上可能有略微的差异，主要目的是方便大家在网页上看到此工程时，名称意义更加清晰
  
