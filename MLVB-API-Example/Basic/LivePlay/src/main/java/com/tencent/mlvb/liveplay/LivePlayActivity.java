@@ -48,8 +48,8 @@ public class LivePlayActivity extends MLVBBaseActivity implements View.OnClickLi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liveplay_activity_live_play);
+        initIntentData();
         if (checkPermission()) {
-            initIntentData();
             initView();
             startPlay();
         }
