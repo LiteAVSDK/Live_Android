@@ -28,5 +28,4 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation project(':Debug')
     implementation project(':Common')
-    implementation 'com.faceunity:nama:7.3.0'
 }
