@@ -15,8 +15,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.nama.AuthPack;
-import com.nama.FURenderer;
+//import com.nama.AuthPack;
+//import com.nama.FURenderer;
 import com.tencent.live2.V2TXLiveDef;
 import com.tencent.live2.V2TXLivePusher;
 import com.tencent.live2.V2TXLivePusherObserver;
@@ -65,19 +65,19 @@ public class ThirdBeautyFaceUnityActivity extends MLVBBaseActivity implements Vi
     private              EditText         mEditStreamId;
     private              Button           mButtonPush;
     private              TextView         mTextTitle;
-    private              FURenderer       mFURenderer;
+//    private              FURenderer       mFURenderer;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.thirdbeauty_activity_third_beauty);
-        FURenderer.setup(getApplicationContext());
-        mFURenderer = new FURenderer.Builder(getApplicationContext())
-                .setCreateEglContext(false)
-                .setInputTextureType(0)
-                .setCreateFaceBeauty(true)
-                .build();
+//        FURenderer.setup(getApplicationContext());
+//        mFURenderer = new FURenderer.Builder(getApplicationContext())
+//                .setCreateEglContext(false)
+//                .setInputTextureType(0)
+//                .setCreateFaceBeauty(true)
+//                .build();
         if (checkPermission()) {
             initView();
         }
@@ -103,7 +103,7 @@ public class ThirdBeautyFaceUnityActivity extends MLVBBaseActivity implements Vi
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (mLivePusher != null && mLivePusher.isPushing() == 1 && fromUser) {
-                    mFURenderer.getFaceBeautyModule().setBlurLevel(seekBar.getProgress() / 9f);
+//                    mFURenderer.getFaceBeautyModule().setBlurLevel(seekBar.getProgress() / 9f);
                 }
                 mTextBlurLevel.setText(String.valueOf(progress));
             }
@@ -139,20 +139,20 @@ public class ThirdBeautyFaceUnityActivity extends MLVBBaseActivity implements Vi
         mLivePusher.setObserver(new V2TXLivePusherObserver() {
             @Override
             public void onGLContextCreated() {
-                mFURenderer.onSurfaceCreated();
+//                mFURenderer.onSurfaceCreated();
             }
 
             @Override
             public int onProcessVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame srcFrame,
                                            V2TXLiveDef.V2TXLiveVideoFrame dstFrame) {
-                dstFrame.texture.textureId = mFURenderer
-                        .onDrawFrameSingleInput(srcFrame.texture.textureId, srcFrame.width, srcFrame.height);
+//                dstFrame.texture.textureId = mFURenderer
+//                        .onDrawFrameSingleInput(srcFrame.texture.textureId, srcFrame.width, srcFrame.height);
                 return 0;
             }
 
             @Override
             public void onGLContextDestroyed() {
-                mFURenderer.onSurfaceDestroyed();
+//                mFURenderer.onSurfaceDestroyed();
             }
         });
         mLivePusher.setRenderView(mPushRenderView);
