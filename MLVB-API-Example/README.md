@@ -1,86 +1,85 @@
 # MLVB API-Example 
-_中文 | [English](README.en.md)_
+_[中文](README-zh_CN.md) | English_
 
-## 前言
-这个开源示例Demo主要演示了 [移动直播 SDK](https://cloud.tencent.com/document/product/454) 部分API的使用示例，帮助开发者可以更好的理解 移动直播 SDK 的API，从而快速实现一些移动直播场景的基本功能。 
+## Background
+This open-source demo shows how to use some APIs of the [MLVB SDK](https://www.tencentcloud.com/document/product/1071) to help you better understand the APIs and use them to implement some basic MLVB features.
 
-## 结构说明
-在这个示例项目中包含了以下场景:（带上对应的跳转目录，方便用户快速浏览感兴趣的功能）
+## Contents
+This demo covers the following features (click to view the details of a feature):
 
-- 基础功能
-  - [摄像头推流](./Basic/LivePushCamera)
-  - [录屏推流](./Basic/LivePushScreen)
-  - [直播拉流](./Basic/LivePlay)
-  - [快直播拉流](./Basic/LebPlay)
-  - [连麦互动](./Basic/LiveLink)
-  - [连麦PK](./Basic/LinkPK)
-- 进阶功能
-  - [动态切换渲染组件](./Advanced/SwitchRenderView)
-  - [自定义视频采集](./Advanced/CustomVideoCapture)
-  - [第三方美颜](./Advanced/ThirdBeauty)
-  - [RTC连麦+超低延时播放](./Advanced/RTCPushAndPlay)
-  - [快直播自适应播放](./Advanced/LebAutoBitrate)
-  - [HLS自适应播放](./Advanced/HlsAutoBitrate)
-  - [直播时移](./Advanced/TimeShift)
+- Basic Features
+  - [Publishing from Camera](./Basic/LivePushCamera)
+  - [Publishing from Screen](./Basic/LivePushScreen)
+  - [Playback](./Basic/LivePlay)
+  - [Webrtc Playback](./Basic/LebPlay)
+  - [Co-anchoring](./Basic/LiveLink)
+  - [Competition](./Basic/LinkPK)
+- Advanced Features
+  - [Dynamically Switching Rendering Controls](./Advanced/SwitchRenderView)
+  - [Custom Video Capturing](./Advanced/CustomVideoCapture)
+  - [Third-Party Beauty Filters](./Advanced/ThirdBeauty)
+  - [RTC Co-anchoring + Ultra-low-latency Playback](./Advanced/RTCPushAndPlay)
+  - [Webrtc Auto Bitrate](./Advanced/LebAutoBitrate)
+  - [Hls Auto Bitrate](./Advanced/HlsAutoBitrate)
+  - [Time Shift](./Advanced/TimeShift)
   
->  说明：目前的工程结构跟标准的Android Studio工程在名称大小写上可能有略微的差异，主要目的是方便大家在网页上看到此工程时，名称意义更加清晰
+>  Note: for clarity purposes, the naming of folders in the project may differ slightly from a standard Android Studio project in terms of letter case.
  
  
-## 环境准备
-- 最低兼容 Android 4.1（SDK API Level 16），建议使用 Android 5.0 （SDK API Level 21）及以上版本
-- Android Studio 3.5及以上版本
-- App 要求 Android 5.0及以上设备
+## Environment Requirements
+- Android 4.1 (SDK API level 16) or above; Android 5.0 (SDK API level 21) or above is recommended.
+- Android Studio 3.5 or above
+- Devices with Android 5.0 or above
  
 
-## 运行示例
+## Demo Run Example
 
-### 前提条件
-您已 [注册腾讯云](https://cloud.tencent.com/document/product/378/17985) 账号，并完成 [实名认证](https://cloud.tencent.com/document/product/378/3629)。
+### Prerequisites
+You have [signed up for a Tencent Cloud account](https://intl.cloud.tencent.com/document/product/378/17985) and completed [identity verification](https://intl.cloud.tencent.com/document/product/378/3629).
 
-### 申请SDKAPPID 和 SECRETKEY
-1. 登录实时音视频控制台，选择【开发辅助】>【[快速跑通Demo](https://console.cloud.tencent.com/trtc/quickstart)】。
-2. 单击【立即开始】，输入您的应用名称，例如`TestTRTC`，单击【创建应用】。
+### Obtaining `SDKAppID` and secret key
+1. In the TRTC console, select **Application Management** > **[Create application](https://console.tencentcloud.com/trtc/app/create)**.
+2. Enter an application name such as `TestTRTC`, and click **Next**.
 
-![ #900px](https://main.qcloudimg.com/raw/169391f6711857dca6ed8cfce7b391bd.png)
-3. 创建应用完成后，单击【我已下载，下一步】，可以查看 SDKAppID 和密钥信息。
+![ #900px](https://qcloudimg.tencent-cloud.cn/raw/51c73a617e69a76ed26e6f74b0071ec9.png)
+3. Click **Next** to view your `SDKAppID` and key.
 
-### 开通移动直播服务
-1. [开通直播服务并绑定域名](https://console.cloud.tencent.com/live/livestat) 如果还没开通，点击申请开通，之后在域名管理中配置推流域名和拉流域名
-2. [获取SDK的测试License](https://console.cloud.tencent.com/live/license) 
+### Activating MLVB
+1. [Activate CSS and add domain names](https://console.intl.cloud.tencent.com/live/common/apply?code=0). If you haven’t activated CSS, click **Apply for Activation**, and add publishing and playback domain names in **Domain Management**.
+2. [Obtain a trial license to use the SDK](https://console.intl.cloud.tencent.com/live/license).
 
-### 配置 Demo 工程文件
-1. 使用 Android Studio（3.5及以上的版本）打开源码工程`MLVB-API-Example`
-2. 找到并打开`MLVB-API-Example/Debug/src/main/java/com/tencent/trtc/debug/GenerateTestUserSig.java`文件。
-3. 设置`GenerateTestUserSig.java`文件中的相关参数：
-  - `SDKAPPID`：默认为 PLACEHOLDER ，请设置为实际的 SDKAppID；
-  - `SECRETKEY`：默认为空字符串，请设置为实际的密钥信息；
-  - `LICENSEURL`：默认为 PLACEHOLDER ，请设置为实际的License Url信息；
-  - `LICENSEURLKEY`：默认为 PLACEHOLDER ，请设置为实际的License Key信息；
-4. 找到并打开`MLVB-API-Example/Debug/src/main/java/com/tencent/mlvb/debug/GenerateTestUserSig.java`文件。
-5. 设置`GenerateTestUserSig.java`文件中的相关参数：
-  - `PUSH_DOMAIN`：配置的推流地址
-  - `PLAY_DOMAIN`：配置的拉流地址
-  - `LIVE_URL_KEY`：非必需，用于生成 txSecret 等鉴权信息.
-<img src="https://qcloudimg.tencent-cloud.cn/raw/bb4e9ea8e62489ec908c51bfa0a0132b.png" width=600px>
+### Configuring demo project files
+1. Open the demo project `MLVB-API-Example` with Android Studio (3.5 or above).
+2. Find and open `MLVB-API-Example/Debug/src/main/java/com/tencent/trtc/debug/GenerateTestUserSig.java`.
+3. Set parameters in `GenerateTestUserSig.java` as follows:
+  - `SDKAPPID`: a placeholder by default. Set it to the actual `SDKAppID`.
+  - `SDKSECRETKEY`: left empty by default. Set it to the actual key.
+  - `LICENSEURL`: a placeholder by default. Set it to the actual license URL.
+  - `LICENSEURLKEY`: a placeholder by default. Set it to the actual license key.
+4. Find and open `MLVB-API-Example/Debug/src/main/java/com/tencent/mlvb/debug/GenerateTestUserSig.java`.
+5. Set parameters in `GenerateTestUserSig.java` as follows:
+  - `PUSH_DOMAIN`: set it to the configured publishing URL.
+  - `PLAY_DOMAIN`: set it to the configured playback URL.
+  - `LIVE_URL_KEY`: set it to the authentication key (if authentication configuration is enabled).
 
-### 集成 SDK
-您可以选择使用 JCenter 自动加载的方式，或者手动下载 aar 再将其导入到您当前的工程项目中，Demo默认采用方法一配置。
+### Integrating the SDK
+You can use JCenter for automatic loading or manually download the AAR file and import it to your project. The demo uses the first method by default.
 
-#### 方法一：自动加载（aar）
-1. 在 dependencies 中添加 SDK 的依赖。
- - 若使用3.x版本的 com.android.tools.build:gradle 工具，请执行以下命令：
+#### Method 1: automatic loading (AAR)
+1. Add the SDK dependencies to `dependencies`.
+ - Run the following command if you use the 3.x version of com.android.tools.build:gradle.
 ```
 dependencies {
     implementation 'com.tencent.liteav:LiteAVSDK_Professional:latest.release'
 }
 ```
- - 若使用2.x版本的 com.android.tools.build:gradle 工具，请执行以下命令：
+ - Run the following command if you use the 2.x version of com.android.tools.build:gradle.
 ```
 dependencies {
     compile 'com.tencent.liteav:LiteAVSDK_Professional:latest.release'
 }
 ```
-2. 在 defaultConfig 中，指定 App 使用的 CPU 架构。
+2. In `defaultConfig`, specify the CPU architecture to be used by your application.
 ```
 defaultConfig {
     ndk {
@@ -88,14 +87,14 @@ defaultConfig {
     }
 }
 ```
-3.单击【Sync Now】，自动下载 SDK 并集成到工程里。
+3. Click **Sync Now** to automatically download and integrate the SDK into your project.
 
-#### 方法二：手动下载（aar）
-如果您的网络连接 JCenter 有问题，您也可以手动下载 SDK 集成到工程里：
+#### Method 2: manual download (AAR)
+If you have difficulty accessing JCenter, you can manually download the SDK and integrate it into your project.
 
-1. 下载最新版本 [移动直播 SDK](https://cloud.tencent.com/document/product/454/7873)
-2. 将下载到的 aar 文件拷贝到工程的 **App/libs** 目录下。
-3. 在工程根目录下的 build.gradle 中，添加 **flatDir**，指定本地仓库路径。
+1. Download the latest version of the [MLVB SDK](https://www.tencentcloud.com/document/product/1071/38150?has_map=1).
+2. Copy the downloaded AAR file to the **App/libs** directory of your project.
+3. Add **flatDir** to `build.gradle` under the project’s root directory and specify a local path for the repository.
 ```
 ...
 allprojects {
@@ -109,15 +108,15 @@ allprojects {
 }
 ...
 ```
-4. 在 app/build.gradle 中，添加引用 aar 包的代码。
+4. Add code in `app/build.gradle` to import the AAR file.
 ```
 dependencies {
     ...
-    compile(name: 'LiteAVSDK_Professional_xxx', ext: 'aar') // xxx表示解压出来的SDK版本号
+    compile(name: 'LiteAVSDK_Professional_xxx', ext: 'aar') // `xxx` is the version number of the decompressed SDK
     ...
 }
 ```
-5. 在 app/build.gradle的defaultConfig 中，指定 App 使用的 CPU 架构。
+5. In `defaultConfig` of `app/build.gradle`, specify the CPU architecture to be used by your application.
 ```
 defaultConfig {
     ndk {
@@ -125,12 +124,21 @@ defaultConfig {
     }
 }
 ```
-6. 单击【Sync Now】，完成 SDK 的集成工作。 
+6. Click **Sync Now** to complete the integration.
 
-### 编译运行
-用 Android Studio 打开该项目，连上Android设备，编译并运行。
 
-# 联系我们
-- [常见问题](https://cloud.tencent.com/document/product/454/7937)
-- [官网文档](https://cloud.tencent.com/document/product/454)
-- [API文档](https://liteav.sdk.qcloud.com/doc/api/zh-cn/group__V2TXLivePusher__android.html#afc848d88fe99790b8c0988b8525dd4d9)
+## Compiling and running the project
+Open the project with Android Studio, connect to an Android device, and compile and run the project.
+
+## Contact Us
+- If you have questions, see [FAQs](https://www.tencentcloud.com/document/product/1071/39477).
+
+- To learn about how the MLVB SDK can be used in different scenarios, see [Sample Code](https://www.tencentcloud.com/document/product/1071).
+
+- For complete API documentation, see [SDK API Documentation](https://liteav.sdk.qcloud.com/doc/api/en/group__V2TXLivePusher__android.html).
+
+- Communication & Feedback   
+Welcome to join our Telegram Group to communicate with our professional engineers! We are more than happy to hear from you~
+Click to join: [https://t.me/+EPk6TMZEZMM5OGY1](https://t.me/+EPk6TMZEZMM5OGY1)   
+Or scan the QR code   
+  <img src="https://qcloudimg.tencent-cloud.cn/raw/79cbfd13877704ff6e17f30de09002dd.jpg" width="300px">    
