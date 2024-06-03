@@ -19,13 +19,6 @@ import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.util.ArrayList;
 
 /**
- * HLS自适应码率播放
- *  MLVB APP 快直播自适应码率播放功能
- *  本文件展示如何集成快直播自适应码率播放功能
- *  1、设置渲染画面 API:[self.livePlayer setRenderView:self.view];
- *  2、开始播放 API: [self.livePlayer startLivePlay:url];
- *  参考文档：https://cloud.tencent.com/document/product/454/81211
- *
  * HLS Auto Bitrate
  *  MLVB APP HLS Auto Bitrate
  *  1、Set Render View API:[self.livePlayer setRenderView:self.view];

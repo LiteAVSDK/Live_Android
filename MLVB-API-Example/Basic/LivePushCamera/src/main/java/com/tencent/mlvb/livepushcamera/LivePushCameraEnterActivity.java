@@ -19,9 +19,6 @@ import com.tencent.live2.V2TXLiveDef;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 
 /**
- * MLVB 摄像头推流的入口页面
- * 其中包含两种推流方式，RTC推流，RTMP推流，推荐使用RTC推流方式
- * - 推流详情页见{@link LivePushCameraActivity}
  * Publishing (Camera) Entrance View
  * You can publish via RTC (recommended) or RTMP.
  * - For the publishing view, see {@link LivePushCameraActivity}.

@@ -31,18 +31,6 @@ import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.util.Random;
 
 /**
- * MLVB 第三方美颜页面
- * 接入步骤：
- * 第一步：集成腾讯特效SDK并拷贝资源（可参考腾讯特效提供的接入文档：https://cloud.tencent.com/document/product/616/65888）
- * 第二步：腾讯特效SDK的鉴权与初始化,详见{@link ThirdBeautyTencentEffectActivity#authXmagic()},License获取请参考 {https://cloud.tencent.com/document/product/616/65878}
- * 第三步：在MLVB中使用腾讯特效美颜，详见{@link ThirdBeautyTencentEffectActivity#startPush()} 中的注释说明
- * - 首先在推流之前调用{@link V2TXLivePusher#enableCustomVideoProcess(boolean,
- * V2TXLiveDef.V2TXLivePixelFormat, V2TXLiveDef.V2TXLiveBufferType)},设置开启自定义渲染
- * - 然后掉用{@link V2TXLivePusher#setObserver(V2TXLivePusherObserver)} 监听SDK的视频数据
- * - 当收到数据时，在{@link V2TXLivePusherObserver#onProcessVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame,
- * V2TXLiveDef.V2TXLiveVideoFrame)}中适应第三方的美颜组件去处理。
- * 注意：腾讯特效提供的 License 与 applicationId 一一对应的，测试过程中需要修改 applicationId 为 License对应的applicationId
- *
  * MLVB Third-Party Beauty Filter View
  * Access steps：
  * First step：
@@ -100,7 +88,7 @@ public class ThirdBeautyTencentEffectActivity extends MLVBBaseActivity implement
 //                new TELicenseCheck.TELicenseCheckListener() {
 //                    @Override
 //                    public void onLicenseCheckFinish(int errorCode, String msg) {
-//                        //注意：此回调不一定在调用线程
+//                        //Note: This callback is not necessarily in the calling thread
 //                        if (errorCode == TELicenseCheck.ERROR_OK) {
 //                            initXmagicApi();
 //                        }

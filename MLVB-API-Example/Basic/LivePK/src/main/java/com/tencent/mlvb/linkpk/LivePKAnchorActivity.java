@@ -33,15 +33,6 @@ import static com.tencent.live2.V2TXLiveCode.V2TXLIVE_OK;
 import static com.tencent.live2.V2TXLiveDef.V2TXLiveMixInputType.V2TXLiveMixInputTypePureVideo;
 
 /**
- * MLVB 连麦PK的主播视角
- * 包含如下简单功能：
- * - 开始推流{@link LivePKAnchorActivity#startPush()}
- * - 开始PK{@link LivePKAnchorActivity#startPK(String)}
- * - 停止PK{@link LivePKAnchorActivity#stopPK()}
- * - 播放对面主播的流{@link LivePKAnchorActivity#startPlay(String)}
- * 详见接入文档{https://cloud.tencent.com/document/product/454/52751}
- * 目前仅中国大陆支持，其他地区正陆续开发中。
- *
  * Competition View for Anchors
  * Features:
  * - Start publishing {@link LivePKAnchorActivity#startPush()}
@@ -112,9 +103,9 @@ public class LivePKAnchorActivity extends MLVBBaseActivity implements View.OnCli
     }
 
     /**
-     * 开始和对应流 id 的用户进行pk。
+     * Start pk with the user corresponding to the stream id.
      *
-     * @param pkStreamId 需要进行 PK 的流 id。
+     * @param pkStreamId The stream id that needs to be PKed.
      */
     @SuppressLint("SetTextI18n")
     public void startPK(String pkStreamId) {

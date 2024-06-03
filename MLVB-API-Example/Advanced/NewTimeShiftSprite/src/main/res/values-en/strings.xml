@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">live</string>
+    <string name="new_timeshift_sprite_title">New Time Shift Sprite</string>
+    <string name="new_timeshift_get_sprite_thumb">Get Sprite Thumb</string>
+</resources>

@@ -20,17 +20,7 @@ import com.tencent.mlvb.common.URLUtils;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.util.Random;
 
-/**
- * MLVB RTC连麦+超低延时播放的主播视角
- *
- * 包含如下简单功能：
- * - 开始推流{@link RTCPushAndPlayAnchorActivity#startPush()}
- * - 开始连麦{@link RTCPushAndPlayAnchorActivity#startLink()} ()}
- * - 停止连麦{@link RTCPushAndPlayAnchorActivity#stopLink()} ()}
- * - 播放对面主播的流{@link RTCPushAndPlayAnchorActivity#startPlay(String)}
- * 目前仅中国大陆支持，其他地区正陆续开发中。
- *
- * RTC Co-anchoring + Ultra-low-latency Playback View for Anchors
+/** RTC Co-anchoring + Ultra-low-latency Playback View for Anchors
  *
  * Features:
  * - Start publishing {@link RTCPushAndPlayAnchorActivity#startPush()}

@@ -18,4 +18,5 @@
     <string name="app_webrtc_auto_play">快直播自适应播放</string>
     <string name="app_hls_auto_play">HLS自适应播放</string>
     <string name="app_time_shift">直播时移</string>
+    <string name="app_new_time_shift_sprite">新直播时移雪碧图</string>
 </resources>

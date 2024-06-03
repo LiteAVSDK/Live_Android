@@ -10,7 +10,7 @@ public class TextureRotationUtils {
     }
 
     /**
-     * 获取 Texture 的旋转方向。
+     * Gets the rotation direction of the Texture.
      */
     public static float[] getRotation(final Rotation rotation,
                                       final boolean flipHorizontal,

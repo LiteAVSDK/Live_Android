@@ -15,9 +15,6 @@ import com.tencent.mlvb.common.MLVBBaseActivity;
 import com.tencent.mlvb.livepk.R;
 
 /**
- * MLVB 连麦PK的入口页面
- * - 以主播角色进入连麦PK{@link LivePKAnchorActivity}
- * - 以观众角色进入连麦PK{@link LivePKAudienceActivity}
  * Competition Entrance View
  * - Enter as an anchor {@link LivePKAnchorActivity}
  * - Enter as audience {@link LivePKAudienceActivity}

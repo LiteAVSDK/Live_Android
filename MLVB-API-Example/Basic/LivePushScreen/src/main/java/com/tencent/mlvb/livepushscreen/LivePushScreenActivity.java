@@ -17,15 +17,6 @@ import com.tencent.mlvb.common.URLUtils;
 import java.util.Random;
 
 /**
- * MLVB 录屏推流详情页
- *
- * 包含如下简单功能：
- * - 开始屏幕分享{@link LivePushScreenActivity#startScreenPush()}
- * - 停止屏幕分享{@link LivePushScreenActivity#stopScreenPush()} (boolean)}】
- *
- * 详见接入文档{https://cloud.tencent.com/document/product/454/56595}
- * 目前仅中国大陆支持，其他地区正陆续开发中。
- *
  * Publishing (Screen) View
  *
  * Features:

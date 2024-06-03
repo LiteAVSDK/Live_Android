@@ -17,10 +17,6 @@ import androidx.annotation.Nullable;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 
 /**
- * MLVB 直播拉流的入口页面
- * 其中包含四种拉流方式：RTMP拉流、FLV拉流、HLS拉流、RTC拉流。
- * - 拉流详情页见{@link LivePlayActivity}
- * RTC拉流目前仅中国大陆支持，其他地区正陆续开发中。
  * Playback Entrance View
  * You can play streams over RTMP, FLV, HLS or RTC.
  * - For the playback view, see {@link LivePlayActivity}.

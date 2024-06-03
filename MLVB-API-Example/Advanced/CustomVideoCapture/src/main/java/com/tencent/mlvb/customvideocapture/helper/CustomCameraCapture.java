@@ -53,7 +53,7 @@ public class CustomCameraCapture implements SurfaceTexture.OnFrameAvailableListe
 
     private final    FloatBuffer            mGLCubeBuffer;
     private final    FloatBuffer            mGLTextureBuffer;
-    private final    float[]                mTextureTransform = new float[16]; // OES纹理转换为2D纹理
+    private final    float[]                mTextureTransform = new float[16]; // OES texture converted to 2D texture
     private          int                    mSurfaceTextureId = NO_TEXTURE;
     private          boolean                mFrameUpdated;
     private          VideoFrameReadListener mVideoFrameReadListener;
@@ -88,9 +88,9 @@ public class CustomCameraCapture implements SurfaceTexture.OnFrameAvailableListe
     }
 
     /**
-     * 开始视频自定义渲染。
+     * Start video custom rendering.
      *
-     * @param videoFrameReadListener 用于通知自定义渲染已经完成。
+     * @param videoFrameReadListener used to notify that custom rendering has completed.
      */
     public void start(final VideoFrameReadListener videoFrameReadListener) {
         mVideoFrameReadListener = videoFrameReadListener;
@@ -101,7 +101,7 @@ public class CustomCameraCapture implements SurfaceTexture.OnFrameAvailableListe
     }
 
     /**
-     * 停止视频自定义渲染。
+     * Stop video custom rendering.
      */
     public void stop() {
         if (mRenderHandlerThread != null) {

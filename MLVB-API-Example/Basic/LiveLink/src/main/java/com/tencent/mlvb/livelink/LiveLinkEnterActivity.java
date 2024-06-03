@@ -14,9 +14,6 @@ import androidx.annotation.Nullable;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 
 /**
- * MLVB 连麦互动的入口页面
- * - 以主播角色进入连麦互动{@link LiveLinkAnchorActivity}
- * - 以观众角色进入连麦互动{@link LiveLinkAudienceActivity}
  * Co-anchoring Entrance View
  * - Enter as an anchor {@link LiveLinkAnchorActivity}
  * - Enter as audience {@link LiveLinkAudienceActivity}

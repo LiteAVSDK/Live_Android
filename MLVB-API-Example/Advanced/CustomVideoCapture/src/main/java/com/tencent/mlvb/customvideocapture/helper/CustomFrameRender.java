@@ -30,11 +30,11 @@ import java.nio.FloatBuffer;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * 本地媒体文件直播分享的自定义渲染辅助类，可以帮助开发者快速实现TRTC 自定义渲染的相关功能
- * 主要包含：
- * - 本地预览视频帧/远端用户视频帧的自定义渲染；
- * - 本地音频/远端音频混音后的播放；
- *
+ * Custom rendering auxiliary class for live sharing of local media files,
+ * which can help developers quickly implement TRTC custom rendering related functions
+ * Mainly includes:
+ * - Customized rendering of local preview video frames/remote user video frames;
+ * - Mixed playback of local audio/remote audio;
  */
 public class CustomFrameRender extends V2TXLivePusherObserver implements Handler.Callback {
     public static final String TAG = "CustomFrameRender";
@@ -99,9 +99,9 @@ public class CustomFrameRender extends V2TXLivePusherObserver implements Handler
     }
 
     /**
-     * 开始视频自定义渲染。
+     * Start video custom rendering.
      *
-     * @param videoView 用于显示画面的 view。
+     * @param videoView The view used to display the screen.
      */
     public void start(TextureView videoView) {
         if (videoView == null) {
@@ -110,14 +110,14 @@ public class CustomFrameRender extends V2TXLivePusherObserver implements Handler
         }
         Log.i(TAG, "start render");
 
-        // 设置TextureView的SurfaceTexture生命周期回调，用于管理GLThread的创建和销毁
+        // Set the SurfaceTexture life cycle callback of TextureView to manage the creation and destruction of GLThread
         mRenderView = videoView;
         mSurfaceTexture = mRenderView.getSurfaceTexture();
 
         mRenderView.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
             @Override
             public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-                // 保存surfaceTexture，用于创建OpenGL线程
+                // Save surfaceTexture for creating OpenGL thread
                 mSurfaceTexture = surface;
                 mSurfaceSize = new Size(width, height);
                 Log.i(TAG, String.format("onSurfaceTextureAvailable width: %d, height: %d", width, height));
@@ -131,9 +131,10 @@ public class CustomFrameRender extends V2TXLivePusherObserver implements Handler
 
             @Override
             public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
-                // surface释放了，需要停止渲染
+                // The surface is released and rendering needs to be stopped.
                 mSurfaceTexture = null;
-                // 等待Runnable执行完，再返回，否则GL线程会使用一个无效的SurfaceTexture
+                // Wait for the Runnable to finish executing before returning,
+                // otherwise the GL thread will use an invalid SurfaceTexture
                 mGLHandler.runAndWaitDone(new Runnable() {
                     @Override
                     public void run() {

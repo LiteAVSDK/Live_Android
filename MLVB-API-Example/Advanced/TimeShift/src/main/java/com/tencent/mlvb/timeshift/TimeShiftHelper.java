@@ -27,16 +27,15 @@ public class TimeShiftHelper {
             return null;
         }
 
-        //推流地址格式：rtmp://8888.livepush.myqcloud.com/path/8888_test_12345_test?txSecret=aaaa&txTime=bbbb
-        //拉流地址格式：rtmp://8888.liveplay.myqcloud.com/path/8888_test_12345_test
-        //            http://8888.liveplay.myqcloud.com/path/8888_test_12345_test.flv
-        //            http://8888.liveplay.myqcloud.com/path/8888_test_12345_test.m3u8
-
+        //Push address format: rtmp://8888.livepush.myqcloud.com/path/8888_test_12345_test?txSecret=aaaa&txTime=bbbb
+        //Pulling address format: rtmp://8888.liveplay.myqcloud.com/path/8888_test_12345_test
+        // http://8888.liveplay.myqcloud.com/path/8888_test_12345_test.flv
+        // http://8888.liveplay.myqcloud.com/path/8888_test_12345_test.m3u8
 
         String subString = strStreamUrl;
 
         {
-            //1 截取第一个 ？之前的子串
+            //1 intercept the first one? previous substring
             int index = subString.indexOf("?");
             if (index != -1) {
                 subString = subString.substring(0, index);
@@ -47,7 +46,7 @@ public class TimeShiftHelper {
         }
 
         {
-            //2 截取最后一个 / 之后的子串
+            //2 intercept the substring after the last
             int index = subString.lastIndexOf("/");
             if (index != -1) {
                 subString = subString.substring(index + 1);
@@ -59,7 +58,7 @@ public class TimeShiftHelper {
         }
 
         {
-            //3 截取第一个 . 之前的子串
+            //3 Intercept the substring before the first
             int index = subString.indexOf(".");
             if (index != -1) {
                 subString = subString.substring(0, index);
@@ -77,15 +76,15 @@ public class TimeShiftHelper {
             return null;
         }
 
-        //推流地址格式：rtmp://8888.livepush.myqcloud.com/path/8888_test_12345_test?txSecret=aaaa&txTime=bbbb
-        //拉流地址格式：rtmp://8888.liveplay.myqcloud.com/path/8888_test_12345_test
-        //            http://8888.liveplay.myqcloud.com/path/8888_test_12345_test.flv
-        //            http://8888.liveplay.myqcloud.com/path/8888_test_12345_test.m3u8
+        //Push address format: rtmp://8888.livepush.myqcloud.com/path/8888_test_12345_test?txSecret=aaaa&txTime=bbbb
+        //Pulling address format: rtmp://8888.liveplay.myqcloud.com/path/8888_test_12345_test
+        // http://8888.liveplay.myqcloud.com/path/8888_test_12345_test.flv
+        // http://8888.liveplay.myqcloud.com/path/8888_test_12345_test.m3u8
 
         String subString = strStreamUrl;
 
         {
-            //1 截取第一个 ？之前的子串
+            //1 intercept the first one? previous substring
             int index = subString.indexOf("?");
             if (index != -1) {
                 subString = subString.substring(0, index);
@@ -96,7 +95,7 @@ public class TimeShiftHelper {
         }
 
         {
-            //2 截取最后一个 / 之前的子串
+            //2 intercept the substring before the last
             int index = subString.lastIndexOf("/");
             if (index != -1) {
                 subString = subString.substring(0, index);
@@ -108,7 +107,7 @@ public class TimeShiftHelper {
         }
 
         {
-            //3 截取最后一个 / 之后的子串
+            //3 intercept the substring after the last
             int index = subString.lastIndexOf("/");
             if (index != -1) {
                 subString = subString.substring(index + 1);

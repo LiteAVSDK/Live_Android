@@ -24,15 +24,6 @@ import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.util.Random;
 
 /**
- * MLVB 摄像头推流详情页
- * 包含如下简单功能：
- * - 开始推流{@link LivePushCameraActivity#startPush()} ()}
- * - 麦克风{@link LivePushCameraActivity#enableMic(boolean)}
- * - 设置分辨率{@link LivePushCameraActivity#showResolutionMenu()}
- * - 设置旋转角度{@link LivePushCameraActivity#showRotateMenu()}
- * - 设置镜像{@link LivePushCameraActivity#showMirrorMenu()}
- * 详见接入文档{https://cloud.tencent.com/document/product/454/56592}
- * RTC推流目前仅中国大陆支持，其他地区正陆续开发中。
  * Publishing (Camera) View
  * Features:
  * - Start publishing {@link LivePushCameraActivity#startPush()}

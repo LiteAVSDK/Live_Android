@@ -30,22 +30,6 @@ import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.util.Random;
 
 /**
- * MLVB 自定义视频采集&渲染的示例
- * 本文件展示了如何实现自定义采集&渲染功能，主要流程如下：
- * 自定义采集：
- * - 首先在推流之前调用{@link V2TXLivePusher#enableCustomVideoCapture(boolean)},设置开启自定义采集
- * - 然后掉用{@link V2TXLivePusher#sendCustomVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame)} 发送数据给SDK
- * 自定义渲染
- * -
- * 首先在推流之前调用
- * {@link V2TXLivePusher#enableCustomVideoProcess(boolean, V2TXLiveDef.V2TXLivePixelFormat,
- * V2TXLiveDef.V2TXLiveBufferType)},设置开启自定义渲染
- * - 然后掉用{@link V2TXLivePusher#setObserver(V2TXLivePusherObserver)} 监听SDK的视频数据
- * -
- * 当收到数据时，在
- * {@link V2TXLivePusherObserver#onProcessVideoFrame(V2TXLiveDef.V2TXLiveVideoFrame, V2TXLiveDef.V2TXLiveVideoFrame)}
- * 中处理渲染逻辑
- * - 更多细节，详见API说明文档{https://cloud.tencent.com/document/product/454/56601}
  * Example for Custom Video Capturing & Rendering
  * This document shows how to enable custom video capturing and rendering.
  * Custom capturing:
