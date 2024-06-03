@@ -15,16 +15,6 @@ import com.tencent.mlvb.common.MLVBBaseActivity;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
 /**
- * 快直播自适应码率播放
- *
- * 快直播目前已支持无缝切流和自适应码率播放
- * 本文件展示如何集成快直播自适应码率播放功能
- * - 1、设置渲染画面 {@link V2TXLivePlayer#setRenderView(TXCloudVideoView)}
- * - 2、开始播放 {@link V2TXLivePlayer#startLivePlay(String)}
- * 参考文档：https://cloud.tencent.com/document/product/454/81212
- * 开始自适应码率播放后，就无法进行进行无缝切流了。如果在播放状态进入自适应码率，
- * 需要先停止当前播放，然后再开始自适应播放
- *
  * Webrtc Auto Bitrate
  * MLVB APP Webrtc Auto Bitrate
  * - 1、Set Render View API:{@link V2TXLivePlayer#setRenderView(TXCloudVideoView)}

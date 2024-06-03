@@ -21,12 +21,6 @@ import com.tencent.mlvb.common.URLUtils;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
 /**
- * MLVB 连麦互动的观众视角
- * 包含如下简单功能：
- * - 播放音视频流{@link LiveLinkAudienceActivity#startPlay()} ()}
- * - 开始连麦{@link LiveLinkAudienceActivity#startLink()}
- * - 停止连麦{@link LiveLinkAudienceActivity#stopLink()} ()}
- * - 详见接入文档{https://cloud.tencent.com/document/product/454/52751}
  * Co-anchoring View for Audience
  * Features:
  * - Play audio/video streams {@link LiveLinkAudienceActivity#startPlay()}
@@ -163,7 +157,7 @@ public class LiveLinkAudienceActivity extends MLVBBaseActivity {
         int result = mLivePlayer.startLivePlay(playURL);
         Log.d(TAG, "startLivePlay : " + result);
 
-        // 备注：使用userId作为streamId，尽可能的减少参数；
+        // Note: Use userId as streamId to reduce parameters as much as possible;
         startPush(mUserId, mUserId);
 
         mButtonStartLink.setVisibility(View.GONE);

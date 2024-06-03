@@ -4,8 +4,6 @@ import com.tencent.mlvb.debug.GenerateTestUserSig;
 import java.io.File;
 
 /**
- * MLVB 移动直播地址生成
- * 详情请参考：「https://cloud.tencent.com/document/product/454/7915」
  * Generating Streaming URLs
  * See [https://cloud.tencent.com/document/product/454/7915].
  */
@@ -19,7 +17,6 @@ public class URLUtils {
     public static final String APP_NAME    = "live";
 
     /**
-     * 生成推流地址
      * Generating Publishing URLs
      *
      * @param streamId
@@ -41,7 +38,6 @@ public class URLUtils {
     }
 
     /**
-     * 生成拉流地址
      * Generating Playback URLs
      *
      * @param streamId

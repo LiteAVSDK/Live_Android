@@ -20,23 +20,14 @@ import com.tencent.mlvb.common.URLUtils;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.util.Random;
 
-/**
- * MLVB 动态切换渲染组件的示例
- *
- * 本文件展示了如何使用不同的View类型作为载体去渲染视频
- * 目前支持的View 有
- * TextureView、SurfaceView、TXCloudVideoView
- *
- * - 更多细节，详见API接口文档{https://liteav.sdk.qcloud.com/doc/api/zh-cn/group__V2TXLivePusher__android.html#afc848d88fe99790b8c0988b8525dd4d9}
- *
- *
- * Example for Dynamically Switching Rendering Controls
+/** Example for Dynamically Switching Rendering Controls
  *
  * This document shows how to use different types of views to render a video.
  * Views supported include:
  * TextureView, SurfaceView, TXCloudVideoView
  *
- * - For more information, please see the API document {https://liteav.sdk.qcloud.com/doc/api/zh-cn/group__V2TXLivePusher__android.html#afc848d88fe99790b8c0988b8525dd4d9}.
+ * - For more information, please see the API document {
+ * https://liteav.sdk.qcloud.com/doc/api/zh-cn/group__V2TXLivePusher__android.html#afc848d88fe99790b8c0988b8525dd4d9}.
  */
 public class SwitchRenderViewActivity extends MLVBBaseActivity {
     private static final String TAG = SwitchRenderViewActivity.class.getSimpleName();

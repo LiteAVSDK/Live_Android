@@ -17,6 +17,7 @@ import com.tencent.mlvb.livelink.LiveLinkEnterActivity;
 import com.tencent.mlvb.liveplay.LivePlayEnterActivity;
 import com.tencent.mlvb.livepushcamera.LivePushCameraEnterActivity;
 import com.tencent.mlvb.livepushscreen.LivePushScreenEnterActivity;
+import com.tencent.mlvb.newtimeshiftspriite.NewTimeShiftSpriteActivity;
 import com.tencent.mlvb.rtcpushandplay.RTCPushAndPlayEnterActivity;
 import com.tencent.mlvb.switchrenderview.SwitchRenderViewActivity;
 import com.tencent.mlvb.thirdbeauty.ThirdBeautyFaceUnityActivity;
@@ -24,22 +25,6 @@ import com.tencent.mlvb.thirdbeauty.ThirdBeautyEntranceActivity;
 import com.tencent.mlvb.timeshift.TimeShiftActivity;
 
 /**
- * MLVB API-Example 主页面
- *
- * 其中包含
- * 基础功能模块如下：
- * - 摄像头推流模块{@link LivePushCameraEnterActivity}
- * - 录屏推流模块{@link LivePushScreenEnterActivity}
- * - 直播拉流模块{@link LivePlayEnterActivity}
- * - 连麦互动模块{@link LiveLinkEnterActivity}
- * - 连麦PK模块{@link LivePKEnterActivity}
- *
- * 进阶功能模块如下：
- * - 动态切换渲染控件{@link SwitchRenderViewActivity}
- * - 自定义视频采集{@link CustomVideoCaptureActivity}
- * - 第三方美颜{@link ThirdBeautyFaceUnityActivity}
- * - RTC连麦+超低延时播放{@link RTCPushAndPlayEnterActivity}
- *
  * MLVB API-Example Main View
  *
  * Features
@@ -172,6 +157,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, TimeShiftActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.ll_new_time_shift_sprite).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NewTimeShiftSpriteActivity.class);
                 startActivity(intent);
             }
         });

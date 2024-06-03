@@ -20,11 +20,6 @@ import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.util.Random;
 
 /**
- * MLVB 快直播拉流详情页
- * 包含如下简单功能：
- * - 开始拉流{@link LebPlayActivity#startPlay()}
- * - 静音{@link LebPlayActivity#mute()}
- * 详见接入文档{https://cloud.tencent.com/document/product/454/68195}
  * Playback View
  * Features:
  * - Start playback {@link LebPlayActivity#startPlay()}

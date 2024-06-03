@@ -18,14 +18,6 @@ import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.util.Random;
 
 /**
- * MLVB RTC连麦+超低延时播放的观众视角
- *
- * 包含如下简单功能：
- * - 开始拉流{@link RTCPushAndPlayAudienceActivity#startPlay()}
- * - 开始连麦{@link RTCPushAndPlayAudienceActivity#startLink()}
- * - 停止连麦{@link RTCPushAndPlayAudienceActivity#stopLink()}
- * 目前仅中国大陆支持，其他地区正陆续开发中。
- *
  * RTC Co-anchoring + Ultra-low-latency Playback View for Audience
  *
  * Features:

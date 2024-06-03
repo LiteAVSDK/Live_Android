@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.RadioGroup;
 
 /**
- * 实现自动换行的RadioGroup
+ * RadioGroup that implements automatic line wrapping
  */
 public class FlowRadioGroup extends RadioGroup {
     public FlowRadioGroup(Context context) {

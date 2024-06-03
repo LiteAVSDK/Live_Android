@@ -12,8 +12,6 @@ import androidx.annotation.Nullable;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 
 /**
- * MLVB WebRTC拉流的入口页面
- * - 拉流详情页见{@link LebPlayActivity}
  * WebRTC Playback Entrance View
  * - For the playback view, see {@link LebPlayActivity}.
  */

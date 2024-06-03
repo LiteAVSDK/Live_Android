@@ -31,14 +31,6 @@ import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.util.ArrayList;
 
 /**
- * MLVB 连麦互动的主播视角
- * 包含如下简单功能：
- * - 开始推流{@link LiveLinkAnchorActivity#startPush()}
- * - 接受连麦{@link LiveLinkAnchorActivity#startLink(String)}
- * - 断开连麦{@link LiveLinkAnchorActivity#stopLink()} ()}
- * - 拉去连麦观众的流{@link LiveLinkAnchorActivity#startPlay(String)}
- * 详见接入文档{https://cloud.tencent.com/document/product/454/52751}
- * 目前仅中国大陆支持，其他地区正陆续开发中。
  * Co-anchoring View for Anchors
  * Features:
  * - Start publishing {@link LiveLinkAnchorActivity#startPush()}
@@ -131,9 +123,9 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
     }
 
     /**
-     * 开始和指定的用户连麦。
+     * Start connecting with the specified user.
      *
-     * @param linkUserId 需要连麦的用户 id。
+     * @param linkUserId The user ID that needs to be connected.
      */
     public void startLink(String linkUserId) {
         if (TextUtils.isEmpty(linkUserId)) {
@@ -142,7 +134,7 @@ public class LiveLinkAnchorActivity extends MLVBBaseActivity {
             return;
         }
 
-        // 备注：因为观众册使用userId作为streamId，此处即为连麦观众的UserId；
+        // Note: Because the audience register uses userId as streamId, this is the UserId of the Lianmai audience;
         startPlay(linkUserId);
 
         int result = mLivePusher.setMixTranscodingConfig(createConfig(linkUserId, linkUserId));

@@ -17,10 +17,6 @@ import com.tencent.mlvb.livepk.R;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
 /**
- * MLVB 连麦PK的观众视角
- * 包含如下简单功能：
- * - 播放音视频流{@link LivePKAudienceActivity#startPlay()} ()}
- * - 详见接入文档{https://cloud.tencent.com/document/product/454/52751}
  * Competition View for Audience
  * Features:
  * - Play audio/video streams {@link LivePKAudienceActivity#startPlay()}

@@ -26,27 +26,27 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /*
- 时移功能
- MLVB APP 时移代码示例：
- 本文件展示如何通过移动直播SDK实现时移功能
- 1、首先在官网了解时移基本概念和使用，并开启时移功能。https://cloud.tencent.com/document/product/267/32742
- 2、根据文档规则拼接时移的播放链接 String timeShiftUrl = "http://[Domain]/timeshift/[AppName]/[StreamName]/timeshift.m3u8?delay=90"。(delay ，默认最小90秒)
- 3、停止当前正在播放的直播流 API: mLivePlayer.stopPlay();
- 4、开始播放时移流 API: mLivePlayer.startLivePlay(timeShiftUrl);
+ time shift function
+ MLVB APP time-shift code example:
+ This document shows how to implement the time shift function through the mobile live broadcast SDK
+ 1. First, understand the basic concepts and uses of time shifting on the official website, and enable the time shifting function. https://cloud.tencent.com/document/product/267/32742
+ 2. Splice the time-shifted playback link according to the document rules. String timeShiftUrl = "http://[Domain]/timeshift/[AppName]/[StreamName]/timeshift.m3u8?delay=90". (delay, default minimum 90 seconds)
+ 3. Stop the currently playing live stream API: mLivePlayer.stopPlay();
+ 4. Start playing time-shift streaming API: mLivePlayer.startLivePlay(timeShiftUrl);
 
- 恢复直播流
- 1、停止当前正在播放的时移流 API: mLivePlayer.stopPlay();
- 2、开始播放直播流 API: mLivePlayer.startLivePlay(liveUrl);
+ Resume live stream
+ 1. Stop the currently playing time-shifted stream API: mLivePlayer.stopPlay();
+ 2. Start playing live streaming API: mLivePlayer.startLivePlay(liveUrl);
 
  */
 
 public class TimeShiftActivity extends MLVBBaseActivity {
     private static final String TAG = TimeShiftActivity.class.getSimpleName();
-    /// 时移功能演示，示例拉流地址。
+    /// Time shift function demonstration, sample streaming address。
     private static final String DEFAULT_PLAY_URL = "http://liteavapp.qcloud.com/live/liteavdemoplayerstreamid.flv";
     private static final String DEFAULT_TIME_SHIFT_DOMAIN = "liteavapp.timeshift.qcloud.com";
 
-    // 时移区间可配置 https://cloud.tencent.com/document/product/267/32742
+    // The time shift interval is configurable https://cloud.tencent.com/document/product/267/32742
     private static final int kMaxFallbackSeconds = 600;
     private static final int kMinFallbackSeconds = 90;
 

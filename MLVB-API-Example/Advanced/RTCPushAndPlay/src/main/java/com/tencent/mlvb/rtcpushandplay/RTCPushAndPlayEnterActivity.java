@@ -12,12 +12,6 @@ import androidx.annotation.Nullable;
 import com.tencent.mlvb.common.MLVBBaseActivity;
 
 /**
- * MLVB RTC连麦+超低延时播放的入口页面
- *
- * - 以主播角色该场景{@link RTCPushAndPlayAnchorActivity}
- * - 以观众角色该场景{@link RTCPushAndPlayAudienceActivity}
- *
- *
  * Entrance View for RTC Co-anchoring + Ultra-low-latency Playback
  *
  * - Enter as an anchor {@link RTCPushAndPlayAnchorActivity}

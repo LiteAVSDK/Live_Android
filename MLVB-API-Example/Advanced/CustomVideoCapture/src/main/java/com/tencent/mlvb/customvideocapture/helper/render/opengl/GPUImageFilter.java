@@ -94,7 +94,7 @@ public class GPUImageFilter {
     }
 
     /**
-     * 使用 OpenGL 对画面进行渲染。
+     * Use OpenGL to render the screen.
      */
     public void onDraw(final int textureId, final FloatBuffer cubeBuffer, final FloatBuffer textureBuffer) {
         GLES20.glUseProgram(mProgram.getProgramId());
@@ -129,7 +129,8 @@ public class GPUImageFilter {
     }
 
     protected void runPendingOnDrawTasks() {
-        // 将当前要运行的拷贝到新的数组,然后再开始执行,防止执行的里面再次添加
+        //Copy the current one to be run to a new array,
+        // and then start execution to prevent the execution from being added again.
         LinkedList<Runnable> runList;
         synchronized (mRunOnDraw) {
             runList = new LinkedList<>(mRunOnDraw);
