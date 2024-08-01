@@ -15,6 +15,7 @@
     <string name="app_custom_video_capture">自定义视频采集</string>
     <string name="app_third_beauty">第三方美颜</string>
     <string name="app_rtc_push_and_play">RTC连麦+超低延时播放</string>
+    <string name="app_picture_in_picture">画中画功能</string>
     <string name="app_webrtc_auto_play">快直播自适应播放</string>
     <string name="app_hls_auto_play">HLS自适应播放</string>
     <string name="app_time_shift">直播时移</string>

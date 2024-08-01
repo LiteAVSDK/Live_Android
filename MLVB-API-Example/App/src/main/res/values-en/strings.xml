@@ -15,6 +15,7 @@
     <string name="app_custom_video_capture">Custom Video Capturing</string>
     <string name="app_third_beauty">Third-Party Beauty Filters</string>
     <string name="app_rtc_push_and_play">RTC Co-anchoring + Ultra-low-latency Playback</string>
+    <string name="app_picture_in_picture">Picture In Picture</string>
     <string name="app_webrtc_auto_play">Webrtc Auto Bitrate</string>
     <string name="app_hls_auto_play">HLS Auto Bitrate</string>
     <string name="app_time_shift">Time Shift</string>
