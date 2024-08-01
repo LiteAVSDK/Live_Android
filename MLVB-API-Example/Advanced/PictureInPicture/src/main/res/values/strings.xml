@@ -1,0 +1,9 @@
+<resources>
+    <string name="app">live</string>
+    <string name="Tencent_Cloud_MLVB_API_EXAMPLE">腾讯云MLVB API Example</string>
+    <string name="enable_pictrue_in_picture">开启画中画功能</string>
+    <string name="pause">暂停</string>
+    <string name="disable_pictrue_in_picture">关闭画中画功能</string>
+    <string name="resume">恢复</string>
+    <string name="picture_in_picture_not_supported">当前设备不支持画中画功能</string>
+</resources>

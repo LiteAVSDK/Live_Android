@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B1B1B">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@mipmap/common_ic_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
+            android:text="@string/Tencent_Cloud_MLVB_API_EXAMPLE"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <com.tencent.rtmp.ui.TXCloudVideoView
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_height="280dp"
+        android:background="#1B1B1B"/>
+
+    <LinearLayout
+        android:id="@+id/btn_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_enable_picture_in_picture"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:text="@string/enable_pictrue_in_picture"
+            android:background="@drawable/common_button_bg"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="95dp"
+            android:layout_alignParentBottom="true"
+            android:layout_height="48dp"
+            android:layout_weight="1" />
+
+
+        <Button
+            android:id="@+id/btn_first_pause"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:text="@string/pause"
+            android:background="@drawable/common_button_bg"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="95dp"
+            android:layout_alignParentBottom="true"
+            android:layout_height="48dp"
+            android:layout_weight="1"/>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

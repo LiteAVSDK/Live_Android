@@ -1,0 +1,8 @@
+<resources>
+    <string name="app">live</string>
+    <string name="Tencent_Cloud_MLVB_API_EXAMPLE">MLVB API Example</string>
+    <string name="enable_pictrue_in_picture">Enable</string>
+    <string name="pause">Pause</string>
+    <string name="disable_pictrue_in_picture">Disable</string>
+    <string name="resume">Resume</string>
+</resources>
