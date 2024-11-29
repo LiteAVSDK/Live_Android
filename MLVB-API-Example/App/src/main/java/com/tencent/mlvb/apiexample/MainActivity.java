@@ -19,7 +19,7 @@ import com.tencent.mlvb.livepushcamera.LivePushCameraEnterActivity;
 import com.tencent.mlvb.livepushscreen.LivePushScreenEnterActivity;
 import com.tencent.mlvb.newtimeshiftspriite.NewTimeShiftSpriteActivity;
 import com.tencent.mlvb.rtcpushandplay.RTCPushAndPlayEnterActivity;
-import com.tecent.mlvb.pictureinpicture.PictureInPicture;
+import com.tencent.mlvb.pictureinpicture.PictureInPictureActivity;
 import com.tencent.mlvb.switchrenderview.SwitchRenderViewActivity;
 import com.tencent.mlvb.thirdbeauty.ThirdBeautyFaceUnityActivity;
 import com.tencent.mlvb.thirdbeauty.ThirdBeautyEntranceActivity;
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.ll_picture_in_picture).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, PictureInPicture.class);
+                Intent intent = new Intent(MainActivity.this, PictureInPictureActivity.class);
                 startActivity(intent);
             }
         });

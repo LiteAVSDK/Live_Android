@@ -6,7 +6,7 @@
 
     <application android:theme="@style/AppTheme">
         <activity
-            android:name=".PictureInPictureActivity"
+            android:name="com.tencent.mlvb.pictureinpicture.PictureInPictureActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:supportsPictureInPicture="true"
