@@ -2,9 +2,10 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    
     defaultConfig {
-        minSdkVersion 26
+        minSdkVersion 19
         targetSdkVersion rootProject.ext.targetSdkVersion
         ndk {
             abiFilters "armeabi-v7a", "arm64-v8a"
@@ -17,7 +18,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    namespace 'com.tecent.mlvb.pictureinpicture'
+    namespace 'com.tencent.mlvb.pictureinpicture'
+
 }
 
 dependencies {

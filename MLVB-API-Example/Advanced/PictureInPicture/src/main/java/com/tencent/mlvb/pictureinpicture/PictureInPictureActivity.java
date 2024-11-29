@@ -1,4 +1,4 @@
-package com.tecent.mlvb.pictureinpicture;
+package com.tencent.mlvb.pictureinpicture;
 
 import android.app.PictureInPictureParams;
 import android.content.res.Configuration;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.tencent.mlvb.pictureinpicture.R;
 import com.tencent.live2.V2TXLivePlayer;
 import com.tencent.live2.V2TXLivePlayerObserver;
 import com.tencent.live2.impl.V2TXLivePlayerImpl;
